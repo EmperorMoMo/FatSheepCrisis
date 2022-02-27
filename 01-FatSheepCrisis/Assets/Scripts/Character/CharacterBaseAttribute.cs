@@ -4,8 +4,7 @@ using UnityEngine;
 
 public abstract class CharacterBaseAttribute : MonoBehaviour
 {
-    protected internal int Level { get; set; }
-    protected internal float Cur_Hp { get; set; }
+    #region Show
     protected internal float Max_Hp { get; set; }
     protected internal float Re_Hp { get; set; }
     protected internal float Armor { get; set; }
@@ -15,9 +14,15 @@ public abstract class CharacterBaseAttribute : MonoBehaviour
     protected internal float CritDamage { get; set; }
     protected internal float PickUpRange { get; set; }
     protected internal float Exp_GainRate { get; set; }
-    protected internal float ProjectilesNum { get; set; }
+    protected internal float Gold_GainRate { get; set; }
+    protected internal int ProjectilesNum { get; set; }
     protected internal float FinalDamage { get; set; }
     protected internal float ExtraDamage { get; set; }
+    #endregion
+
+    protected internal int Level { get; set; }
+    protected internal float Cur_Hp { get; set; }
+    protected internal float AdditionalDamage { get; set; }
 
     public CharacterBaseAttribute()
     {
@@ -31,10 +36,11 @@ public abstract class CharacterBaseAttribute : MonoBehaviour
         CritChance = 0.1f;
         CritDamage = 0.5f;
         PickUpRange = 1;
-        Exp_GainRate = 0;
-        ProjectilesNum = 0;
-        FinalDamage = 0;
-        ExtraDamage = 0;
+        Exp_GainRate = 1;
+        ProjectilesNum = 1;
+        FinalDamage = 1;
+        ExtraDamage = 1;
+        AdditionalDamage = 1;
     }
 
     public abstract void TalentSkill();
