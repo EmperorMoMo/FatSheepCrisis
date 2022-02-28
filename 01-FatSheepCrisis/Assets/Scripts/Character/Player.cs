@@ -36,16 +36,19 @@ public class TalentSkillData
 
 public class Player : CharacterBaseAttribute
 {
+    public static Player instance;
     public Profession profession;
     public TalentSkillData talentSkillData;
+
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
         talentSkillData = new TalentSkillData();
     }
-    private void Update()
-    {
-        TalentSkill();
-    }
+
     public override void TalentSkill()
     {
         talentSkillData.Clear();
@@ -57,7 +60,7 @@ public class Player : CharacterBaseAttribute
                 break;
             case Profession.Berserker:
                 talentSkillData.ExtraDamage = 0.15f;
-                talentSkillData.FinalDamage = (Max_Hp - Cur_Hp) / 100f;
+                talentSkillData.FinalDamage = (TotalAttribute.Max_Hp - Cur_Hp) / 100f;
                 break;
             case Profession.Destoryer:
                 talentSkillData.MoveSpeed = -0.2f;
@@ -66,7 +69,7 @@ public class Player : CharacterBaseAttribute
                 break;
             case Profession.Believer:
                 talentSkillData.Max_Hp = Max_Hp * 0.5f;
-                talentSkillData.AdditionalDamage = (Max_Hp + talentSkillData.Max_Hp) * (0.5f + Mathf.Clamp((((int)Level / 5) * 5) / 100, 0, 0.5f));
+                talentSkillData.AdditionalDamage = (TotalAttribute.Max_Hp) * (0.5f + Mathf.Clamp((((int)Level / 5) * 5) / 100, 0, 0.5f));
                 break;
             case Profession.Scholar:
                 talentSkillData.Exp_GainRate = 0.2f + Mathf.Clamp(((int)(Level / 5)) * 10 / 100f, 0, 0.3f);
