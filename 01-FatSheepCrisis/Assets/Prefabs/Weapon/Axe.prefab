@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5831783958038545249
 Transform:
   m_ObjectHideFlags: 0
@@ -52,7 +52,7 @@ TrailRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8938e6d70257761459e94e9f3678a3e0, type: 2}
-  - {fileID: 2100000, guid: 1d6c772e35c3ab64db2daa1fd9764255, type: 2}
+  - {fileID: 2100000, guid: 8938e6d70257761459e94e9f3678a3e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72,7 +72,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Time: 0.25
   m_Parameters:
     serializedVersion: 3
@@ -190,7 +190,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1d6c772e35c3ab64db2daa1fd9764255, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

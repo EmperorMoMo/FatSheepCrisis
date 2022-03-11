@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterBaseAttribute : MonoBehaviour
+public abstract class CharacterBaseAttribute : Singleton<Player>
 {
     protected internal int Level { get; set; }
     protected internal float Cur_Hp { get; set; }
@@ -30,7 +30,7 @@ public abstract class CharacterBaseAttribute : MonoBehaviour
         Max_Hp = 100;
         Re_Hp = 0.5f;
         Armor = 2;
-        MoveSpeed = 1;
+        MoveSpeed = 5;
         AttackSpeed = 1;
         CritChance = 0.1f;
         CritDamage = 0.5f;

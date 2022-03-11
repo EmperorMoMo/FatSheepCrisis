@@ -11,9 +11,13 @@ public enum WeaponName
 public class Weapon : WeaponBaseAttribute
 {
     public WeaponName Name;
+
+    private Animator anim;
     private void Awake()
     {
         SetAttribute();
+
+        anim = GetComponent<Animator>();
     }
     public override void SetAttribute()
     {
@@ -37,5 +41,10 @@ public class Weapon : WeaponBaseAttribute
     public override void WeaponSkill()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Attack()
+    {
+        anim.SetTrigger("attack");
     }
 }

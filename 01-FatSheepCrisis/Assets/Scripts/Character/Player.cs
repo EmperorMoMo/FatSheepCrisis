@@ -11,6 +11,8 @@ public enum Profession
     Believer,
     Scholar,
 }
+
+[System.Serializable]
 public class TalentSkillData
 {
     public float Max_Hp;
@@ -36,17 +38,25 @@ public class TalentSkillData
 
 public class Player : CharacterBaseAttribute
 {
-    public static Player instance;
     public Profession profession;
     public TalentSkillData talentSkillData;
 
+    private Transform Unit000;
+    private Animator anim;
+    private Rigidbody2D rigid;
+    private Weapon weapon;
+
+    private Vector2 input;
+    private float timer;
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
         talentSkillData = new TalentSkillData();
+
+        rigid = GetComponent<Rigidbody2D>();
+        Unit000 = transform.Find("Unit000").GetComponent<Transform>();
+        anim = Unit000.GetComponentInChildren<Animator>();
+        weapon = GetComponentInChildren<Weapon>();
     }
 
     public override void TalentSkill()
@@ -74,6 +84,60 @@ public class Player : CharacterBaseAttribute
             case Profession.Scholar:
                 talentSkillData.Exp_GainRate = 0.2f + Mathf.Clamp(((int)(Level / 5)) * 10 / 100f, 0, 0.3f);
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+
+        AnimatorControl();
+        AutoAttack();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+    }
+
+    private void Move()
+    {
+        rigid.velocity = input.normalized * MoveSpeed;
+    }
+
+    private void AnimatorControl()
+    {
+        FlipControl();
+        if (input != Vector2.zero)
+        {
+            anim.SetFloat("RunState", 0.5f);
+        }
+        else
+        {
+            anim.SetFloat("RunState", 0f);
+        }
+    }
+
+    private void FlipControl()
+    {
+        if (input.x > 0)
+        {
+            Unit000.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (input.x < 0)
+        {
+            Unit000.eulerAngles = Vector3.zero;
+        }
+    }
+
+    private void AutoAttack()
+    {
+        timer += Time.unscaledDeltaTime;
+        if (timer > Instance.AttackSpeed * 2.5f)
+        {
+            timer = 0f;
+            weapon.Attack();
         }
     }
 }
