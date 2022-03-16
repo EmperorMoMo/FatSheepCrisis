@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c5e4f3f4b75fe3428e4c66769d98219, type: 3}
-  m_Name: WeaponConfig
+  m_Name: Config
   m_EditorClassIdentifier: 
-  items:
+  weapons:
   - Id: 1001
     Name: "\u94C1\u65A7"
     Aggressivity: 10
@@ -23,3 +23,11 @@ MonoBehaviour:
     ProjectilesNum: 0
     AttackRange: 1
     SkillDescription: "\u4E00\u628A\u6CA1\u4EC0\u4E48\u7528\u7684\u94C1\u65A7\u5934"
+  enemyes:
+  - Id: 2001
+    Name: "\u8759\u8760"
+    Aggressivity: 10
+    Armor: 0
+    Max_Hp: 10
+    MoveSpeed: 1
+    DefenseRepelNum: 1

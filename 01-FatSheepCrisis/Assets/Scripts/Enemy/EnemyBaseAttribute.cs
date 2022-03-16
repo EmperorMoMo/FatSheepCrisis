@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Damageable))]
 public abstract class EnemyBaseAttribute : MonoBehaviour
 {
     protected internal float Aggressivity { get; set; }
@@ -12,4 +13,5 @@ public abstract class EnemyBaseAttribute : MonoBehaviour
     protected internal float DefenseRepelNum { get; set; }
 
     public abstract void SetAttribute();
+
 }

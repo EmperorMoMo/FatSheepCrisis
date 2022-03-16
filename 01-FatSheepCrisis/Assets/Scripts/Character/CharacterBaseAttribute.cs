@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Damageable))]
 public abstract class CharacterBaseAttribute : Singleton<Player>
 {
     protected internal int Level { get; set; }
