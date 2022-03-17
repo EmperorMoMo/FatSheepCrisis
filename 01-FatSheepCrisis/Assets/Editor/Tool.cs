@@ -19,6 +19,7 @@ public class Tool
         //查询excel表中数据，赋值给asset文件
         holder.weapons = Tool._01SelectMenuLevel("WeaponConfig");
         holder.enemyes = Tool._02SelectMenuLevel("EnemyConfig");
+        holder.tickets = Tool._03SelectMenuLevel("TicketConfig");
         //生成文件路径
         string path = "Assets/Resources/" + Excel + ".asset";
 
@@ -54,7 +55,6 @@ public class Tool
         }
         return menuArray;
     }
-
     public static List<EnemyData> _02SelectMenuLevel(string excel)
     {
         string excelName = excel + ".xlsx";
@@ -74,6 +74,27 @@ public class Tool
                 Max_Hp = collect[i][4].ToString(),
                 MoveSpeed = collect[i][5].ToString(),
                 DefenseRepelNum = collect[i][6].ToString(),
+            };
+            menuArray.Add(level);
+        }
+        return menuArray;
+    }
+    public static List<TicketData> _03SelectMenuLevel(string excel)
+    {
+        string excelName = excel + ".xlsx";
+        DataRowCollection collect = Tool.ReadExcel(excelName, 0);
+
+        List<TicketData> menuArray = new List<TicketData>();
+        for (int i = 1; i < collect.Count; i++)
+        {
+            if (collect[i][1].ToString() == "") continue;
+
+            TicketData level = new TicketData
+            {
+                Id = collect[i][0].ToString(),
+                Name = collect[i][1].ToString(),
+                Probability = collect[i][2].ToString(),
+                Quality = collect[i][3].ToString(),
             };
             menuArray.Add(level);
         }

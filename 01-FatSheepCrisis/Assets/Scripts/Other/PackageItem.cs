@@ -29,12 +29,23 @@ public class EnemyData
     public string DefenseRepelNum;
 }
 
+[System.Serializable]
+public class TicketData
+{
+    public string Id;
+    public string Name;
+    public string Probability;
+    public string Quality;
+}
+
 public class PackageItem : ScriptableObject
 {
     public List<WeaponData> weapons;
     public List<EnemyData> enemyes;
+    public List<TicketData> tickets;
     public Dictionary<string, WeaponData> dicItem1 = new Dictionary<string, WeaponData>();
     public Dictionary<string, EnemyData> dicItem2 = new Dictionary<string, EnemyData>();
+    public Dictionary<string, TicketData> dicItem3 = new Dictionary<string, TicketData>();
     public Dictionary<string,WeaponData> GetWeaponsData()
     {
         dicItem1.Clear();
@@ -52,5 +63,14 @@ public class PackageItem : ScriptableObject
             dicItem2.Add(enemyes[i].Id, enemyes[i]);
         }
         return dicItem2;
+    }
+    public Dictionary<string, TicketData> GetTicketData()
+    {
+        dicItem3.Clear();
+        for (int i = 0; i < tickets.Count; i++)
+        {
+            dicItem3.Add(tickets[i].Id, tickets[i]);
+        }
+        return dicItem3;
     }
 }

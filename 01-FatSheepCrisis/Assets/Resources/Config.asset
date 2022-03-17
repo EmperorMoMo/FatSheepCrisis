@@ -31,3 +31,24 @@ MonoBehaviour:
     Max_Hp: 10
     MoveSpeed: 1
     DefenseRepelNum: 1
+  tickets:
+  - Id: 1001
+    Name: "\u70C8\u7130\u795E\u65A7"
+    Probability: 1
+    Quality: SSR
+  - Id: 1002
+    Name: "\u96F7\u9706\u4E4B\u9524"
+    Probability: 1
+    Quality: SSR
+  - Id: 1003
+    Name: "\u968F\u673A\u91D1\u5E01"
+    Probability: 50
+    Quality: R
+  - Id: 1004
+    Name: "\u94C1\u65A7"
+    Probability: 24
+    Quality: SR
+  - Id: 1005
+    Name: "\u94C1\u9524"
+    Probability: 24
+    Quality: SR
