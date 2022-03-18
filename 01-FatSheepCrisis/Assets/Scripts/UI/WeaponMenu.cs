@@ -12,15 +12,16 @@ public class WeaponMenu : UIMenuBase
     public RectTransform content;
     public Text weaponsName;
     public Text aggressivity;
-    public Text attackSpeed;
+    public Text attackInterval;
     public Text critChance;
     public Text critDamage;
     public Text repelNum;
     public Text projectilesNum;
     public Text SkillDescription;
-    public override void Init()
+
+    public override void Setup()
     {
-        base.Init();
+        base.Setup();
         Weapon = Resources.Load<PackageItem>("Config");
         Data = Weapon.GetWeaponsData();
         GameObject obj;
@@ -37,17 +38,23 @@ public class WeaponMenu : UIMenuBase
             obj.SetActive(true);
         }
     }
+    public override void Init()
+    {
+        base.Init();
+    }
     public void OnClickToSelect()
     {
         var button = EventSystem.current.currentSelectedGameObject;
         string str = button.name;
         weaponsName.text = Data[str].Name;
         aggressivity.text = Data[str].Aggressivity;
-        attackSpeed.text = Data[str].AttackInterval;
+        attackInterval.text = Data[str].AttackInterval;
         critChance.text = Data[str].CritChance;
         critDamage.text = Data[str].CritDamage;
         repelNum.text = Data[str].RepelNum;
         projectilesNum.text = Data[str].ProjectilesNum;
         SkillDescription.text = Data[str].SkillDescription;
     }
+
+
 }

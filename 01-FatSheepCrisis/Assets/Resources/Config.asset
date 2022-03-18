@@ -16,7 +16,7 @@ MonoBehaviour:
   - Id: 1001
     Name: "\u94C1\u65A7"
     Aggressivity: 10
-    AttackInterval: 2.5
+    AttackInterval: 1
     CritChance: 0
     CritDamage: 0
     RepelNum: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
   - Id: 1002
     Name: "\u94C1\u9524"
     Aggressivity: 20
-    AttackSpeed: 0.5
+    AttackInterval: 0.5
     CritChance: 0
     CritDamage: 0
     RepelNum: 1.5
@@ -36,7 +36,7 @@ MonoBehaviour:
   - Id: 1003
     Name: "\u70C8\u7130\u795E\u65A7"
     Aggressivity: 50
-    AttackSpeed: 2
+    AttackInterval: 2
     CritChance: 30
     CritDamage: 60
     RepelNum: 1.5
@@ -46,7 +46,7 @@ MonoBehaviour:
   - Id: 1004
     Name: "\u96F7\u9706\u4E4B\u9524"
     Aggressivity: 100
-    AttackSpeed: 1
+    AttackInterval: 1
     CritChance: 30
     CritDamage: 60
     RepelNum: 2

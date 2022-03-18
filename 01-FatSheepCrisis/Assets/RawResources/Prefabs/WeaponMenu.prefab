@@ -1291,7 +1291,7 @@ GameObject:
   - component: {fileID: 4911276884743827058}
   - component: {fileID: 4911276884743827057}
   m_Layer: 5
-  m_Name: AttackSpeed
+  m_Name: AttackInterval
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1535,7 +1535,7 @@ MonoBehaviour:
   content: {fileID: 4911276885616363668}
   weaponsName: {fileID: 4911276885461338321}
   aggressivity: {fileID: 4911276884433011912}
-  attackSpeed: {fileID: 4911276884377727861}
+  attackInterval: {fileID: 4911276884377727861}
   critChance: {fileID: 4911276884031305196}
   critDamage: {fileID: 4911276884723169809}
   repelNum: {fileID: 4911276884211651185}
