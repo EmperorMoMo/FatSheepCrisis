@@ -43,7 +43,7 @@ public class WeaponMenu : UIMenuBase
         string str = button.name;
         weaponsName.text = Data[str].Name;
         aggressivity.text = Data[str].Aggressivity;
-        attackSpeed.text = Data[str].AttackSpeed;
+        attackSpeed.text = Data[str].AttackInterval;
         critChance.text = Data[str].CritChance;
         critDamage.text = Data[str].CritDamage;
         repelNum.text = Data[str].RepelNum;
