@@ -13,6 +13,7 @@ public class CameraController : Singleton<CameraController>
     [Header("Camera Shake")]
     private Vector3 shakeActive;
     private float shakeAmplify;
+    private bool shakeEnd = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,13 @@ public class CameraController : Singleton<CameraController>
     {
         if (shakeAmplify > 0)
         {
+            shakeEnd = false;
             shakeActive = new Vector3(Random.Range(-shakeAmplify, shakeAmplify), Random.Range(-shakeAmplify, shakeAmplify), 0f);
             shakeAmplify -= Time.deltaTime;
         }
         else
         {
+            shakeEnd = true;
             shakeActive = Vector3.zero;
         }
         transform.position += shakeActive;
@@ -43,6 +46,7 @@ public class CameraController : Singleton<CameraController>
 
     public void CameraShake(float _amount)
     {
+        //if (!shakeEnd) return;
         shakeAmplify = _amount;
     }
 }

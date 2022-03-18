@@ -45,9 +45,11 @@ public class Player : CharacterBaseAttribute
     private Animator anim;
     private Rigidbody2D rigid;
     private Weapon weapon;
+    private Damageable damageable;
 
     private Vector2 input;
     private float timer;
+    private bool death;
 
     private void Awake()
     {
@@ -57,6 +59,12 @@ public class Player : CharacterBaseAttribute
         Unit000 = transform.Find("Unit000").GetComponent<Transform>();
         anim = Unit000.GetComponentInChildren<Animator>();
         weapon = GetComponentInChildren<Weapon>();
+
+        damageable = GetComponent<Damageable>(); 
+        damageable.invinciableTime = 0.5f;
+        damageable.onHurtStart.AddListener(OnHurtStart);
+        damageable.onHurtEnd.AddListener(OnHurtEnd);
+        damageable.onDeath.AddListener(OnDeath);
     }
 
     public override void TalentSkill()
@@ -89,6 +97,7 @@ public class Player : CharacterBaseAttribute
 
     private void Update()
     {
+        if (death) return;
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 
@@ -103,6 +112,11 @@ public class Player : CharacterBaseAttribute
 
     private void Move()
     {
+        if (death)
+        {
+            rigid.velocity = Vector3.zero;
+            return;
+        }
         rigid.velocity = input.normalized * MoveSpeed;
     }
 
@@ -133,11 +147,29 @@ public class Player : CharacterBaseAttribute
 
     private void AutoAttack()
     {
-        timer += Time.unscaledDeltaTime;
-        if (timer > Instance.AttackSpeed * 2.5f)
+        timer += Time.deltaTime;
+        if (timer > weapon.AttackSpeed)
         {
             timer = 0f;
-            weapon.Attack();
+            weapon.Attack(AttackInterval);
         }
+    }
+
+    private void OnHurtStart(Damageable damageable,DamageMessage data)
+    {
+        anim.SetTrigger("Hurt");
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 1.5f, data.damage);
+    }
+
+    private void OnDeath(Damageable damageable,DamageMessage data)
+    {
+        death = true;
+        anim.SetBool("Death", death);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 1.5f, data.damage);
+    }
+
+    private void OnHurtEnd()
+    {
+
     }
 }

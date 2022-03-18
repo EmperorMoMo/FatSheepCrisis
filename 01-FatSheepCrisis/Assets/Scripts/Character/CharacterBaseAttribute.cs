@@ -12,7 +12,7 @@ public abstract class CharacterBaseAttribute : Singleton<Player>
     protected internal float Re_Hp { get; set; }
     protected internal float Armor { get; set; }
     protected internal float MoveSpeed { get; set; }
-    protected internal float AttackSpeed { get; set; }
+    protected internal float AttackInterval { get; set; }
     protected internal float CritChance { get; set; }
     protected internal float CritDamage { get; set; }
     protected internal float PickUpRange { get; set; }
@@ -32,7 +32,7 @@ public abstract class CharacterBaseAttribute : Singleton<Player>
         Re_Hp = 0.5f;
         Armor = 2;
         MoveSpeed = 5;
-        AttackSpeed = 1;
+        AttackInterval = 1;
         CritChance = 0.1f;
         CritDamage = 0.5f;
         PickUpRange = 1;

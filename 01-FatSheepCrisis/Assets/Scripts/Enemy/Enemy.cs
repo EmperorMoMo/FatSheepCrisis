@@ -32,12 +32,20 @@ public class Enemy : EnemyBaseAttribute
 
     private void Update()
     {
-        FollowPlayer();
+        FollowPlayerAndFlip();
     }
 
-    public void FollowPlayer()
+    public void FollowPlayerAndFlip()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+        if (target.position.x < transform.position.x)
+        {
+            sprite.flipX = true;
+        }
+        else
+        {
+            sprite.flipX = false;
+        }
+        transform.position = Vector2.MoveTowards(transform.position, target.position + Vector3.up * Random.Range(0.01f, 0.1f), MoveSpeed * Time.deltaTime / 2); ;
     }
 
     public override void SetAttribute()
@@ -61,6 +69,7 @@ public class Enemy : EnemyBaseAttribute
     {
         sprite.color = Color.red;
         transform.position = new Vector2(transform.position.x + data.direction.x, transform.position.y + data.direction.y);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 0.5f, data.damage);
     }
 
     public void OnHurtEnd()
@@ -71,5 +80,20 @@ public class Enemy : EnemyBaseAttribute
     public void OnDeath(Damageable damageable, DamageMessage data)
     {
         Destroy(this.gameObject);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DestoryFX, transform.position);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 0.5f, data.damage);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Damageable damageable;
+        if (collision.CompareTag("Player") && collision.TryGetComponent<Damageable>(out damageable))
+        {
+            DamageMessage data = new DamageMessage()
+            {
+                damage = Aggressivity,
+            };
+            damageable.OnDamage(data);
+        }
     }
 }

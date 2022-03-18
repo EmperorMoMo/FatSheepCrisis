@@ -13,5 +13,4 @@ public abstract class EnemyBaseAttribute : MonoBehaviour
     protected internal float DefenseRepelNum { get; set; }
 
     public abstract void SetAttribute();
-
 }

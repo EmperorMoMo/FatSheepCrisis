@@ -35,9 +35,8 @@ public class Damageable : MonoBehaviour
     private Enemy enemy;
 
     public DamageableEvent onHurtStart;
-    public DamageableEvent onDeath;
-
     public UnityEvent onHurtEnd;
+    public DamageableEvent onDeath;
 
     private void Awake()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public enum WeaponName
@@ -13,6 +14,7 @@ public class Weapon : WeaponBaseAttribute
     public WeaponName Name;
 
     private Animator anim;
+    private AnimatorController AC;
 
     private List<GameObject> attackList = new List<GameObject>();
 
@@ -21,6 +23,7 @@ public class Weapon : WeaponBaseAttribute
         SetAttribute();
 
         anim = GetComponent<Animator>();
+        AC = anim.runtimeAnimatorController as AnimatorController;
     }
 
     public override void SetAttribute()
@@ -48,8 +51,9 @@ public class Weapon : WeaponBaseAttribute
         throw new System.NotImplementedException();
     }
 
-    public void Attack()
+    public void Attack(float interval = 1f)
     {
+        AC.layers[0].stateMachine.states[0].state.speed = interval;
         anim.SetTrigger("attack");
     }
 
@@ -61,11 +65,11 @@ public class Weapon : WeaponBaseAttribute
             if (attackList.Contains(collision.gameObject)) return;
             DamageMessage data = new DamageMessage()
             {
-                damage = 1,
+                damage = 3,
                 direction = (collision.transform.position - Player.Instance.transform.position).normalized * RepelNum
             };
             damageable.OnDamage(data);
-            CameraController.Instance.CameraShake(0.25f);
+            //CameraController.Instance.CameraShake(0.1f);
 
             attackList.Add(collision.gameObject);
         }
