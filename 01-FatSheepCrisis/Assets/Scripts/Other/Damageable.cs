@@ -71,6 +71,8 @@ public class Damageable : MonoBehaviour
         switch (type)
         {
             case Type.Player:
+                Debug.Log("护甲：" + TotalAttribute.Armor + "---额外伤害：" + TotalAttribute.ExtraDamage + "---未减伤：" + data.damage + "---已减伤：" + data.damage * (1 - (TotalAttribute.Armor / 10)) * (1 + TotalAttribute.ExtraDamage) + "---四舍五入后：" + Mathf.RoundToInt(data.damage * (1 - (TotalAttribute.Armor / 10)) * (1 + TotalAttribute.ExtraDamage)));
+                data.damage = Mathf.RoundToInt(data.damage * (1 - (TotalAttribute.Armor / 10)) * (1 + TotalAttribute.ExtraDamage));
                 if (player.Cur_Hp <= 0) return;
                 if (player.Cur_Hp > data.damage)
                 {

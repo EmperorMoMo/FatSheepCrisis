@@ -4,42 +4,120 @@ using UnityEngine;
 
 public enum Profession
 {
-    None,
+    None=3000,
     Thieves,
     Berserker,
     Destoryer,
     Believer,
     Scholar,
 }
-
-[System.Serializable]
-public class TalentSkillData
+public static class TalentSkillData
 {
-    public float Max_Hp;
-    public float Re_Hp;
-    public float Armor;
-    public float MoveSpeed;
-    public float AttackSpeed;
-    public float CritChance;
-    public float CritDamage;
-    public float PickUpRange;
-    public float Exp_GainRate;
-    public float Gold_GainRate;
-    public int ProjectilesNum;
-    public float FinalDamage;
-    public float ExtraDamage;
-    public float AdditionalDamage;
-
-    public void Clear()
+    public static float Max_Hp()
     {
-        Max_Hp = Re_Hp = Armor = MoveSpeed = AttackSpeed = CritChance = CritDamage = PickUpRange = Exp_GainRate = Gold_GainRate = FinalDamage = ExtraDamage = ProjectilesNum = 0;
+        switch (Player.Instance.profession)
+        {
+            case Profession.Believer:
+                return Player.Instance.Max_Hp * 0.5f;
+        }
+        return 0f;
+    }
+    public static float Re_Hp()
+    {
+        return 0f;
+    }
+    public static float Armor()
+    {
+        switch (Player.Instance.profession)
+        {
+            case Profession.Destoryer:
+                return Mathf.Clamp(((int)(Player.Instance.Level / 5)) * 3 / 10f, 0, 3f);
+        }
+        return 0f;
+    }
+    public static float MoveSpeed()
+    {
+        switch (Player.Instance.profession)
+        {
+            case Profession.Thieves:
+                return 0.25f;
+            case Profession.Destoryer:
+                return -0.2f;
+        }
+        return 0f;
+    }
+    public static float AttackSpeed()
+    {
+        return 0f;
+    }
+    public static float CritChance()
+    {
+        return 0f;
+    }
+    public static float CritDamage()
+    {
+        return 0f;
+    }
+    public static float PickUpRange()
+    {
+        return 0f;
+    }
+    public static float Exp_GainRate()
+    {
+        switch (Player.Instance.profession)
+        {
+            case Profession.Scholar:
+                return 0.2f + Mathf.Clamp(((int)(Player.Instance.Level / 5)) * 10 / 100f, 0, 0.3f);
+        }
+        return 0f;
+    }
+    public static float Gold_GainRate()
+    {
+        switch (Player.Instance.profession)
+        {
+            case Profession.Thieves:
+                return 0.5f;
+        }
+        return 0f;
+    }
+    public static int ProjectilesNum()
+    {
+        return 0;
+    }
+    public static float FinalDamage()
+    {
+        switch (Player.Instance.profession)
+        {
+            case Profession.Berserker:
+                return (TotalAttribute.Max_Hp - Player.Instance.Cur_Hp) / 100f;
+            case Profession.Destoryer:
+                return Mathf.Clamp(((int)(Player.Instance.Level / 5)) * 3 / 100f, 0, 0.3f);
+        }
+        return 0f;
+    }
+    public static float ExtraDamage()
+    {
+        switch (Player.Instance.profession)
+        {
+            case Profession.Berserker:
+                return 0.15f;
+        }
+        return 0f;
+    }
+    public static float AdditionalDamage()
+    {
+        switch (Player.Instance.profession)
+        {
+            case Profession.Believer:
+                return (TotalAttribute.Max_Hp) * (0.5f + Mathf.Clamp((((int)Player.Instance.Level / 5) * 5) / 100, 0, 0.5f));
+        }
+        return 0f;
     }
 }
 
 public class Player : CharacterBaseAttribute
 {
     public Profession profession;
-    public TalentSkillData talentSkillData;
 
     private Transform Unit000;
     private Animator anim;
@@ -53,8 +131,6 @@ public class Player : CharacterBaseAttribute
 
     private void Awake()
     {
-        talentSkillData = new TalentSkillData();
-
         rigid = GetComponent<Rigidbody2D>();
         Unit000 = transform.Find("Unit000").GetComponent<Transform>();
         anim = Unit000.GetComponentInChildren<Animator>();
@@ -65,34 +141,6 @@ public class Player : CharacterBaseAttribute
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
-    }
-
-    public override void TalentSkill()
-    {
-        talentSkillData.Clear();
-        switch (profession)
-        {
-            case Profession.Thieves:
-                talentSkillData.MoveSpeed = 0.25f;
-                talentSkillData.Gold_GainRate = 0.5f;
-                break;
-            case Profession.Berserker:
-                talentSkillData.ExtraDamage = 0.15f;
-                talentSkillData.FinalDamage = (TotalAttribute.Max_Hp - Cur_Hp) / 100f;
-                break;
-            case Profession.Destoryer:
-                talentSkillData.MoveSpeed = -0.2f;
-                talentSkillData.FinalDamage = Mathf.Clamp(((int)(Level / 5)) * 3 / 100f, 0, 0.3f);
-                talentSkillData.Armor = Mathf.Clamp(((int)(Level / 5)) * 3 / 10f, 0, 3f);
-                break;
-            case Profession.Believer:
-                talentSkillData.Max_Hp = Max_Hp * 0.5f;
-                talentSkillData.AdditionalDamage = (TotalAttribute.Max_Hp) * (0.5f + Mathf.Clamp((((int)Level / 5) * 5) / 100, 0, 0.5f));
-                break;
-            case Profession.Scholar:
-                talentSkillData.Exp_GainRate = 0.2f + Mathf.Clamp(((int)(Level / 5)) * 10 / 100f, 0, 0.3f);
-                break;
-        }
     }
 
     private void Update()
@@ -147,12 +195,14 @@ public class Player : CharacterBaseAttribute
 
     private void AutoAttack()
     {
-        timer += Time.deltaTime;
-        if (timer > weapon.AttackSpeed)
-        {
-            timer = 0f;
-            weapon.Attack(AttackInterval);
-        }
+        if (Input.GetMouseButtonDown(1))
+            weapon.Attack(AttackSpeed);
+        //timer += Time.deltaTime;
+        //if (timer >= weapon.AttackInterval)
+        //{
+        //    timer = 0f;
+        //    weapon.Attack(AttackSpeed);
+        //}
     }
 
     private void OnHurtStart(Damageable damageable,DamageMessage data)

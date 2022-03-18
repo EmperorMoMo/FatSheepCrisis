@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class WeaponBaseAttribute : MonoBehaviour
 {
     protected internal float Aggressivity { get; set; }
-    protected internal float AttackSpeed { get; set; }
+    protected internal float AttackInterval { get; set; }
     protected internal float CritChance { get; set; }
     protected internal float CritDamage { get; set; }
     protected internal float RepelNum { get; set; }
@@ -16,7 +16,7 @@ public abstract class WeaponBaseAttribute : MonoBehaviour
     public WeaponBaseAttribute()
     {
         Aggressivity = 0;
-        AttackSpeed = 0;
+        AttackInterval = 0;
         CritChance = 0;
         CritDamage = 0;
         RepelNum = 0;
