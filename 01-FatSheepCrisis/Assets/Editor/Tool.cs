@@ -20,6 +20,7 @@ public class Tool
         holder.weapons = Tool._01SelectMenuLevel("WeaponConfig");
         holder.enemyes = Tool._02SelectMenuLevel("EnemyConfig");
         holder.tickets = Tool._03SelectMenuLevel("TicketConfig");
+        holder.professions = Tool._04SelectMenuLevel("ProfessionConfig");
         //生成文件路径
         string path = "Assets/Resources/" + Excel + ".asset";
 
@@ -43,7 +44,7 @@ public class Tool
                 Id = collect[i][0].ToString(),
                 Name = collect[i][1].ToString(),
                 Aggressivity = collect[i][2].ToString(),
-                AttackSpeed=collect[i][3].ToString(),
+                AttackInterval=collect[i][3].ToString(),
                 CritChance = collect[i][4].ToString(),
                 CritDamage =collect[i][5].ToString(),
                 RepelNum=collect[i][6].ToString(),
@@ -95,6 +96,39 @@ public class Tool
                 Name = collect[i][1].ToString(),
                 Probability = collect[i][2].ToString(),
                 Quality = collect[i][3].ToString(),
+            };
+            menuArray.Add(level);
+        }
+        return menuArray;
+    }
+    public static List<ProfessionData> _04SelectMenuLevel(string excel)
+    {
+        string excelName = excel + ".xlsx";
+        DataRowCollection collect = Tool.ReadExcel(excelName, 0);
+
+        List<ProfessionData> menuArray = new List<ProfessionData>();
+        for (int i = 1; i < collect.Count; i++)
+        {
+            if (collect[i][1].ToString() == "") continue;
+
+            ProfessionData level = new ProfessionData
+            {
+                Id = collect[i][0].ToString(),
+                Name = collect[i][1].ToString(),
+                Max_Hp = collect[i][2].ToString(),
+                Re_Hp = collect[i][3].ToString(),
+                Armor = collect[i][4].ToString(),
+                MoveSpeed = collect[i][5].ToString(),
+                AttackSpeed = collect[i][6].ToString(),
+                CritChance = collect[i][7].ToString(),
+                CritDamage = collect[i][8].ToString(),
+                PickUpRange = collect[i][9].ToString(),
+                Exp_GainRate = collect[i][10].ToString(),
+                Gold_GainRate = collect[i][11].ToString(),
+                ProjectilesNum = collect[i][12].ToString(),
+                FinalDamage = collect[i][13].ToString(),
+                ExtraDamage = collect[i][14].ToString(),
+                AdditionalDamage = collect[i][15].ToString()
             };
             menuArray.Add(level);
         }

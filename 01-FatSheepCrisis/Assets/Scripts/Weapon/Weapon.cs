@@ -35,7 +35,7 @@ public class Weapon : WeaponBaseAttribute
             if (int.Parse(item.Id) == (int)Name)
             {
                 Aggressivity = float.Parse(item.Aggressivity);
-                AttackSpeed = float.Parse(item.AttackSpeed);
+                AttackInterval = float.Parse(item.AttackInterval);
                 CritChance = float.Parse(item.CritChance);
                 CritDamage = float.Parse(item.CritDamage);
                 RepelNum = float.Parse(item.RepelNum);
@@ -65,7 +65,7 @@ public class Weapon : WeaponBaseAttribute
             if (attackList.Contains(collision.gameObject)) return;
             DamageMessage data = new DamageMessage()
             {
-                damage = 3,
+                damage = Aggressivity,
                 direction = (collision.transform.position - Player.Instance.transform.position).normalized * RepelNum
             };
             damageable.OnDamage(data);

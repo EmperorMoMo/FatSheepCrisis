@@ -790,7 +790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
   m_Gain: 1
-  m_Use2DDistance: 0
+  m_Use2DDistance: 1
 --- !u!4 &990630732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8753935405371204280, guid: d768af8037849254c84034e55ee00910, type: 3}
