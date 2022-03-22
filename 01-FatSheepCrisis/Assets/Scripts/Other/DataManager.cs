@@ -7,6 +7,7 @@ public class DataManager : Singleton<DataManager>
 {
     private Dictionary<string, ProfessionData> Data;
     private PackageItem Profession;
+<<<<<<< Updated upstream
 
     [MenuItem("Tool/Delete Player Info")]
     public static void DeletePlayerInfo()
@@ -15,6 +16,9 @@ public class DataManager : Singleton<DataManager>
     }
 
     private void Start()
+=======
+    private void Awake()
+>>>>>>> Stashed changes
     {
         Profession = Resources.Load<PackageItem>("Config");
         Data = Profession.GetProfessionData();
@@ -38,6 +42,8 @@ public class DataManager : Singleton<DataManager>
         professionData.FinalDamage = PlayerPrefs.GetString(str + "FinalDamage", Data[key].FinalDamage);
         professionData.ExtraDamage = PlayerPrefs.GetString(str + "ExtraDamage", Data[key].ExtraDamage);
         professionData.AdditionalDamage = PlayerPrefs.GetString(str + "AdditionDamage", Data[key].AdditionalDamage);
+
+        //Player.Instance.Cur_Hp = float.Parse(professionData.Max_Hp);
         return professionData;
     }
 

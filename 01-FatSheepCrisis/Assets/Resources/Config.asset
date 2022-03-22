@@ -15,6 +15,7 @@ MonoBehaviour:
   weapons:
   - Id: 1001
     Name: "\u94C1\u65A7"
+    Type: "\u65A7"
     Aggressivity: 10
     AttackInterval: 1
     CritChance: 0
@@ -25,6 +26,7 @@ MonoBehaviour:
     SkillDescription: "\u4E00\u628A\u6CA1\u4EC0\u4E48\u7528\u7684\u94C1\u65A7"
   - Id: 1002
     Name: "\u94C1\u9524"
+    Type: "\u9524"
     Aggressivity: 20
     AttackInterval: 0.5
     CritChance: 0
@@ -35,6 +37,7 @@ MonoBehaviour:
     SkillDescription: "\u4E00\u67C4\u6CA1\u4EC0\u4E48\u7528\u7684\u94C1\u9524"
   - Id: 1003
     Name: "\u70C8\u7130\u795E\u65A7"
+    Type: "\u65A7"
     Aggressivity: 50
     AttackInterval: 2
     CritChance: 30
@@ -45,6 +48,7 @@ MonoBehaviour:
     SkillDescription: "\u653B\u51FB\u65F6\u9644\u5E26\u706B\u7130\u7279\u6548\uFF0C\u5BF9\u547D\u4E2D\u7684\u654C\u4EBA\u9020\u6210100%\u653B\u51FB\u529B\u7684\u4F24\u5BB3\u5E76\u6DFB\u52A0\u707C\u70E7\u72B6\u6001\uFF0C\u654C\u4EBA\u5728\u707C\u70E7\u72B6\u6001\u4E0B\u6BCF\u79D2\u53D7\u523020%\u653B\u51FB\u529B\u7684\u4F24\u5BB3\uFF0C\u6301\u7EED5\u79D2\u3002"
   - Id: 1004
     Name: "\u96F7\u9706\u4E4B\u9524"
+    Type: "\u9524"
     Aggressivity: 100
     AttackInterval: 1
     CritChance: 30
@@ -53,6 +57,17 @@ MonoBehaviour:
     ProjectilesNum: 0
     AttackRange: 1
     SkillDescription: "\u653B\u51FB\u65F6\u9644\u5E26\u96F7\u7535\u7279\u6548\uFF0C\u5BF9\u547D\u4E2D\u7684\u654C\u4EBA\u9020\u6210100%\u653B\u51FB\u529B\u7684\u4F24\u5BB3\u5E76\u6DFB\u52A0\u611F\u7535\u72B6\u6001\uFF0C\u654C\u4EBA\u5728\u611F\u7535\u72B6\u6001\u4E0B\u6BCF\u79D2\u53D7\u523010%\u653B\u51FB\u529B\u7684\u4F24\u5BB3\u5E76\u4E14\u51CF\u5C1110%\u79FB\u52A8\u901F\u5EA6\uFF0C\u6301\u7EED5\u79D2\u3002"
+  - Id: 1005
+    Name: "\u94C1\u5251"
+    Type: "\u5251"
+    Aggressivity: 15
+    AttackInterval: 1
+    CritChance: 0
+    CritDamage: 0
+    RepelNum: 0.5
+    ProjectilesNum: 0
+    AttackRange: 1
+    SkillDescription: "\u4E00\u67C4\u6CA1\u4EC0\u4E48\u7528\u7684\u94C1\u5251"
   enemyes:
   - Id: 2001
     Name: "\u8759\u8760"

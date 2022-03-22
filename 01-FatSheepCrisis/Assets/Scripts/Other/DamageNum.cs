@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,10 +9,12 @@ public class DamageNum : MonoBehaviour
     private float num;
 
     private Text text;
+    private Animator anim;
 
     private void Awake()
     {
         text = GetComponent<Text>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -39,8 +39,9 @@ public class DamageNum : MonoBehaviour
         Move();
     }
 
-    public void SetText(float _f)
+    public void SetTextAndAnimator(float _f,bool isCrit)
     {
+        anim.SetBool("crit", isCrit);
         text.text = _f.ToString();
     }
 
@@ -50,7 +51,7 @@ public class DamageNum : MonoBehaviour
         if (timer <= 0.2f)
         {
             transform.position += Vector3.up * Time.deltaTime * 6f;
-            transform.position += Vector3.left * Time.deltaTime * 3f * dir;
+            transform.position += Vector3.left * Time.deltaTime * 3.5f * dir;
             if (num >= 0.25f)
             {
                 text.fontSize += 1;

@@ -23,6 +23,7 @@ public class DamageableEvent : UnityEvent<Damageable, DamageMessage> { }
 
 public class Damageable : MonoBehaviour
 {
+    [HideInInspector]
     public Type type;
 
     [HideInInspector]
@@ -34,8 +35,11 @@ public class Damageable : MonoBehaviour
     private Boss boss;
     private Enemy enemy;
 
+    [HideInInspector]
     public DamageableEvent onHurtStart;
+    [HideInInspector]
     public UnityEvent onHurtEnd;
+    [HideInInspector]
     public DamageableEvent onDeath;
 
     private void Awake()
@@ -87,6 +91,7 @@ public class Damageable : MonoBehaviour
                 }
                 break;
             case Type.Boss:
+                data.damage = Mathf.RoundToInt(data.damage * (1 - (boss.Armor / 10)));
                 if (boss.Cur_Hp <= 0) return;
                 if (boss.Cur_Hp > data.damage)
                 {
@@ -101,6 +106,7 @@ public class Damageable : MonoBehaviour
                 }
                 break;
             case Type.Enemy:
+                data.damage = Mathf.RoundToInt(data.damage * (1 - (enemy.Armor / 10)));
                 if (enemy.Cur_Hp <= 0) return;
                 if (enemy.Cur_Hp > data.damage)
                 {

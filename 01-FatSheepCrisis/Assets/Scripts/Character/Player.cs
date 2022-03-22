@@ -18,7 +18,7 @@ public static class TalentSkillData
         switch (Player.Instance.profession)
         {
             case Profession.Believer:
-                return Player.Instance.Max_Hp * 0.5f;
+                return Player.Instance.Max_Hp * 1.5f;
         }
         return 0f;
     }
@@ -37,13 +37,6 @@ public static class TalentSkillData
     }
     public static float MoveSpeed()
     {
-        switch (Player.Instance.profession)
-        {
-            case Profession.Thieves:
-                return 0.25f;
-            case Profession.Destoryer:
-                return -0.2f;
-        }
         return 0f;
     }
     public static float AttackSpeed()
@@ -73,11 +66,6 @@ public static class TalentSkillData
     }
     public static float Gold_GainRate()
     {
-        switch (Player.Instance.profession)
-        {
-            case Profession.Thieves:
-                return 0.5f;
-        }
         return 0f;
     }
     public static int ProjectilesNum()
@@ -97,11 +85,6 @@ public static class TalentSkillData
     }
     public static float ExtraDamage()
     {
-        switch (Player.Instance.profession)
-        {
-            case Profession.Berserker:
-                return 0.15f;
-        }
         return 0f;
     }
     public static float AdditionalDamage()
@@ -109,7 +92,7 @@ public static class TalentSkillData
         switch (Player.Instance.profession)
         {
             case Profession.Believer:
-                return (TotalAttribute.Max_Hp) * (0.5f + Mathf.Clamp((((int)Player.Instance.Level / 5) * 5) / 100, 0, 0.5f));
+                return (TotalAttribute.Max_Hp) * (0.5f + Mathf.Clamp(((int)(Player.Instance.Level / 5) * 5) / 100f, 0, 0.5f));
         }
         return 0f;
     }
@@ -118,6 +101,10 @@ public static class TalentSkillData
 public class Player : CharacterBaseAttribute
 {
     public Profession profession;
+    [HideInInspector]
+    public ProfessionData professionData;
+    [HideInInspector]
+    public bool isCrit = false;
 
     private Transform Unit000;
     private Animator anim;
@@ -126,22 +113,28 @@ public class Player : CharacterBaseAttribute
     private Damageable damageable;
 
     private Vector2 input;
-    private float timer;
+    private float timer_01;
+    private float timer_02;
     private bool death;
 
     private void Awake()
     {
+        professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
+        Cur_Hp = TotalAttribute.Max_Hp;
+
         rigid = GetComponent<Rigidbody2D>();
         Unit000 = transform.Find("Unit000").GetComponent<Transform>();
         anim = Unit000.GetComponentInChildren<Animator>();
-        weapon = GetComponentInChildren<Weapon>();
+        weapon = ChooseWeapon();
 
         damageable = GetComponent<Damageable>(); 
         damageable.invinciableTime = 0.5f;
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
+
     }
+
 
     private void Update()
     {
@@ -151,11 +144,26 @@ public class Player : CharacterBaseAttribute
 
         AnimatorControl();
         AutoAttack();
+        AutoRecoverHp();
     }
 
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private Weapon ChooseWeapon()
+    {
+        Weapon[] _weapon = new Weapon[] { };
+        _weapon = GetComponentsInChildren<Weapon>();
+        foreach (var item in _weapon)
+        {
+            if (item.gameObject.activeInHierarchy)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 
     private void Move()
@@ -165,7 +173,7 @@ public class Player : CharacterBaseAttribute
             rigid.velocity = Vector3.zero;
             return;
         }
-        rigid.velocity = input.normalized * MoveSpeed;
+        rigid.velocity = input.normalized * MoveSpeed * 5;
     }
 
     private void AnimatorControl()
@@ -205,8 +213,22 @@ public class Player : CharacterBaseAttribute
         //}
     }
 
+    private void AutoRecoverHp()
+    {
+        if (Cur_Hp != TotalAttribute.Max_Hp)
+        {
+            timer_02 += Time.deltaTime;
+            if (timer_02 >= 1)
+            {
+                timer_02 = 0;
+                Cur_Hp += TotalAttribute.Re_Hp;
+            }
+        }
+    }
+
     private void OnHurtStart(Damageable damageable,DamageMessage data)
     {
+        Debug.Log("Max_Hp:" + Max_Hp + "---Cur_Hp:" + Cur_Hp);
         anim.SetTrigger("Hurt");
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 1.5f, data.damage);
     }

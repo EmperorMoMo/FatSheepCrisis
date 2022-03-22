@@ -7,6 +7,7 @@ public class WeaponData
 {
     public string Id;
     public string Name;
+    public string Type;
     public string Aggressivity;
     public string AttackInterval;
     public string CritChance;

@@ -70,7 +70,7 @@ public class ObjectPool : Singleton<ObjectPool>
     ///<summary>
     ///«Î«ÛGameObject
     ///</summary>
-    public GameObject RequestCacheGameObject(PrefabType type, Vector3 position,float num = 0f)
+    public GameObject RequestCacheGameObject(PrefabType type, Vector3 position,float num = 0f,bool isCrit = false)
     {
         GameObject obj = GetFromPool(type);
         if (obj == null)
@@ -78,14 +78,15 @@ public class ObjectPool : Singleton<ObjectPool>
             obj = Instantiate(prefabs[type]);
             obj.name = type.ToString() + "_" + Random.Range(1, 1000).ToString();
         }
-        if (type == PrefabType.DamageText)
-        {
-            obj.transform.SetParent(canvas.transform);
-            obj.GetComponent<DamageNum>().SetText(num);
-        }
 
         obj.SetActive(true);
         obj.transform.position = position;
+
+        if (type == PrefabType.DamageText)
+        {
+            obj.transform.SetParent(canvas.transform);
+            obj.GetComponent<DamageNum>().SetTextAndAnimator(num, isCrit);
+        }
         return obj;
     }
 

@@ -69,7 +69,7 @@ public class Enemy : EnemyBaseAttribute
     {
         sprite.color = Color.red;
         transform.position = new Vector2(transform.position.x + data.direction.x, transform.position.y + data.direction.y);
-        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 0.5f, data.damage);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit);
     }
 
     public void OnHurtEnd()
@@ -81,7 +81,7 @@ public class Enemy : EnemyBaseAttribute
     {
         Destroy(this.gameObject);
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.DestoryFX, transform.position);
-        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 0.5f, data.damage);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

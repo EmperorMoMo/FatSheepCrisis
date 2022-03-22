@@ -43,14 +43,15 @@ public class Tool
             {
                 Id = collect[i][0].ToString(),
                 Name = collect[i][1].ToString(),
-                Aggressivity = collect[i][2].ToString(),
-                AttackInterval=collect[i][3].ToString(),
-                CritChance = collect[i][4].ToString(),
-                CritDamage =collect[i][5].ToString(),
-                RepelNum=collect[i][6].ToString(),
-                ProjectilesNum=collect[i][7].ToString(),
-                AttackRange=collect[i][8].ToString(),
-                SkillDescription=collect[i][9].ToString()
+                Type = collect[i][2].ToString(),
+                Aggressivity = collect[i][3].ToString(),
+                AttackInterval=collect[i][4].ToString(),
+                CritChance = collect[i][5].ToString(),
+                CritDamage =collect[i][6].ToString(),
+                RepelNum=collect[i][7].ToString(),
+                ProjectilesNum=collect[i][8].ToString(),
+                AttackRange=collect[i][9].ToString(),
+                SkillDescription=collect[i][10].ToString()
             };
             menuArray.Add(level);
         }

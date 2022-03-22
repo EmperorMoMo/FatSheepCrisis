@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4810317102267175454}
   - component: {fileID: 4810317102267175455}
-  - component: {fileID: 4810317102267175452}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -52,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1d6c772e35c3ab64db2daa1fd9764255, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,22 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4810317102267175452
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4810317102267175457}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 2.4182606, y: 2.9011629}
-  serializedVersion: 2
-  m_Radius: 12.287914
 --- !u!1 &4810317102842467781
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +135,6 @@ TrailRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8938e6d70257761459e94e9f3678a3e0, type: 2}
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -249,6 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4810317103708499585}
   - component: {fileID: 4810317103708499584}
+  - component: {fileID: 2132830229}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -290,3 +273,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2132830229
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810317103708499587}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.8}
+  serializedVersion: 2
+  m_Radius: 0.9

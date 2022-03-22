@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
@@ -7,16 +8,34 @@ public enum WeaponName
 {
     None,
     Ìú¸«=1001,
+    Ìú´¸,
+    ÁÒÑæÉñ¸«,
+    À×öªÖ®´¸,
+    Ìú½£,
+}
+
+public enum WeaponType
+{
+    ÎÞ,
+    ¸«,
+    ´¸,
+    ½£,
+    Êé,
+    ÕÈ
 }
 
 public class Weapon : WeaponBaseAttribute
 {
     public WeaponName Name;
+    public WeaponType Type;
 
     private Animator anim;
     private AnimatorController AC;
 
     private List<GameObject> attackList = new List<GameObject>();
+
+    private Damageable damageable;
+    private float _Aggressivity;
 
     private void Awake()
     {
@@ -34,6 +53,7 @@ public class Weapon : WeaponBaseAttribute
         {
             if (int.Parse(item.Id) == (int)Name)
             {
+                Type = (WeaponType)Enum.Parse(typeof(WeaponType), item.Type, false);
                 Aggressivity = float.Parse(item.Aggressivity);
                 AttackInterval = float.Parse(item.AttackInterval);
                 CritChance = float.Parse(item.CritChance);
@@ -51,21 +71,20 @@ public class Weapon : WeaponBaseAttribute
         throw new System.NotImplementedException();
     }
 
-    public void Attack(float interval = 1f)
+    public void Attack(float speed = 1f)
     {
-        AC.layers[0].stateMachine.states[0].state.speed = interval;
+        AC.layers[0].stateMachine.states[0].state.speed = speed;
         anim.SetTrigger("attack");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Damageable damageable;
         if (collision.TryGetComponent<Damageable>(out damageable))
         {
             if (attackList.Contains(collision.gameObject)) return;
             DamageMessage data = new DamageMessage()
             {
-                damage = Aggressivity,
+                damage = CalculateDamage(),
                 direction = (collision.transform.position - Player.Instance.transform.position).normalized * RepelNum
             };
             damageable.OnDamage(data);
@@ -75,7 +94,22 @@ public class Weapon : WeaponBaseAttribute
         }
     }
 
-    public void AttackEnd()
+    private float CalculateDamage()
+    {
+        Player.Instance.isCrit = false;
+        if (UnityEngine.Random.value < (CritChance + TotalAttribute.CritChance))
+        {
+            _Aggressivity = Aggressivity * (1 + CritDamage + TotalAttribute.CritDamage);
+            Player.Instance.isCrit = true;
+        }
+        else
+        {
+            _Aggressivity = Aggressivity;
+        }
+        return _Aggressivity * (1 + TotalAttribute.FinalDamage) + TotalAttribute.AdditionalDamage;
+    }
+
+    public void AttackOver()
     {
         attackList.Clear(); 
     }
