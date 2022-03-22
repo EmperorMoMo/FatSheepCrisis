@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class WeaponMenu : UIMenuBase
 {
@@ -41,6 +42,8 @@ public class WeaponMenu : UIMenuBase
     public override void Init()
     {
         base.Init();
+        gameObject.GetComponent<RectTransform>().localScale = Vector3.zero;
+        gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.25f).SetEase(Ease.OutBack);
     }
     public void OnClickToSelect()
     {
@@ -55,6 +58,15 @@ public class WeaponMenu : UIMenuBase
         projectilesNum.text = Data[str].ProjectilesNum;
         SkillDescription.text = Data[str].SkillDescription;
     }
-
+    public void OnClickToClose()
+    {
+        StartCoroutine(CloseIconSetting());
+    }
+    IEnumerator CloseIconSetting()
+    {
+        gameObject.GetComponent<RectTransform>().DOScale(0f, 0.25f).SetEase(Ease.InBack);
+        yield return new WaitForSecondsRealtime(0.25f);
+        base.UIResponse_Close();
+    }
 
 }

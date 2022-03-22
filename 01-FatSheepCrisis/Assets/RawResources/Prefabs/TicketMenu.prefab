@@ -813,8 +813,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9045083763512926364}
-        m_TargetAssemblyTypeName: UIMenuBase, Assembly-CSharp
-        m_MethodName: UIResponse_Close
+        m_TargetAssemblyTypeName: TicketMenu, Assembly-CSharp
+        m_MethodName: OnClickToClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

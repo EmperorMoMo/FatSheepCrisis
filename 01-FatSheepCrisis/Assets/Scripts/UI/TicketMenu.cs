@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,22 @@ public class TicketMenu : UIMenuBase
         base.Setup();
         Ticket = Resources.Load<PackageItem>("Config");
         Data = Ticket.GetTicketData();
+    }
+    public override void Init()
+    {
+        base.Init();
+        gameObject.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 1);
+        gameObject.GetComponent<RectTransform>().DOScaleX(1.0f, 0.25f).SetEase(Ease.OutBack);
+    }
+    public void OnClickToClose()
+    {
+        StartCoroutine(CloseIconSetting());
+    }
+    IEnumerator CloseIconSetting()
+    {
+        gameObject.GetComponent<RectTransform>().DOScaleX(0f, 0.25f).SetEase(Ease.InBack);
+        yield return new WaitForSecondsRealtime(0.25f);
+        base.UIResponse_Close();
     }
     /// <summary>
     /// 得到总权重

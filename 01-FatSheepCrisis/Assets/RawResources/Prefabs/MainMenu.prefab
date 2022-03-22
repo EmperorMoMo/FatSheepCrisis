@@ -201,8 +201,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 622890328}
-        m_TargetAssemblyTypeName: UIMenuBase, Assembly-CSharp
-        m_MethodName: UIResponse_Close
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OnClickToClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
     private Dictionary<string, ProfessionData> Data;
     private PackageItem Profession;
+
+    [MenuItem("Tool/Delete Player Info")]
+    public static void DeletePlayerInfo()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     private void Start()
     {
         Profession = Resources.Load<PackageItem>("Config");

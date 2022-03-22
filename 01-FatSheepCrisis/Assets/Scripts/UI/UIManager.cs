@@ -61,7 +61,7 @@ public class UIManager : Singleton<UIManager>
         {
             UIMenuBase.MenuType.TicketMenu,
             "TicketMenu"
-        }
+        },       
     };
 
     private void Start()
@@ -166,7 +166,7 @@ public class UIManager : Singleton<UIManager>
         else
         {
             //Singleton<TimeKeeper>.Instance.PauseTime();
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
         menu.gameObject.SetActive(value: true);
         menu.Init();

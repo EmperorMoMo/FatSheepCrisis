@@ -10,7 +10,7 @@ public class Tool
 {
     public static string Excel = "Config";//excel±íÃû×Ö
 
-    [MenuItem("BuildAsset/Build Scriptable Data")]
+    [MenuItem("Tool/Build Scriptable Data")]
     public static void ExcuteBuildLevel()
     {
 
