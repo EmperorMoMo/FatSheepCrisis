@@ -7,7 +7,6 @@ public class DataManager : Singleton<DataManager>
 {
     private Dictionary<string, ProfessionData> Data;
     private PackageItem Profession;
-<<<<<<< Updated upstream
 
     [MenuItem("Tool/Delete Player Info")]
     public static void DeletePlayerInfo()
@@ -15,10 +14,7 @@ public class DataManager : Singleton<DataManager>
         PlayerPrefs.DeleteAll();
     }
 
-    private void Start()
-=======
     private void Awake()
->>>>>>> Stashed changes
     {
         Profession = Resources.Load<PackageItem>("Config");
         Data = Profession.GetProfessionData();
