@@ -28,6 +28,7 @@ public class Weapon : WeaponBaseAttribute
 {
     public WeaponName Name;
     public WeaponType Type;
+    public SpriteRenderer weaponSprite;
 
     private Animator anim;
     private AnimatorController AC;
@@ -39,14 +40,14 @@ public class Weapon : WeaponBaseAttribute
 
     private void Awake()
     {
-        SetAttribute();
-
         anim = GetComponent<Animator>();
         AC = anim.runtimeAnimatorController as AnimatorController;
     }
 
-    public override void SetAttribute()
+    public override void SetAttribute(int id)
     {
+        weaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
+        Name = (WeaponName)Enum.Parse(typeof(WeaponName), id.ToString(), false);
         PackageItem weapons = Resources.Load<PackageItem>("Config");
         Dictionary<string, WeaponData> Data = weapons.GetWeaponsData();
         foreach (var item in Data.Values)

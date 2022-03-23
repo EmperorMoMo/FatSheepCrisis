@@ -101,12 +101,14 @@ public static class TalentSkillData
 public class Player : CharacterBaseAttribute
 {
     public Profession profession;
+    public SpriteRenderer armWeaponSprite;
+
     [HideInInspector]
     public ProfessionData professionData;
     [HideInInspector]
     public bool isCrit = false;
 
-    private Transform Unit000;
+    private Transform Model;
     private Animator anim;
     private Rigidbody2D rigid;
     private Weapon weapon;
@@ -117,15 +119,15 @@ public class Player : CharacterBaseAttribute
     private float timer_02;
     private bool death;
 
-    private void Awake()
+
+    private void Start()
     {
         professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
         Cur_Hp = TotalAttribute.Max_Hp;
 
         rigid = GetComponent<Rigidbody2D>();
-        Unit000 = transform.Find("Unit000").GetComponent<Transform>();
-        anim = Unit000.GetComponentInChildren<Animator>();
-        weapon = ChooseWeapon();
+        Model = transform.Find("Model").GetComponent<Transform>();
+        anim = Model.GetComponentInChildren<Animator>();
 
         damageable = GetComponent<Damageable>(); 
         damageable.invinciableTime = 0.5f;
@@ -133,6 +135,7 @@ public class Player : CharacterBaseAttribute
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
 
+        SelectWeapon(1003, "¸«");
     }
 
 
@@ -152,18 +155,29 @@ public class Player : CharacterBaseAttribute
         Move();
     }
 
-    private Weapon ChooseWeapon()
+    ///TODO!!!
+    private void SelectWeapon(int id,string type)
     {
-        Weapon[] _weapon = new Weapon[] { };
-        _weapon = GetComponentsInChildren<Weapon>();
-        foreach (var item in _weapon)
+        armWeaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
+        armWeaponSprite.material.SetColor("_001Color", new Color(255 * 0.05f, 255 * 0.05f, 255 * 0.05f));
+
+        List<Weapon> weapons = new List<Weapon>();
+        for (int i = 0; i < transform.childCount; i++)
         {
-            if (item.gameObject.activeInHierarchy)
+            if (transform.GetChild(i).GetComponent<Weapon>() != null)
             {
-                return item;
+                weapons.Add(transform.GetChild(i).GetComponent<Weapon>());
             }
         }
-        return null;
+        foreach (Weapon item in weapons)
+        {
+            if (item.Type == (WeaponType)System.Enum.Parse(typeof(WeaponType), type, false))
+            {
+                item.gameObject.SetActive(true);
+                item.SetAttribute(id);
+                weapon = item;
+            }
+        }
     }
 
     private void Move()
@@ -193,16 +207,17 @@ public class Player : CharacterBaseAttribute
     {
         if (input.x > 0)
         {
-            Unit000.eulerAngles = new Vector3(0, 180, 0);
+            Model.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (input.x < 0)
         {
-            Unit000.eulerAngles = Vector3.zero;
+            Model.eulerAngles = Vector3.zero;
         }
     }
 
     private void AutoAttack()
     {
+        if (weapon == null) return;
         if (Input.GetMouseButtonDown(1))
             weapon.Attack(AttackSpeed);
         //timer += Time.deltaTime;
@@ -222,6 +237,7 @@ public class Player : CharacterBaseAttribute
             {
                 timer_02 = 0;
                 Cur_Hp += TotalAttribute.Re_Hp;
+                ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 1.5f, TotalAttribute.Re_Hp, 2);
             }
         }
     }
@@ -230,14 +246,14 @@ public class Player : CharacterBaseAttribute
     {
         Debug.Log("Max_Hp:" + Max_Hp + "---Cur_Hp:" + Cur_Hp);
         anim.SetTrigger("Hurt");
-        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 1.5f, data.damage);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 1.5f, data.damage);
     }
 
     private void OnDeath(Damageable damageable,DamageMessage data)
     {
         death = true;
         anim.SetBool("Death", death);
-        ObjectPool.Instance.RequestCacheGameObject(PrefabType.DamageText, transform.position + Vector3.up * 1.5f, data.damage);
+        ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 1.5f, data.damage);
     }
 
     private void OnHurtEnd()

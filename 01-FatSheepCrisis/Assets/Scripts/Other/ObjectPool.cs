@@ -5,7 +5,7 @@ using UnityEngine;
 public enum PrefabType
 {
     DestoryFX,
-    DamageText,
+    NumberText,
 }
 
 public class ObjectPool : Singleton<ObjectPool>
@@ -51,7 +51,7 @@ public class ObjectPool : Singleton<ObjectPool>
     {
         if (obj == null) return;
 
-        if (type != PrefabType.DamageText)
+        if (type != PrefabType.NumberText)
         {
             obj.transform.SetParent(this.transform);
         }
@@ -70,7 +70,7 @@ public class ObjectPool : Singleton<ObjectPool>
     ///<summary>
     ///«Î«ÛGameObject
     ///</summary>
-    public GameObject RequestCacheGameObject(PrefabType type, Vector3 position,float num = 0f,bool isCrit = false)
+    public GameObject RequestCacheGameObject(PrefabType type, Vector3 position,float num = 0f,int numType = 0)
     {
         GameObject obj = GetFromPool(type);
         if (obj == null)
@@ -82,10 +82,10 @@ public class ObjectPool : Singleton<ObjectPool>
         obj.SetActive(true);
         obj.transform.position = position;
 
-        if (type == PrefabType.DamageText)
+        if (type == PrefabType.NumberText)
         {
             obj.transform.SetParent(canvas.transform);
-            obj.GetComponent<DamageNum>().SetTextAndAnimator(num, isCrit);
+            obj.GetComponent<DamageNum>().SetTextAndAnimator(num, numType);
         }
         return obj;
     }

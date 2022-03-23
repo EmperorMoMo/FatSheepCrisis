@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Damageable))]
 public abstract class CharacterBaseAttribute : Singleton<Player>
 {
-    protected internal int Level { get; set; }
+    protected internal int Level = 1;
     protected internal float Cur_Hp { get; set; }
 
     protected internal float Max_Hp => float.Parse(Instance.professionData.Max_Hp);
@@ -23,9 +23,5 @@ public abstract class CharacterBaseAttribute : Singleton<Player>
     protected internal float ExtraDamage => float.Parse(Instance.professionData.ExtraDamage);
     protected internal float AdditionalDamage => float.Parse(Instance.professionData.AdditionalDamage);
 
-    public CharacterBaseAttribute()
-    {
-        Level = 1;
-    }
 
 }

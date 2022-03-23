@@ -33,15 +33,16 @@ public class DamageNum : MonoBehaviour
         if (timer > time)
         {
             timer = 0;
-            ObjectPool.Instance.ReturnCacheGameObject(PrefabType.DamageText, this.gameObject);
+            ObjectPool.Instance.ReturnCacheGameObject(PrefabType.NumberText, this.gameObject);
         }
 
         Move();
     }
 
-    public void SetTextAndAnimator(float _f,bool isCrit)
+    public void SetTextAndAnimator(float _f,int numType)
     {
-        anim.SetBool("crit", isCrit);
+        anim.SetBool("crit", numType == 1 ? true : false);
+        anim.SetBool("rehp", numType == 2 ? true : false);
         text.text = _f.ToString();
     }
 

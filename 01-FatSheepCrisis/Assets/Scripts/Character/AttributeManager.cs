@@ -11,7 +11,7 @@ public static class TotalAttribute
     public static float MoveSpeed => Player.Instance.MoveSpeed + GreenAttribute.MoveSpeed;
     public static float AttackSpeed => Player.Instance.AttackSpeed + GreenAttribute.AttackSpeed;
     public static float CritChance => Mathf.Clamp(Player.Instance.CritChance + GreenAttribute.CritChance, 0, 0.9f);
-    public static float CritDamage => Player.Instance.CritDamage + GreenAttribute.CritDamage;
+    public static float CritDamage => Mathf.Clamp(Player.Instance.CritDamage + GreenAttribute.CritDamage, 0, 3f);
     public static float PickUpRange => Player.Instance.PickUpRange + GreenAttribute.PickUpRange;
     public static float Exp_GainRate => Player.Instance.Exp_GainRate + GreenAttribute.Exp_GainRate;
     public static float Gold_GainRate => Player.Instance.Gold_GainRate + GreenAttribute.Gold_GainRate;

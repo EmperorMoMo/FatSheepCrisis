@@ -13,17 +13,6 @@ public abstract class WeaponBaseAttribute : MonoBehaviour
     protected internal float AttackRange { get; set; }
     protected internal string SkillDescription { get; set; }
     
-    public WeaponBaseAttribute()
-    {
-        Aggressivity = 0;
-        AttackInterval = 0;
-        CritChance = 0;
-        CritDamage = 0;
-        RepelNum = 0;
-        ProjectilesNum = 0;
-        AttackRange = 0;
-        SkillDescription = null;
-    }
     public abstract void WeaponSkill();
-    public abstract void SetAttribute();
+    public abstract void SetAttribute(int id);
 }

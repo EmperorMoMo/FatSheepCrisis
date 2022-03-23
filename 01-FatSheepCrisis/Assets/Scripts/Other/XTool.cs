@@ -13,4 +13,15 @@ public static class XTool
         }
         return pos;
     }
+    public static T LoadAssetAtPath<T>(string path, string _asset_name) where T : UnityEngine.Object
+    {
+        string asset = path + _asset_name;
+        var ret = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(asset);
+        if (ret == null)
+        {
+            Debug.LogError("can not find asset " + asset);
+            return null;
+        }
+        return ret;
+    }
 }
