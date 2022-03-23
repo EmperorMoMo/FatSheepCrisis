@@ -24,6 +24,7 @@ public class DataManager : Singleton<DataManager>
     {
         ProfessionData professionData=new ProfessionData();
         string str = Data[key].Name + "_";
+        professionData.Name = PlayerPrefs.GetString(str + "Name", Data[key].Name);
         professionData.Max_Hp = PlayerPrefs.GetString(str+ "Max_HP", Data[key].Max_Hp);
         professionData.Re_Hp = PlayerPrefs.GetString(str + "Re_Hp", Data[key].Re_Hp);
         professionData.Armor = PlayerPrefs.GetString(str + "Armor", Data[key].Armor);

@@ -131,7 +131,7 @@ public class UIManager : Singleton<UIManager>
         GameObject obj = null;
 #if UNITY_EDITOR && !FORCE_USE_AB
         //obj = AssetBundleManager.Instance.LoadAssetAtPath<GameObject>("Assets/RawResources/Prefabs/", editorMenusName[menuID] + ".prefab");
-        obj = LoadAssetAtPath<GameObject>("Assets/RawResources/Prefabs/", editorMenusName[menuID] + ".prefab");
+        obj = XTool.LoadAssetAtPath<GameObject>("Assets/RawResources/Prefabs/", editorMenusName[menuID] + ".prefab");
 #else
 		AssetBundle ab = AssetBundleManager.Instance.GetAssetBundleFromName("ui.bundle");
 		if (ab != null)
@@ -288,17 +288,5 @@ public class UIManager : Singleton<UIManager>
             return null;
         }
         return menuStack.Peek();
-    }
-
-    public T LoadAssetAtPath<T>(string path, string _asset_name) where T : UnityEngine.Object
-    {
-        string asset = path + _asset_name;
-        var ret = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(asset);
-        if (ret == null)
-        {
-            Debug.LogError("can not find asset " + asset);
-            return null;
-        }
-        return ret;
     }
 }

@@ -26,17 +26,35 @@ public class WeaponMenu : UIMenuBase
         Weapon = Resources.Load<PackageItem>("Config");
         Data = Weapon.GetWeaponsData();
         GameObject obj;
+        List<GameObject> gameObjects = new List<GameObject>();
         foreach (var item in Data)
         {
             obj = Instantiate(weaponGrid.gameObject);
-            obj.name = item.Value.Id;
+            obj.name = item.Value.Id+"_"+item.Value.Quality;
             RectTransform rt = obj.GetComponent<RectTransform>();
             rt.SetParent(content);
             rt.localScale = Vector3.one;
             rt.localPosition = Vector3.zero;
             Image image = obj.transform.GetChild(0).GetComponent<Image>();
-            image.sprite = UIManager.Instance.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
+            image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
             obj.SetActive(true);
+            gameObjects.Add(obj);
+        }
+        for (int i = 0; i < gameObjects.Count; i++)
+        {
+            for (int j = 0; j < gameObjects.Count - i - 1; j++)
+            {                
+                if (int.Parse(gameObjects[j].name.Substring(5,1)) > int.Parse(gameObjects[j+1].name.Substring(5, 1)))
+                {
+                    GameObject go = gameObjects[j];
+                    gameObjects[j] = gameObjects[j + 1];
+                    gameObjects[j + 1] = go;
+                }
+            }
+        }
+        for (int i = 0; i < gameObjects.Count; i++)
+        {
+            gameObjects[i].transform.SetSiblingIndex(i);
         }
     }
     public override void Init()
@@ -48,7 +66,7 @@ public class WeaponMenu : UIMenuBase
     public void OnClickToSelect()
     {
         var button = EventSystem.current.currentSelectedGameObject;
-        string str = button.name;
+        string str = button.name.Substring(0,4);
         weaponsName.text = Data[str].Name;
         aggressivity.text = Data[str].Aggressivity;
         attackInterval.text = Data[str].AttackInterval;

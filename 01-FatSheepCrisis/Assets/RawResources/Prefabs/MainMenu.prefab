@@ -407,7 +407,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8468486957173275672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 622890328}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OnClickToNextProfession
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8468486957191907536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2046,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuID: 2
   startPosZ: 0
+  Name: {fileID: 8468486958431218017}
+  Max_Hp: {fileID: 8468486957532571917}
+  Re_Hp: {fileID: 8468486958208169659}
+  Armor: {fileID: 8468486957481448160}
+  MoveSpeed: {fileID: 8468486958312534093}
+  AttackSpeed: {fileID: 8468486959021856048}
+  CritChance: {fileID: 8468486958289711104}
+  CritDamage: {fileID: 8468486958072325208}
+  PickUpRange: {fileID: 8468486958648889432}
+  Exp_GainRate: {fileID: 8468486958398598828}
+  Gold_GainRate: {fileID: 8468486957317547251}
+  ProjectilesNum: {fileID: 8468486958475685106}
 --- !u!1 &8468486957985679296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3818,7 +3842,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8468486958774517691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 622890328}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OnClickToLastProfession
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8468486959021856054
 GameObject:
   m_ObjectHideFlags: 0

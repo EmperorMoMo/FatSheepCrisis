@@ -16,6 +16,7 @@ public class WeaponData
     public string ProjectilesNum;
     public string AttackRange;
     public string SkillDescription;
+    public string Quality;
 }
 
 [System.Serializable]

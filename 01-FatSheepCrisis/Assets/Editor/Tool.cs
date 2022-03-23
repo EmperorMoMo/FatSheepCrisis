@@ -51,7 +51,8 @@ public class Tool
                 RepelNum=collect[i][7].ToString(),
                 ProjectilesNum=collect[i][8].ToString(),
                 AttackRange=collect[i][9].ToString(),
-                SkillDescription=collect[i][10].ToString()
+                SkillDescription=collect[i][10].ToString(),
+                Quality= collect[i][11].ToString()
             };
             menuArray.Add(level);
         }

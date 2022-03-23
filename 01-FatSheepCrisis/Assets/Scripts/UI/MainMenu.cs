@@ -6,11 +6,92 @@ using UnityEngine.UI;
 
 public class MainMenu : UIMenuBase
 {
+    private Dictionary<string, ProfessionData> Data;
+    private PackageItem profession;
+    private ProfessionData professionData;
+    public Text Name;
+    public Text Max_Hp;
+    public Text Re_Hp;
+    public Text Armor;
+    public Text MoveSpeed;
+    public Text AttackSpeed;
+    public Text CritChance;
+    public Text CritDamage;
+    public Text PickUpRange;
+    public Text Exp_GainRate;
+    public Text Gold_GainRate;
+    public Text ProjectilesNum;
+    private string currentProfession;
+    private List<string> professionID = new List<string>();
+
+    public override void Setup()
+    {
+        base.Setup();
+        profession = Resources.Load<PackageItem>("Config");
+        Data = profession.GetProfessionData();
+        foreach (var item in Data)
+        {
+            professionID.Add(item.Key);
+        }
+    }
+
     public override void Init()
     {
         base.Init();
         StartCoroutine(ShowMainMenu());
+        currentProfession = PlayerPrefs.GetString("DefaultProfession", "3001");
+        ReadProfessionData(currentProfession);
     }
+
+    public void ReadProfessionData(string key)
+    {
+        professionData = DataManager.Instance.ReadPlayerData(key);
+        Name.text = professionData.Name;
+        Max_Hp.text = professionData.Max_Hp;
+        Re_Hp.text = professionData.Re_Hp;
+        Armor.text = professionData.Armor;
+        MoveSpeed.text = professionData.MoveSpeed;
+        AttackSpeed.text = professionData.AttackSpeed;
+        CritChance.text = professionData.CritChance;
+        CritDamage.text = professionData.CritDamage;
+        PickUpRange.text = professionData.PickUpRange;
+        Exp_GainRate.text = professionData.Exp_GainRate;
+        Gold_GainRate.text = professionData.Gold_GainRate;
+        ProjectilesNum.text = professionData.ProjectilesNum;
+    }
+
+    public void OnClickToNextProfession()
+    {
+        int i = int.Parse(currentProfession);
+        if (i < int.Parse(professionID[professionID.Count - 1]))
+        {
+            i++;
+            currentProfession = i.ToString();
+            ReadProfessionData(Data[currentProfession].Id);
+        }
+        else
+        {
+            currentProfession = professionID[0];
+            ReadProfessionData(Data[currentProfession].Id);
+        }
+    }
+
+    public void OnClickToLastProfession()
+    {
+        int i = int.Parse(currentProfession);
+        if (i > int.Parse(professionID[0]))
+        {
+            i--;
+            currentProfession = i.ToString();
+            ReadProfessionData(Data[currentProfession].Id);
+        }
+        else
+        {
+            currentProfession = professionID[professionID.Count - 1];
+            ReadProfessionData(Data[currentProfession].Id);
+        }
+    }
+
     IEnumerator ShowMainMenu()
     {
         int i = Random.Range(0, 2);
