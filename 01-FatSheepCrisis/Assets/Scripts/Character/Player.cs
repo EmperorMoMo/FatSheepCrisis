@@ -119,6 +119,8 @@ public class Player : CharacterBaseAttribute
     private float timer_02;
     private bool death;
 
+    private Cinemachine.CinemachineVirtualCamera c;
+
 
     private void Start()
     {
@@ -135,7 +137,8 @@ public class Player : CharacterBaseAttribute
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
 
-        SelectWeapon(1003, "¸«");
+        SelectWeapon(1005, "½£");
+        c.Follow = transform;
     }
 
 
