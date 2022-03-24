@@ -119,7 +119,7 @@ public class Player : CharacterBaseAttribute
     private float timer_02;
     private bool death;
 
-    private void Start()
+    private void OnEnable()
     {
         professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
         Cur_Hp = TotalAttribute.Max_Hp;
@@ -134,7 +134,7 @@ public class Player : CharacterBaseAttribute
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
 
-        SelectWeapon(1005, "½£");
+        //SelectWeapon(1005, "½£");
     }
 
 
