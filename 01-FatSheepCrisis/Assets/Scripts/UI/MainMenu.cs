@@ -8,7 +8,7 @@ public class MainMenu : UIMenuBase
 {
     private Dictionary<string, ProfessionData> Data;
     private PackageItem profession;
-    private ProfessionData professionData;
+    public ProfessionData professionData;
     public Text Name;
     public Text Max_Hp;
     public Text Re_Hp;
@@ -21,7 +21,7 @@ public class MainMenu : UIMenuBase
     public Text Exp_GainRate;
     public Text Gold_GainRate;
     public Text ProjectilesNum;
-    private string currentProfession;
+    public string currentProfession;
     private List<string> professionID = new List<string>();
 
     public override void Setup()

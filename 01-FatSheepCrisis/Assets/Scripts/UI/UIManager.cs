@@ -158,7 +158,6 @@ public class UIManager : Singleton<UIManager>
                 //uIMenuBase.Suspend();
                 if (disableCurrentMenu)
                 {
-                    Debug.LogError("1");
                     uIMenuBase.gameObject.SetActive(value: false);
                 }
             }
