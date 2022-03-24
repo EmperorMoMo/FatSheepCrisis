@@ -119,9 +119,6 @@ public class Player : CharacterBaseAttribute
     private float timer_02;
     private bool death;
 
-    private Cinemachine.CinemachineVirtualCamera c;
-
-
     private void Start()
     {
         professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
@@ -138,7 +135,6 @@ public class Player : CharacterBaseAttribute
         damageable.onDeath.AddListener(OnDeath);
 
         SelectWeapon(1005, "½£");
-        c.Follow = transform;
     }
 
 
