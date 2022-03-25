@@ -138,7 +138,7 @@ public class Player : CharacterBaseAttribute
         damageable.onDeath.AddListener(OnDeath);
 
         EventCenter.Broadcast(EventType.StartGame);
-        SelectWeapon(1002, "´¸");
+        //SelectWeapon(1002, "´¸");
     }
 
     private void OnEnable()
