@@ -174,7 +174,7 @@ public class Player : CharacterBaseAttribute
     }
 
     ///TODO!!!
-    private void SelectWeapon(int id,string type)
+    public void SelectWeapon(int id,string type)
     {
         armWeaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
         armWeaponSprite.material.SetColor("_001Color", new Color(255 * 0.05f, 255 * 0.05f, 255 * 0.05f));
