@@ -6,6 +6,9 @@ public enum PrefabType
 {
     DestoryFX,
     NumberText,
+    BlueDiamond,
+    OrangeDiamond,
+    Gold,
 }
 
 public class ObjectPool : Singleton<ObjectPool>

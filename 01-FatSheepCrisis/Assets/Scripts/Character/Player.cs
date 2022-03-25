@@ -100,6 +100,8 @@ public static class TalentSkillData
 
 public class Player : CharacterBaseAttribute
 {
+    public static Player Instance;
+
     public Profession profession;
     public SpriteRenderer armWeaponSprite;
 
@@ -119,8 +121,9 @@ public class Player : CharacterBaseAttribute
     private float timer_02;
     private bool death;
 
-    private void OnEnable()
+    private void Start()
     {
+        Instance = this;
         professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
         Cur_Hp = TotalAttribute.Max_Hp;
 
@@ -128,13 +131,29 @@ public class Player : CharacterBaseAttribute
         Model = transform.Find("Model").GetComponent<Transform>();
         anim = Model.GetComponentInChildren<Animator>();
 
-        damageable = GetComponent<Damageable>(); 
+        damageable = GetComponent<Damageable>();
         damageable.invinciableTime = 0.5f;
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
 
-        //SelectWeapon(1005, "½£");
+        EventCenter.Broadcast(EventType.StartGame);
+        SelectWeapon(1002, "´¸");
+    }
+
+    private void OnEnable()
+    {
+        Instance = this;
+
+        //professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
+        //Cur_Hp = TotalAttribute.Max_Hp;
+
+        //rigid = GetComponent<Rigidbody2D>();
+        //Model = transform.Find("Model").GetComponent<Transform>();
+        //anim = Model.GetComponentInChildren<Animator>();
+
+        //EventCenter.Broadcast(EventType.StartGame);
+        //SelectWeapon(1002, "´¸");
     }
 
 

@@ -19,7 +19,6 @@ public class Enemy : EnemyBaseAttribute
     private void Awake()
     {
         SetAttribute();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
         sprite = GetComponent<SpriteRenderer>();
 
         damageable = GetComponent<Damageable>();
@@ -28,6 +27,13 @@ public class Enemy : EnemyBaseAttribute
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onDeath.AddListener(OnDeath);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
+
+        EventCenter.AddListener(EventType.StartGame, StartGame);
+    }
+
+    private void StartGame()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -37,6 +43,7 @@ public class Enemy : EnemyBaseAttribute
 
     public void FollowPlayerAndFlip()
     {
+        if (target == null) return;
         if (target.position.x < transform.position.x)
         {
             sprite.flipX = true;
@@ -80,8 +87,29 @@ public class Enemy : EnemyBaseAttribute
     public void OnDeath(Damageable damageable, DamageMessage data)
     {
         Destroy(this.gameObject);
+        CalculateFallProbability();
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.DestoryFX, transform.position);
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit ? 1 : 0);
+    }
+
+    private void CalculateFallProbability()
+    {
+        if (Random.value <= 0.1)
+        {
+            ObjectPool.Instance.RequestCacheGameObject(PrefabType.Gold, transform.position);
+            return;
+        }
+        if (Random.value <= 0.25)
+        {
+            if (Random.value >= 0.2)
+            {
+                ObjectPool.Instance.RequestCacheGameObject(PrefabType.BlueDiamond, transform.position);
+            }
+            else
+            {
+                ObjectPool.Instance.RequestCacheGameObject(PrefabType.OrangeDiamond, transform.position);
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

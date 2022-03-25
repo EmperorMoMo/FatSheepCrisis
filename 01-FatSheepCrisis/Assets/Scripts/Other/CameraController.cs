@@ -21,6 +21,11 @@ public class CameraController : Singleton<CameraController>
     {
         //target = GameObject.FindGameObjectWithTag("Player").transform;
         cine = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        EventCenter.AddListener(EventType.StartGame, StartGame);
+    }
+
+    void StartGame()
+    {
         cine.Follow = Player.Instance.transform;
     }
 

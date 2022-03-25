@@ -1624,6 +1624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thieves
       objectReference: {fileID: 0}
+    - target: {fileID: 5280068088222752250, guid: 80471fed99022fa4a85b1a3204cf00b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5280068088222752255, guid: 80471fed99022fa4a85b1a3204cf00b8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1677,6 +1681,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1078433557987896423, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
+      propertyPath: prefab.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078433557987896423, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
+      propertyPath: prefab.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 720102031939867331, guid: c75aa8e8d78d90b4aa4c77291b193354, type: 3}
+    - target: {fileID: 1078433557987896423, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
+      propertyPath: prefab.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 720102031939867331, guid: e0bffe970f9998b44ba5083aef28855d, type: 3}
+    - target: {fileID: 1078433557987896423, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
+      propertyPath: prefab.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 9217732794305566666, guid: 2bac20bc5e299404fbb36b4fdb7542d5, type: 3}
+    - target: {fileID: 1078433557987896423, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
+      propertyPath: prefab.Array.data[2].prefabType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078433557987896423, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
+      propertyPath: prefab.Array.data[3].prefabType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078433557987896423, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
+      propertyPath: prefab.Array.data[4].prefabType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3056498337800110816, guid: d1be93f0d627a8d4f9213be9779aac8d, type: 3}
       propertyPath: m_Name
       value: CachePool
@@ -1782,6 +1814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroyer
       objectReference: {fileID: 0}
+    - target: {fileID: 7699379363225019317, guid: e4e82dc05ca14b5459d52929a67e95a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e82dc05ca14b5459d52929a67e95a0, type: 3}
 --- !u!1001 &8750172060962288840
@@ -1794,6 +1830,10 @@ PrefabInstance:
     - target: {fileID: 8750172062892287203, guid: 28d12e71f6f8f544d8489db3cd08c459, type: 3}
       propertyPath: m_Name
       value: Berserker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750172062892287203, guid: 28d12e71f6f8f544d8489db3cd08c459, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8750172062892287206, guid: 28d12e71f6f8f544d8489db3cd08c459, type: 3}
       propertyPath: m_RootOrder
