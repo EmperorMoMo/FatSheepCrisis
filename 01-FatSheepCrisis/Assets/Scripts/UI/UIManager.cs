@@ -27,6 +27,8 @@ public class UIManager : Singleton<UIManager>
 
     public Camera mainMenuBGCamera;
 
+    public List<GameObject> professions = new List<GameObject>();
+
     [Header("Selection")]
     [SerializeField]
     public EventSystem eventSystem;

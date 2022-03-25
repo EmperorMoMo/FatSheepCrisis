@@ -346,6 +346,7 @@ public class AttributeMenu : UIMenuBase
     {
         gameObject.GetComponent<RectTransform>().DOScaleY(0f, 0.25f).SetEase(Ease.InBack);
         yield return new WaitForSecondsRealtime(0.25f);
+        mainMenu.SetProfessionsActive(mainMenu.currentProfession, true);
         base.UIResponse_Close();
     }
 }

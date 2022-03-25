@@ -7,6 +7,7 @@ public class TicketMenu : UIMenuBase
 {
     private Dictionary<string, TicketData> Data;
     private PackageItem Ticket;
+    private MainMenu mainMenu;
     public override void Setup()
     {
         base.Setup();
@@ -18,6 +19,7 @@ public class TicketMenu : UIMenuBase
         base.Init();
         gameObject.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 1);
         gameObject.GetComponent<RectTransform>().DOScaleX(1.0f, 0.25f).SetEase(Ease.OutBack);
+        mainMenu = UIManager.Instance.GetMenu(MenuType.MainMenu) as MainMenu;
     }
     public void OnClickToClose()
     {
@@ -27,6 +29,7 @@ public class TicketMenu : UIMenuBase
     {
         gameObject.GetComponent<RectTransform>().DOScaleX(0f, 0.25f).SetEase(Ease.InBack);
         yield return new WaitForSecondsRealtime(0.25f);
+        mainMenu.SetProfessionsActive(mainMenu.currentProfession, true);
         base.UIResponse_Close();
     }
     /// <summary>

@@ -24,6 +24,7 @@ public class DataManager : Singleton<DataManager>
     {
         ProfessionData professionData=new ProfessionData();
         string str = Data[key].Name + "_";
+        professionData.Id = PlayerPrefs.GetString(str + "ID", Data[key].Id);
         professionData.Name = PlayerPrefs.GetString(str + "Name", Data[key].Name);
         professionData.Max_Hp = PlayerPrefs.GetString(str+ "Max_HP", Data[key].Max_Hp);
         professionData.Re_Hp = PlayerPrefs.GetString(str + "Re_Hp", Data[key].Re_Hp);
@@ -39,7 +40,9 @@ public class DataManager : Singleton<DataManager>
         professionData.FinalDamage = PlayerPrefs.GetString(str + "FinalDamage", Data[key].FinalDamage);
         professionData.ExtraDamage = PlayerPrefs.GetString(str + "ExtraDamage", Data[key].ExtraDamage);
         professionData.AdditionalDamage = PlayerPrefs.GetString(str + "AdditionDamage", Data[key].AdditionalDamage);
-
+        professionData.WeaponType = PlayerPrefs.GetString(str + "WeaponType", Data[key].WeaponType);
+        professionData.Introduce = PlayerPrefs.GetString(str + "Introduce", Data[key].Introduce);
+        professionData.Weapon = PlayerPrefs.GetString(str + "Weapon", Data[key].Weapon);
         //Player.Instance.Cur_Hp = float.Parse(professionData.Max_Hp);
         return professionData;
     }
@@ -61,5 +64,110 @@ public class DataManager : Singleton<DataManager>
         PlayerPrefs.SetString(str + "FinalDamage", professionData.FinalDamage);
         PlayerPrefs.SetString(str + "ExtraDamage", professionData.ExtraDamage);
         PlayerPrefs.SetString(str + "AdditionDamage", professionData.AdditionalDamage);
+        PlayerPrefs.SetString(str + "Weapon", professionData.Weapon);
+        //if (PlayerPrefs.GetString(str + "Weapon", Data[key].Weapon) != professionData.Weapon)
+        //{
+        //    string[] weapons = GetProfessionWeapons(PlayerPrefs.GetString(str + "Weapon", Data[key].Weapon));
+        //    bool newWeapon = true;
+        //    for (int i = 0; i < weapons.Length; i++)
+        //    {
+        //        if (weapons[i] == professionData.Weapon)
+        //        {
+        //            newWeapon = false;
+        //            break;
+        //        }
+        //    }
+        //    if (newWeapon)
+        //    {
+        //        PlayerPrefs.SetString(str + "Weapon", PlayerPrefs.GetString(str + "Weapon", Data[key].Weapon) + "/" + professionData.Weapon);
+        //    }
+        //}
     }
+
+    public string[] GetPlayerData(string str)
+    {
+        string[] s = str.Split('/');
+        return s;
+    }
+
+    public string[] ReadPlayerWeaponsData()
+    {
+        return GetPlayerData(PlayerPrefs.GetString("Weapons"));
+    }
+
+    public void SavePlayerWeaponsData(string weapons)
+    {
+        string[] str = ReadPlayerWeaponsData();
+        bool newWeapons = true;
+        for (int i = 0; i < str.Length; i++)
+        {
+            if(str[i]==weapons)
+            {
+                newWeapons = false;
+                break;
+            }
+        }
+        if (newWeapons)
+        {
+            if (!PlayerPrefs.HasKey("Weapons"))
+            {
+                PlayerPrefs.SetString("Weapons", weapons);
+            }
+            else
+            {
+                PlayerPrefs.SetString("Weapons", PlayerPrefs.GetString("Weapons") + "/" + weapons);
+            }
+        }
+    }
+
+    public string[] ReadPlayerProfessionsData()
+    {
+        return GetPlayerData(PlayerPrefs.GetString("Professions"));
+    }
+
+    public void SavePlayerProfessionsData(string professions)
+    {
+        string[] str = ReadPlayerProfessionsData();
+        bool newProfessions = true;
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i] == professions)
+            {
+                newProfessions = false;
+                break;
+            }
+        }
+        if (newProfessions)
+        {
+            if (!PlayerPrefs.HasKey("Professions"))
+            {
+                PlayerPrefs.SetString("Professions", professions);
+            }
+            else
+            {
+                PlayerPrefs.SetString("Professions", PlayerPrefs.GetString("Professions") + "/" + professions);
+            }
+        }
+    }
+
+    public int ReadPlayerGoldData()
+    {
+        return PlayerPrefs.GetInt("Gold", 0);
+    }
+
+    public void SavePlayerGoldData(int gold)
+    {
+        PlayerPrefs.SetInt("Gold", gold);
+    }
+
+    public int ReadPlayerTicketsData()
+    {
+        return PlayerPrefs.GetInt("Tickets", 0);
+    }
+
+    public void SavePlayerTicketsData(int tickets)
+    {
+        PlayerPrefs.SetInt("Tickets", tickets);
+    }
+
 }

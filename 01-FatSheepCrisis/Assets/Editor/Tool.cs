@@ -130,7 +130,10 @@ public class Tool
                 ProjectilesNum = collect[i][12].ToString(),
                 FinalDamage = collect[i][13].ToString(),
                 ExtraDamage = collect[i][14].ToString(),
-                AdditionalDamage = collect[i][15].ToString()
+                AdditionalDamage = collect[i][15].ToString(),
+                WeaponType = collect[i][16].ToString(),
+                Introduce = collect[i][17].ToString(),
+                Weapon = collect[i][18].ToString()
             };
             menuArray.Add(level);
         }

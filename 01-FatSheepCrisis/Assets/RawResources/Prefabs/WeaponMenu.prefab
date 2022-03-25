@@ -447,7 +447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999
+  m_Text: 
 --- !u!1 &4911276884035205514
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4911276884136335235
 RectTransform:
   m_ObjectHideFlags: 0
@@ -712,7 +712,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4911276884136335237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7824026586686782389}
+        m_TargetAssemblyTypeName: WeaponMenu, Assembly-CSharp
+        m_MethodName: EquipWeapons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4911276884211651199
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +803,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999
+  m_Text: 
 --- !u!1 &4911276884340870483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999
+  m_Text: 
 --- !u!1 &4911276884433011894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1131,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999
+  m_Text: 
 --- !u!1 &4911276884723169823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1210,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999
+  m_Text: 
 --- !u!1 &4911276884737078395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,6 +1553,9 @@ MonoBehaviour:
   repelNum: {fileID: 4911276884211651185}
   projectilesNum: {fileID: 4911276885580980872}
   SkillDescription: {fileID: 4911276885565263949}
+  weaponMenuType: 0
+  OKBtn: {fileID: 4911276884136335234}
+  currentWeapon: 
 --- !u!1 &4911276884860158707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,13 +2168,13 @@ MonoBehaviour:
       - m_Target: {fileID: 7824026586686782389}
         m_TargetAssemblyTypeName: WeaponMenu, Assembly-CSharp
         m_MethodName: OnClickToSelect
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: none
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4911276885321544390
@@ -2640,7 +2655,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u70C8\u7130\u795E\u65A7"
+  m_Text: 
 --- !u!1 &4911276885565263947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,7 +2734,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u653B\u51FB\u65F6\u9644\u5E26\u706B\u7130\u7279\u6548\uFF0C\u5BF9\u547D\u4E2D\u7684\u654C\u4EBA\u9020\u6210100%\u653B\u51FB\u529B\u7684\u4F24\u5BB3\u5E76\u6DFB\u52A0\u707C\u70E7\u72B6\u6001\uFF0C\u654C\u4EBA\u5728\u707C\u70E7\u72B6\u6001\u4E0B\u6BCF\u79D2\u53D7\u523020%\u653B\u51FB\u529B\u7684\u4F24\u5BB3\uFF0C\u6301\u7EED5\u79D2\u3002"
+  m_Text: 
 --- !u!1 &4911276885580980854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,7 +2813,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999
+  m_Text: 
 --- !u!1 &4911276885616363667
 GameObject:
   m_ObjectHideFlags: 0

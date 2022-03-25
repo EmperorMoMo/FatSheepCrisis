@@ -8,6 +8,7 @@ public class MainMenu : UIMenuBase
 {
     private Dictionary<string, ProfessionData> Data;
     private PackageItem profession;
+    private Dictionary<string, WeaponData> weaponData;
     public ProfessionData professionData;
     public Text Name;
     public Text Max_Hp;
@@ -21,26 +22,70 @@ public class MainMenu : UIMenuBase
     public Text Exp_GainRate;
     public Text Gold_GainRate;
     public Text ProjectilesNum;
+    public GameObject attributeLevelBtn;
+    public GameObject startGameBtn;
+    public GameObject choiseProfessionBtn;
+    public Image EquipedWeapon;
     public string currentProfession;
+    public string[] playerProfessionsData;
+    public string[] playerWeaponsData;
     private List<string> professionID = new List<string>();
+    private List<GameObject> professions = new List<GameObject>();
 
     public override void Setup()
     {
         base.Setup();
         profession = Resources.Load<PackageItem>("Config");
         Data = profession.GetProfessionData();
+        weaponData = profession.GetWeaponsData();
         foreach (var item in Data)
         {
             professionID.Add(item.Key);
         }
+        professions = UIManager.Instance.professions;
     }
 
     public override void Init()
     {
         base.Init();
-        StartCoroutine(ShowMainMenu());
         currentProfession = PlayerPrefs.GetString("DefaultProfession", "3001");
+        StartCoroutine(ShowMainMenu());
         ReadProfessionData(currentProfession);
+        CheckPlayerProfessions();
+        if (!PlayerPrefs.HasKey("Professions"))
+        {
+            choiseProfessionBtn.SetActive(true);
+            startGameBtn.SetActive(false);
+            attributeLevelBtn.SetActive(false);
+        }
+        else
+        {
+            playerWeaponsData = DataManager.Instance.ReadPlayerWeaponsData();
+        }
+    }
+
+    public void CheckPlayerProfessions()
+    {
+        playerProfessionsData = DataManager.Instance.ReadPlayerProfessionsData();
+        bool haveProfessions = false;
+        for (int i = 0; i < playerProfessionsData.Length; i++)
+        {
+            if (playerProfessionsData[i] == professionData.Name)
+            {
+                haveProfessions = true;
+                break;
+            }
+        }
+        if (haveProfessions)
+        {
+            EquipedWeapon.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", CheckWeaponsIndex(professionData.Weapon) + ".png");
+        }
+        else
+        {
+            EquipedWeapon.sprite = null;
+        }
+        startGameBtn.SetActive(haveProfessions);
+        attributeLevelBtn.SetActive(haveProfessions);
     }
 
     public void ReadProfessionData(string key)
@@ -51,13 +96,52 @@ public class MainMenu : UIMenuBase
         Re_Hp.text = professionData.Re_Hp;
         Armor.text = professionData.Armor;
         MoveSpeed.text = professionData.MoveSpeed;
-        AttackSpeed.text = professionData.AttackSpeed;
-        CritChance.text = professionData.CritChance;
-        CritDamage.text = professionData.CritDamage;
+        AttackSpeed.text = (float.Parse(professionData.AttackSpeed) * 100).ToString() + "%";
+        CritChance.text = (float.Parse(professionData.CritChance)*100).ToString()+"%";
+        CritDamage.text = (float.Parse(professionData.CritDamage) * 100).ToString() + "%";
         PickUpRange.text = professionData.PickUpRange;
-        Exp_GainRate.text = professionData.Exp_GainRate;
-        Gold_GainRate.text = professionData.Gold_GainRate;
+        Exp_GainRate.text = (float.Parse(professionData.Exp_GainRate) * 100).ToString() + "%";
+        Gold_GainRate.text = (float.Parse(professionData.Gold_GainRate) * 100).ToString() + "%";
         ProjectilesNum.text = professionData.ProjectilesNum;
+    }
+
+    public void SetProfessionsActive(string key,bool active)
+    {
+        int index = int.Parse(key.Substring(3, 1))-1;
+        if((index+1)> professions.Count)
+        {
+            return;
+        }
+        if (active)
+        {
+            for (int i = 0; i < professions.Count; i++)
+            {
+                if (professions[i] == professions[index])
+                {
+                    professions[i].SetActive(active);
+                }
+                else
+                {
+                    professions[i].SetActive(!active);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < professions.Count; i++)
+            {
+                professions[i].SetActive(active);
+            }
+        }
+    }
+
+    public void OnClickToChioseProfession()
+    {
+        DataManager.Instance.SavePlayerProfessionsData(professionData.Name);
+        DataManager.Instance.SavePlayerWeaponsData(professionData.Weapon);
+        PlayerPrefs.SetString("DefaultProfession", professionData.Id);
+        choiseProfessionBtn.SetActive(false);
+        CheckPlayerProfessions();
     }
 
     public void OnClickToNextProfession()
@@ -74,6 +158,8 @@ public class MainMenu : UIMenuBase
             currentProfession = professionID[0];
             ReadProfessionData(Data[currentProfession].Id);
         }
+        SetProfessionsActive(currentProfession, true);
+        CheckPlayerProfessions();
     }
 
     public void OnClickToLastProfession()
@@ -90,6 +176,8 @@ public class MainMenu : UIMenuBase
             currentProfession = professionID[professionID.Count - 1];
             ReadProfessionData(Data[currentProfession].Id);
         }
+        SetProfessionsActive(currentProfession, true);
+        CheckPlayerProfessions();
     }
 
     IEnumerator ShowMainMenu()
@@ -110,11 +198,27 @@ public class MainMenu : UIMenuBase
             gameObject.GetComponent<RectTransform>().DOScaleY(1.0f, 0.5f).SetEase(Ease.OutSine);
             yield return new WaitForSecondsRealtime(waitTime);
         }
+        SetProfessionsActive(currentProfession, true);
     }
     public void OnClickToClose()
     {
         StartCoroutine(CloseIconSetting());
+        SetProfessionsActive(currentProfession, false);
     }
+
+    public string CheckWeaponsIndex(string weapon)
+    {
+        string weaponIndex = null;
+        foreach (var item in weaponData)
+        {
+            if (weapon == item.Value.Name)
+            {
+                weaponIndex = item.Key;
+            }
+        }
+        return weaponIndex;
+    }
+
     IEnumerator CloseIconSetting()
     {
         float waitTime = 0.25f;
@@ -145,16 +249,27 @@ public class MainMenu : UIMenuBase
     public void ShowWeaponMenu()
     {
         WeaponMenu weaponMenu = UIManager.Instance.GetMenu(MenuType.WeaponMenu) as WeaponMenu;
+        weaponMenu.weaponMenuType = WeaponMenu.WeaponMenuType.AllWeapon;
         UIManager.Instance.AddOverlayMenu(weaponMenu);
+        SetProfessionsActive(currentProfession, false);
+    }
+    public void ShowProfessionWeaponMenu()
+    {
+        WeaponMenu weaponMenu = UIManager.Instance.GetMenu(MenuType.WeaponMenu) as WeaponMenu;
+        weaponMenu.weaponMenuType = WeaponMenu.WeaponMenuType.ProfessionWeapon;
+        UIManager.Instance.AddOverlayMenu(weaponMenu);
+        SetProfessionsActive(currentProfession, false);
     }
     public void ShowAttributeMenu()
     {
         AttributeMenu attributeMenu = UIManager.Instance.GetMenu(MenuType.AttributeMenu) as AttributeMenu;
         UIManager.Instance.AddOverlayMenu(attributeMenu);
+        SetProfessionsActive(currentProfession, false);
     }
     public void ShowTicketMenu()
     {
         TicketMenu ticketMenu = UIManager.Instance.GetMenu(MenuType.TicketMenu) as TicketMenu;
         UIManager.Instance.AddOverlayMenu(ticketMenu);
+        SetProfessionsActive(currentProfession, false);
     }
 }

@@ -59,6 +59,9 @@ public class ProfessionData
     public string FinalDamage;
     public string ExtraDamage;
     public string AdditionalDamage;
+    public string WeaponType;
+    public string Introduce;
+    public string Weapon;
 }
 
 public class PackageItem : ScriptableObject

@@ -119,6 +119,9 @@ MonoBehaviour:
     FinalDamage: 0
     ExtraDamage: 0
     AdditionalDamage: 0
+    WeaponType: "\u5251"
+    Introduce: "\u4E00\u4E2A\u76D7\u8D3C"
+    Weapon: "\u94C1\u5251"
   - Id: 3002
     Name: "\u72C2\u6218\u58EB"
     Max_Hp: 150
@@ -135,6 +138,9 @@ MonoBehaviour:
     FinalDamage: 0
     ExtraDamage: 0.15
     AdditionalDamage: 0
+    WeaponType: "\u65A7"
+    Introduce: "\u4E00\u4E2A\u72C2\u6218\u58EB"
+    Weapon: "\u94C1\u65A7"
   - Id: 3003
     Name: "\u6BC1\u706D\u8005"
     Max_Hp: 200
@@ -151,35 +157,6 @@ MonoBehaviour:
     FinalDamage: 0
     ExtraDamage: 0
     AdditionalDamage: 0
-  - Id: 3004
-    Name: "\u5723\u5F92"
-    Max_Hp: 300
-    Re_Hp: 2
-    Armor: 1.5
-    MoveSpeed: 1
-    AttackSpeed: 1
-    CritChance: 0.1
-    CritDamage: 0.5
-    PickUpRange: 1
-    Exp_GainRate: 1
-    Gold_GainRate: 1
-    ProjectilesNum: 1
-    FinalDamage: 0
-    ExtraDamage: 0
-    AdditionalDamage: 0
-  - Id: 3005
-    Name: "\u5B66\u8005"
-    Max_Hp: 100
-    Re_Hp: 0.5
-    Armor: 1
-    MoveSpeed: 1.1
-    AttackSpeed: 1
-    CritChance: 0.1
-    CritDamage: 0.5
-    PickUpRange: 1.5
-    Exp_GainRate: 1.2
-    Gold_GainRate: 1
-    ProjectilesNum: 1
-    FinalDamage: 0
-    ExtraDamage: 0
-    AdditionalDamage: 0
+    WeaponType: "\u9524"
+    Introduce: "\u4E00\u4E2A\u6BC1\u706D\u8005"
+    Weapon: "\u94C1\u9524"
