@@ -138,7 +138,6 @@ public class Player : CharacterBaseAttribute
         damageable.onDeath.AddListener(OnDeath);
 
         EventCenter.Broadcast(EventType.StartGame);
-        //SelectWeapon(1002, "´¸");
     }
 
     private void OnEnable()
@@ -153,7 +152,6 @@ public class Player : CharacterBaseAttribute
         //anim = Model.GetComponentInChildren<Animator>();
 
         //EventCenter.Broadcast(EventType.StartGame);
-        //SelectWeapon(1002, "´¸");
     }
 
 
@@ -174,28 +172,20 @@ public class Player : CharacterBaseAttribute
     }
 
     ///TODO!!!
-    public void SelectWeapon(int id,string type)
+    public void SetWeapon(int id)
     {
         armWeaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
         armWeaponSprite.material.SetColor("_001Color", new Color(255 * 0.05f, 255 * 0.05f, 255 * 0.05f));
 
-        List<Weapon> weapons = new List<Weapon>();
         for (int i = 0; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).GetComponent<Weapon>() != null)
             {
-                weapons.Add(transform.GetChild(i).GetComponent<Weapon>());
+                weapon = transform.GetChild(i).GetComponent<Weapon>();
             }
         }
-        foreach (Weapon item in weapons)
-        {
-            if (item.Type == (WeaponType)System.Enum.Parse(typeof(WeaponType), type, false))
-            {
-                item.gameObject.SetActive(true);
-                item.SetAttribute(id);
-                weapon = item;
-            }
-        }
+        weapon.gameObject.SetActive(true);
+        weapon.SetAttribute(id);
     }
 
     private void Move()
