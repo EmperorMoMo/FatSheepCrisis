@@ -75,11 +75,39 @@ MonoBehaviour:
     Quality: 1
   enemyes:
   - Id: 2001
-    Name: "\u8759\u8760"
+    Name: "\u5C0F\u8759\u8760"
     Aggressivity: 10
     Armor: 0
     Max_Hp: 10
+    MoveSpeed: 1.5
+    DefenseRepelNum: 1
+  - Id: 2002
+    Name: "\u5927\u8759\u8760"
+    Aggressivity: 15
+    Armor: 1
+    Max_Hp: 20
+    MoveSpeed: 1.5
+    DefenseRepelNum: 1
+  - Id: 2003
+    Name: "\u9752\u86D9"
+    Aggressivity: 30
+    Armor: 2
+    Max_Hp: 50
     MoveSpeed: 1
+    DefenseRepelNum: 1
+  - Id: 2004
+    Name: "\u5E7D\u7075"
+    Aggressivity: 13
+    Armor: 1
+    Max_Hp: 20
+    MoveSpeed: 1.75
+    DefenseRepelNum: 1
+  - Id: 2005
+    Name: "\u5C0F\u9AB7\u9AC5"
+    Aggressivity: 20
+    Armor: 2
+    Max_Hp: 35
+    MoveSpeed: 1.35
     DefenseRepelNum: 1
   tickets:
   - Id: 1001

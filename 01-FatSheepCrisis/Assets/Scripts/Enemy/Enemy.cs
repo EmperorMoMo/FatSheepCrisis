@@ -6,7 +6,11 @@ using UnityEngine.Events;
 public enum EnemyType
 {
     None,
-    òùòğ=2001,
+    Ğ¡òùòğ=2001,
+    ´óòùòğ,
+    ÇàÍÜ,
+    ÓÄÁé,
+    Ğ¡÷¼÷Ã
 }
 public class Enemy : EnemyBaseAttribute
 {
@@ -19,6 +23,7 @@ public class Enemy : EnemyBaseAttribute
     private void Awake()
     {
         SetAttribute();
+        target = Player.Instance.transform;
         sprite = GetComponent<SpriteRenderer>();
 
         damageable = GetComponent<Damageable>();
@@ -27,16 +32,7 @@ public class Enemy : EnemyBaseAttribute
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onDeath.AddListener(OnDeath);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
-
-        EventCenter.AddListener(EventType.StartGame, StartGame);
     }
-
-    private void StartGame()
-    {
-        Debug.Log("Start");
-        target = Player.Instance.transform;
-    }
-
     private void Update()
     {
         FollowPlayerAndFlip();

@@ -74,8 +74,16 @@ public class Weapon : WeaponBaseAttribute
 
     public void Attack(float speed = 1f)
     {
+        if (anim == null) return;
         AC.layers[0].stateMachine.states[0].state.speed = speed;
-        anim.SetTrigger("attack");
+        if(Player.Instance.Model.eulerAngles.y == 180)
+        {
+            anim.SetTrigger("attack_positive");
+        }
+        else
+        {
+            anim.SetTrigger("attack_negative");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

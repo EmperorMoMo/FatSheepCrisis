@@ -109,8 +109,9 @@ public class Player : CharacterBaseAttribute
     public ProfessionData professionData;
     [HideInInspector]
     public bool isCrit = false;
+    [HideInInspector]
+    public Transform Model;
 
-    private Transform Model;
     private Animator anim;
     private Rigidbody2D rigid;
     private Weapon weapon;
@@ -269,7 +270,7 @@ public class Player : CharacterBaseAttribute
 
     IEnumerator StartGame()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         EventCenter.Broadcast(EventType.StartGame);
     }
 }
