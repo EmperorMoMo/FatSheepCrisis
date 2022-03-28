@@ -79,6 +79,7 @@ public class TicketMenu : UIMenuBase
         else
         {
             Debug.LogError(name);
+            DataManager.Instance.SavePlayerWeaponsData(name);
         }
     }
     public void TenTicket()

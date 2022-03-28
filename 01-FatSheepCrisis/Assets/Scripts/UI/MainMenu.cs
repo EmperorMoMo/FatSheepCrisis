@@ -51,7 +51,6 @@ public class MainMenu : UIMenuBase
         currentProfession = PlayerPrefs.GetString("DefaultProfession", "3001");
         StartCoroutine(ShowMainMenu());
         ReadProfessionData(currentProfession);
-        CheckPlayerProfessions();
         if (!PlayerPrefs.HasKey("Professions"))
         {
             choiseProfessionBtn.SetActive(true);
@@ -64,7 +63,7 @@ public class MainMenu : UIMenuBase
         }
     }
 
-    public void CheckPlayerProfessions()
+    public bool CheckPlayerProfessions()
     {
         playerProfessionsData = DataManager.Instance.ReadPlayerProfessionsData();
         bool haveProfessions = false;
@@ -79,6 +78,7 @@ public class MainMenu : UIMenuBase
         if (haveProfessions)
         {
             EquipedWeapon.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", CheckWeaponsIndex(professionData.Weapon) + ".png");
+            Player.Instance.SetWeapon(int.Parse(CheckWeaponsIndex(professionData.Weapon)));
         }
         else
         {
@@ -86,6 +86,7 @@ public class MainMenu : UIMenuBase
         }
         startGameBtn.SetActive(haveProfessions);
         attributeLevelBtn.SetActive(haveProfessions);
+        return haveProfessions;
     }
 
     public void ReadProfessionData(string key)
@@ -199,6 +200,7 @@ public class MainMenu : UIMenuBase
             yield return new WaitForSecondsRealtime(waitTime);
         }
         SetProfessionsActive(currentProfession, true);
+        CheckPlayerProfessions();
     }
     public void OnClickToClose()
     {
