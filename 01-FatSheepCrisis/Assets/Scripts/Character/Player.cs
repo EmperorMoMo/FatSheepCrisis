@@ -136,8 +136,6 @@ public class Player : CharacterBaseAttribute
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
-
-        EventCenter.Broadcast(EventType.StartGame);
     }
 
     private void OnEnable()
@@ -156,9 +154,12 @@ public class Player : CharacterBaseAttribute
 
     public void Init()
     {
+        Instance = this;
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = new Vector3(0, 0, 0);
         DontDestroyOnLoad(this.gameObject);
+
+        EventCenter.Broadcast(EventType.StartGame);
     }
 
     private void Update()

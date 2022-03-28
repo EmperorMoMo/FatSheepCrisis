@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : UIMenuBase
@@ -272,6 +273,23 @@ public class MainMenu : UIMenuBase
     {
         TicketMenu ticketMenu = UIManager.Instance.GetMenu(MenuType.TicketMenu) as TicketMenu;
         UIManager.Instance.AddOverlayMenu(ticketMenu);
+        SetProfessionsActive(currentProfession, false);
+    }
+
+    public void LoadNextScene(string scene)
+    {
+        if (scene.Length > 0)
+        {
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        }
+        foreach (var item in professions)
+        {
+            if (item.activeInHierarchy)
+            {
+                Instantiate(item).GetComponent<Player>().Init();
+            }
+        }
+        UIResponse_Close();
         SetProfessionsActive(currentProfession, false);
     }
 }
