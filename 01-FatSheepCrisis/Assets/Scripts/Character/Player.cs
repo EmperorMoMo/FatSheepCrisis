@@ -154,6 +154,12 @@ public class Player : CharacterBaseAttribute
         //EventCenter.Broadcast(EventType.StartGame);
     }
 
+    public void Init()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+        transform.position = new Vector3(0, 0, 0);
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     private void Update()
     {
