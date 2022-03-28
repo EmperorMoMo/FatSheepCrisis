@@ -25,10 +25,12 @@ public class WeaponMenu : UIMenuBase
     public Text repelNum;
     public Text projectilesNum;
     public Text SkillDescription;
+    public Text Title;
     private MainMenu mainMenu;
     public WeaponMenuType weaponMenuType;
     public GameObject OKBtn;
     public string currentWeapon;
+    private bool isProfession;
 
     public override void Setup()
     {
@@ -42,9 +44,10 @@ public class WeaponMenu : UIMenuBase
         gameObject.GetComponent<RectTransform>().localScale = Vector3.zero;
         gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.25f).SetEase(Ease.OutBack);
         mainMenu = UIManager.Instance.GetMenu(MenuType.MainMenu) as MainMenu;
+        isProfession = mainMenu.CheckPlayerProfessions();
         ShowWeapons(weaponMenuType);
         currentWeapon = null;
-        if (CheckPlayerWeapons(mainMenu.professionData.Weapon))
+        if (CheckPlayerWeapons(mainMenu.professionData.Weapon)&& isProfession)
         {
             OnClickToSelect(mainMenu.professionData.Weapon);
         }
@@ -65,6 +68,7 @@ public class WeaponMenu : UIMenuBase
         List<GameObject> gameObjects = new List<GameObject>();
         if (type == WeaponMenuType.AllWeapon)
         {
+            Title.text = "ÎäÆ÷Í¼¼ø";
             foreach (var item in Data)
             {
                 obj = Instantiate(weaponGrid.gameObject);
@@ -76,14 +80,16 @@ public class WeaponMenu : UIMenuBase
                 Image image = obj.transform.GetChild(0).GetComponent<Image>();
                 image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
                 obj.SetActive(true);
+                obj.transform.GetChild(1).gameObject.SetActive(!CheckPlayerWeapons(item.Value.Name));
                 gameObjects.Add(obj);
             }
         }
         else
         {
+            Title.text = "ÎäÆ÷Ñ¡Ôñ";
             foreach (var item in Data)
             {
-                if (mainMenu.professionData.WeaponType == item.Value.Type&&CheckPlayerWeapons(item.Value.Name))
+                if (mainMenu.professionData.WeaponType == item.Value.Type&&CheckPlayerWeapons(item.Value.Name)&& isProfession)
                 {
                     obj = Instantiate(weaponGrid.gameObject);
                     obj.name = item.Value.Id + "_" + item.Value.Quality;
@@ -113,6 +119,9 @@ public class WeaponMenu : UIMenuBase
         for (int i = 0; i < gameObjects.Count; i++)
         {
             gameObjects[i].transform.SetSiblingIndex(i);
+        }
+        foreach (var item in Data)
+        {
         }
     }
 
@@ -147,6 +156,7 @@ public class WeaponMenu : UIMenuBase
         mainMenu.professionData.Weapon = Data[currentWeapon].Name;
         DataManager.Instance.SavePlayerData(mainMenu.currentProfession, mainMenu.professionData);
         mainMenu.EquipedWeapon.sprite= XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
+        Player.Instance.SetWeapon(int.Parse(currentWeapon));
     }
 
     public void OnClickToSelect(string weapon)
@@ -175,7 +185,7 @@ public class WeaponMenu : UIMenuBase
         repelNum.text = Data[str].RepelNum;
         projectilesNum.text = Data[str].ProjectilesNum;
         SkillDescription.text = Data[str].SkillDescription;
-        if (mainMenu.professionData.WeaponType != Data[str].Type||!CheckPlayerWeapons(Data[str].Name))
+        if (mainMenu.professionData.WeaponType != Data[str].Type||!CheckPlayerWeapons(Data[str].Name)||!isProfession)
         {
             OKBtn.SetActive(false);
         }
