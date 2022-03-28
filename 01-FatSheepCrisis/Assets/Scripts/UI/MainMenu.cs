@@ -23,9 +23,11 @@ public class MainMenu : UIMenuBase
     public Text Exp_GainRate;
     public Text Gold_GainRate;
     public Text ProjectilesNum;
+    public Text playerGold;
     public GameObject attributeLevelBtn;
     public GameObject startGameBtn;
     public GameObject choiseProfessionBtn;
+    public GameObject buyProfessionBtn;
     public Image EquipedWeapon;
     public string currentProfession;
     public string[] playerProfessionsData;
@@ -57,11 +59,13 @@ public class MainMenu : UIMenuBase
             choiseProfessionBtn.SetActive(true);
             startGameBtn.SetActive(false);
             attributeLevelBtn.SetActive(false);
+            buyProfessionBtn.SetActive(false);
         }
         else
         {
             playerWeaponsData = DataManager.Instance.ReadPlayerWeaponsData();
         }
+        playerGold.text = DataManager.Instance.ReadPlayerGoldData().ToString();
     }
 
     public bool CheckPlayerProfessions()
@@ -87,6 +91,8 @@ public class MainMenu : UIMenuBase
         }
         startGameBtn.SetActive(haveProfessions);
         attributeLevelBtn.SetActive(haveProfessions);
+        if (PlayerPrefs.HasKey("Professions"))
+            buyProfessionBtn.SetActive(!haveProfessions);
         return haveProfessions;
     }
 
@@ -135,6 +141,20 @@ public class MainMenu : UIMenuBase
                 professions[i].SetActive(active);
             }
         }
+    }
+
+    public void OnClickToBuyProfession()
+    {
+        int gold = int.Parse(playerGold.text);
+        if (gold > 5000)
+        {
+            DataManager.Instance.SavePlayerProfessionsData(professionData.Name);
+            DataManager.Instance.SavePlayerWeaponsData(professionData.Weapon);
+            gold -= 5000;
+            DataManager.Instance.SavePlayerGoldData(gold);
+            playerGold.text = DataManager.Instance.ReadPlayerGoldData().ToString();
+        }
+        CheckPlayerProfessions();
     }
 
     public void OnClickToChioseProfession()
@@ -278,6 +298,7 @@ public class MainMenu : UIMenuBase
 
     public void LoadNextScene(string scene)
     {
+        UIResponse_Close();
         if (scene.Length > 0)
         {
             SceneManager.LoadScene(scene, LoadSceneMode.Additive);
@@ -289,7 +310,6 @@ public class MainMenu : UIMenuBase
                 Instantiate(item).GetComponent<Player>().Init(int.Parse(CheckWeaponsIndex(professionData.Weapon)));
             }
         }
-        UIResponse_Close();
         SetProfessionsActive(currentProfession, false);
     }
 }

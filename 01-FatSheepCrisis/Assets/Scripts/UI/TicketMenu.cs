@@ -8,6 +8,7 @@ public class TicketMenu : UIMenuBase
     private Dictionary<string, TicketData> Data;
     private PackageItem Ticket;
     private MainMenu mainMenu;
+    private int playerGold;
     public override void Setup()
     {
         base.Setup();
@@ -20,16 +21,19 @@ public class TicketMenu : UIMenuBase
         gameObject.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 1);
         gameObject.GetComponent<RectTransform>().DOScaleX(1.0f, 0.25f).SetEase(Ease.OutBack);
         mainMenu = UIManager.Instance.GetMenu(MenuType.MainMenu) as MainMenu;
+        playerGold = int.Parse(mainMenu.playerGold.text);
     }
     public void OnClickToClose()
     {
         StartCoroutine(CloseIconSetting());
+
     }
     IEnumerator CloseIconSetting()
     {
         gameObject.GetComponent<RectTransform>().DOScaleX(0f, 0.25f).SetEase(Ease.InBack);
         yield return new WaitForSecondsRealtime(0.25f);
         mainMenu.SetProfessionsActive(mainMenu.currentProfession, true);
+        mainMenu.playerGold.text= DataManager.Instance.ReadPlayerGoldData().ToString();
         base.UIResponse_Close();
     }
     /// <summary>
@@ -74,7 +78,10 @@ public class TicketMenu : UIMenuBase
         string name = GetPowerUp().Name;
         if (name == "随机金币")
         {
-            Debug.LogError("获得" + RandomCoin() + "金币");
+            int gold = RandomCoin();
+            playerGold += gold;
+            DataManager.Instance.SavePlayerGoldData(playerGold);
+            Debug.LogError("获得" + gold + "金币");
         }
         else
         {
@@ -84,27 +91,21 @@ public class TicketMenu : UIMenuBase
     }
     public void TenTicket()
     {
-        int ssr = 0;
-        int sr = 0;
-        int r = 0;
         for (int i = 0; i < 10; i++)
         {
-            string s = GetPowerUp().Quality;
-            switch (s)
+            string name = GetPowerUp().Name;
+            if (name == "随机金币")
             {
-                case "SSR":
-                    ssr++;
-                    break;
-                case "SR":
-                    sr++;
-                    break;
-                case "R":
-                    r++;
-                    break;
-                default:
-                    break;
+                int gold = RandomCoin();
+                playerGold += gold;
+                DataManager.Instance.SavePlayerGoldData(playerGold);
+                Debug.LogError("获得" + gold + "金币");
+            }
+            else
+            {
+                Debug.LogError(name);
+                DataManager.Instance.SavePlayerWeaponsData(name);
             }
         }
-        Debug.LogError("10次抽奖中获得SSR、SR、R的次数分别为：" + ssr+ "-----"+sr+"-----" +r);
     }
 }

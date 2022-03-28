@@ -7,25 +7,25 @@ using UnityEngine.UI;
 public class StartMenu : UIMenuBase
 {
     public Button StartBtn;
-
-    public override void Init()
-    {
-        base.Init();
-    }
+    private bool firstClick=true;
 
     public void EnterGame()
     {
-        MainMenu mainMenu = UIManager.Instance.GetMenu(MenuType.MainMenu) as MainMenu;
-        int i = Random.Range(0, 2);
-        float waitTime = 0.25f;
-        if (i == 0)
+        if (firstClick)
         {
-            gameObject.GetComponent<RectTransform>().DOScaleX(0f, waitTime).SetEase(Ease.InSine).OnComplete(() => { UIManager.Instance.PushMenu(mainMenu); });
+            firstClick = false;
+            MainMenu mainMenu = UIManager.Instance.GetMenu(MenuType.MainMenu) as MainMenu;
+            int i = Random.Range(0, 2);
+            float waitTime = 0.25f;
+            if (i == 0)
+            {
+                gameObject.GetComponent<RectTransform>().DOScaleX(0f, waitTime).SetEase(Ease.InSine).OnComplete(() => { UIManager.Instance.PushMenu(mainMenu); firstClick = true; });
+            }
+            else
+            {
+                gameObject.GetComponent<RectTransform>().DOScaleY(0f, waitTime).SetEase(Ease.InSine).OnComplete(() => { UIManager.Instance.PushMenu(mainMenu); firstClick = true; });
+            }
         }
-        else
-        {
-            gameObject.GetComponent<RectTransform>().DOScaleY(0f, waitTime).SetEase(Ease.InSine).OnComplete(() => { UIManager.Instance.PushMenu(mainMenu); });
-        }    
     }
 
 }
