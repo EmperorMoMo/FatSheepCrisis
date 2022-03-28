@@ -123,7 +123,6 @@ public class Player : CharacterBaseAttribute
 
     private void Start()
     {
-        Instance = this;
         professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
         Cur_Hp = TotalAttribute.Max_Hp;
 
@@ -136,30 +135,22 @@ public class Player : CharacterBaseAttribute
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
+
     }
 
     private void OnEnable()
     {
         Instance = this;
-
-        //professionData = DataManager.Instance.ReadPlayerData("" + (int)profession);
-        //Cur_Hp = TotalAttribute.Max_Hp;
-
-        //rigid = GetComponent<Rigidbody2D>();
-        //Model = transform.Find("Model").GetComponent<Transform>();
-        //anim = Model.GetComponentInChildren<Animator>();
-
-        //EventCenter.Broadcast(EventType.StartGame);
     }
 
-    public void Init()
+    public void Init(int _Id)
     {
         Instance = this;
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = new Vector3(0, 0, 0);
+        StartCoroutine(StartGame());
+        SetWeapon(_Id);
         DontDestroyOnLoad(this.gameObject);
-
-        EventCenter.Broadcast(EventType.StartGame);
     }
 
     private void Update()
@@ -274,5 +265,11 @@ public class Player : CharacterBaseAttribute
     private void OnHurtEnd()
     {
 
+    }
+
+    IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(1);
+        EventCenter.Broadcast(EventType.StartGame);
     }
 }

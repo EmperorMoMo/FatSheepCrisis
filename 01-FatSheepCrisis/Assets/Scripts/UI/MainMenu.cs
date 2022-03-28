@@ -286,7 +286,7 @@ public class MainMenu : UIMenuBase
         {
             if (item.activeInHierarchy)
             {
-                Instantiate(item).GetComponent<Player>().Init();
+                Instantiate(item).GetComponent<Player>().Init(int.Parse(CheckWeaponsIndex(professionData.Weapon)));
             }
         }
         UIResponse_Close();

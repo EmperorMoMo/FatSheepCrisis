@@ -33,7 +33,8 @@ public class Enemy : EnemyBaseAttribute
 
     private void StartGame()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log("Start");
+        target = Player.Instance.transform;
     }
 
     private void Update()
