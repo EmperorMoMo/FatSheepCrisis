@@ -1006,10 +1006,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8750172062325082619, guid: 28d12e71f6f8f544d8489db3cd08c459, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8750172062892287203, guid: 28d12e71f6f8f544d8489db3cd08c459, type: 3}
       propertyPath: m_Name
       value: Berserker

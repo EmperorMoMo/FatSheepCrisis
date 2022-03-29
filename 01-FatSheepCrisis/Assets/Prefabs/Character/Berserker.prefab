@@ -1,5 +1,138 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &690247647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 690247650}
+  - component: {fileID: 690247649}
+  - component: {fileID: 690247648}
+  m_Layer: 0
+  m_Name: FireAxeFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &690247650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690247647}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.89, z: 0}
+  m_LocalScale: {x: 3.75, y: 3.75, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8572792169866618482}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &690247649
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690247647}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -5403655600736870673, guid: 260e43ae3c7c6c346bf7dc78f834f5ca, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6.6666665, y: 6.6666665}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &690247648
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690247647}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbdbcc2eca598534b83d3a5fed1053d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &7269574790420706914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8572792169866618482}
+  m_Layer: 3
+  m_Name: WeaponFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8572792169866618482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7269574790420706914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 690247650}
+  m_Father: {fileID: 8750172062892287206}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8750172062892287203
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8750172062892287206
 Transform:
   m_ObjectHideFlags: 0
@@ -29,10 +162,11 @@ Transform:
   m_GameObject: {fileID: 8750172062892287203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 150, y: 150, z: 1}
   m_Children:
   - {fileID: 4713229052903117424}
   - {fileID: 8750172062325082621}
+  - {fileID: 8572792169866618482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,7 +201,11 @@ MonoBehaviour:
     FinalDamage: 
     ExtraDamage: 
     AdditionalDamage: 
+    WeaponType: 
+    Introduce: 
+    Weapon: 
   isCrit: 0
+  Model: {fileID: 0}
 --- !u!50 &8750172062892287224
 Rigidbody2D:
   serializedVersion: 4
@@ -157,9 +295,33 @@ PrefabInstance:
       propertyPath: weaponSprite
       value: 
       objectReference: {fileID: 8750172062070371734}
+    - target: {fileID: 9583408, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
+      propertyPath: fx.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9583408, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
+      propertyPath: fx.Array.data[0]._FX
+      value: 
+      objectReference: {fileID: 690247647}
+    - target: {fileID: 9583408, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
+      propertyPath: fx.Array.data[1]._FX
+      value: 
+      objectReference: {fileID: 8750172061849160636}
+    - target: {fileID: 9583408, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
+      propertyPath: fx.Array.data[0]._Name
+      value: 1003
+      objectReference: {fileID: 0}
+    - target: {fileID: 9583408, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
+      propertyPath: fx.Array.data[1]._Name
+      value: 1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831783958038545248, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
+      propertyPath: m_Name
+      value: NormalAxeFX
+      objectReference: {fileID: 0}
     - target: {fileID: 5831783958038545248, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5831783959434165576, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
       propertyPath: m_IsActive
@@ -227,6 +389,11 @@ Transform:
 --- !u!212 &8750172062070371734 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5831783959434165578, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
+  m_PrefabInstance: {fileID: 2990517410972600540}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8750172061849160636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5831783958038545248, guid: 843663ec13339ee419d0b394111ca77c, type: 3}
   m_PrefabInstance: {fileID: 2990517410972600540}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8750172062395756582

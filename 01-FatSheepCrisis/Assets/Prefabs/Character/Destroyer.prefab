@@ -331,6 +331,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 4810317103708499587, guid: 9ccfb18a625d331468782d7cb130129f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699379363643492642, guid: 9ccfb18a625d331468782d7cb130129f, type: 3}
+      propertyPath: fx.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7699379363643492642, guid: 9ccfb18a625d331468782d7cb130129f, type: 3}
       propertyPath: fx.Array.data[0]._FX
       value: 

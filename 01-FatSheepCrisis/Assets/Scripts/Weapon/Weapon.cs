@@ -134,20 +134,31 @@ public class Weapon : WeaponBaseAttribute
         attackList.Clear(); 
     }
 
-    public void HammerFXStart()
+    public void WeaponFXStart(int i = 0)
     {
         foreach (var item in fx)
         {
-            switch (item._Name)
+            if (item._Name == Name)
             {
-                case WeaponName.Ìú´¸:
-                    item._FX.SetActive(true);
-                    break;
+                switch (item._Name)
+                {
+                    case WeaponName.Ìú´¸:
+                        item._FX.SetActive(true);
+                        break;
+                    case WeaponName.Ìú¸«:
+                        Debug.Log("Ìú¸«");
+                        item._FX.SetActive(true);
+                        break;
+                    case WeaponName.ÁÒÑæÉñ¸«:
+                        item._FX.GetComponent<SpriteRenderer>().flipX = (i == 0 ? false : true);
+                        item._FX.SetActive(true);
+                        break;
+                }
             }
         }
     }
 
-    public void HammerFXEnd()
+    public void WeaponFXEnd()
     {
         foreach (var item in fx)
         {
