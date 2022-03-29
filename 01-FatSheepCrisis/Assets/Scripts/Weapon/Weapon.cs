@@ -24,11 +24,20 @@ public enum WeaponType
     ÕÈ
 }
 
+
 public class Weapon : WeaponBaseAttribute
 {
     public WeaponName Name;
     public WeaponType Type;
     public SpriteRenderer weaponSprite;
+
+    [System.Serializable]
+    public struct FX
+    {
+        public WeaponName _Name;
+        public GameObject _FX;
+    }
+    public FX[] fx;
 
     private Animator anim;
     private AnimatorController AC;
@@ -118,8 +127,35 @@ public class Weapon : WeaponBaseAttribute
         return _Aggressivity * (1 + TotalAttribute.FinalDamage) + TotalAttribute.AdditionalDamage;
     }
 
+
+    #region ¶¯»­ÊÂ¼þ
     public void AttackOver()
     {
         attackList.Clear(); 
     }
+
+    public void HammerFXStart()
+    {
+        foreach (var item in fx)
+        {
+            switch (item._Name)
+            {
+                case WeaponName.Ìú´¸:
+                    item._FX.SetActive(true);
+                    break;
+            }
+        }
+    }
+
+    public void HammerFXEnd()
+    {
+        foreach (var item in fx)
+        {
+            if (item._FX.activeInHierarchy)
+            {
+                item._FX.SetActive(false);
+            }
+        }
+    }
+    #endregion
 }

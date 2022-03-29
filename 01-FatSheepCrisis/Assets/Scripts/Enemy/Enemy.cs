@@ -19,12 +19,16 @@ public class Enemy : EnemyBaseAttribute
     private Transform target;
     private Damageable damageable;
     private SpriteRenderer sprite;
+    private Rigidbody2D rigid;
+
+    private bool onHurt;
 
     private void Awake()
     {
         SetAttribute();
         target = Player.Instance.transform;
         sprite = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
 
         damageable = GetComponent<Damageable>();
         damageable.invinciableTime = 0.2f;
@@ -35,10 +39,16 @@ public class Enemy : EnemyBaseAttribute
     }
     private void Update()
     {
-        FollowPlayerAndFlip();
+        Flip();
     }
 
-    public void FollowPlayerAndFlip()
+    private void FixedUpdate()
+    {
+        if (target == null || onHurt) return;
+        rigid.velocity = (target.position - transform.position).normalized * MoveSpeed * 0.5f;
+    }
+
+    public void Flip()
     {
         if (target == null) return;
         if (target.position.x < transform.position.x)
@@ -49,7 +59,7 @@ public class Enemy : EnemyBaseAttribute
         {
             sprite.flipX = false;
         }
-        transform.position = Vector2.MoveTowards(transform.position, target.position + Vector3.up * Random.Range(0.01f, 0.1f), MoveSpeed * Time.deltaTime / 2); ;
+        //transform.position = Vector2.MoveTowards(transform.position, target.position + Vector3.up * Random.Range(0.01f, 0.1f), MoveSpeed * Time.deltaTime / 2); 
     }
 
     public override void SetAttribute()
@@ -72,12 +82,15 @@ public class Enemy : EnemyBaseAttribute
     public void OnHurtStart(Damageable damageable,DamageMessage data)
     {
         sprite.color = Color.red;
-        transform.position = new Vector2(transform.position.x + data.direction.x, transform.position.y + data.direction.y);
+        //transform.position = new Vector2(transform.position.x + data.direction.x, transform.position.y + data.direction.y);
+        onHurt = true;
+        rigid.velocity = (data.direction * 7) / DefenseRepelNum;
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit ? 1 : 0);
     }
 
     public void OnHurtEnd()
     {
+        onHurt = false;
         sprite.color = Color.white;
     }
 
