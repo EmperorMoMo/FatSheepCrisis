@@ -31,6 +31,7 @@ public class WeaponMenu : UIMenuBase
     public GameObject OKBtn;
     public string currentWeapon;
     private bool isProfession;
+    private TipsMenu tipsMenu;
 
     public override void Setup()
     {
@@ -44,6 +45,7 @@ public class WeaponMenu : UIMenuBase
         gameObject.GetComponent<RectTransform>().localScale = Vector3.zero;
         gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.25f).SetEase(Ease.OutBack);
         mainMenu = UIManager.Instance.GetMenu(MenuType.MainMenu) as MainMenu;
+        tipsMenu= UIManager.Instance.GetMenu(MenuType.TipsMenu) as TipsMenu;
         isProfession = mainMenu.CheckPlayerProfessions();
         ShowWeapons(weaponMenuType);
         currentWeapon = null;
@@ -120,9 +122,6 @@ public class WeaponMenu : UIMenuBase
         {
             gameObjects[i].transform.SetSiblingIndex(i);
         }
-        foreach (var item in Data)
-        {
-        }
     }
 
     public bool CheckPlayerWeapons(string weapons)
@@ -157,6 +156,7 @@ public class WeaponMenu : UIMenuBase
         DataManager.Instance.SavePlayerData(mainMenu.currentProfession, mainMenu.professionData);
         mainMenu.EquipedWeapon.sprite= XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
         Player.Instance.SetWeapon(int.Parse(currentWeapon));
+        tipsMenu.SetTips("装备成功", 0.5f);
     }
 
     public void OnClickToSelect(string weapon)

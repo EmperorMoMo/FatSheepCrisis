@@ -34,6 +34,7 @@ public class MainMenu : UIMenuBase
     public string[] playerWeaponsData;
     private List<string> professionID = new List<string>();
     private List<GameObject> professions = new List<GameObject>();
+    private TipsMenu tipsMenu;
 
     public override void Setup()
     {
@@ -46,6 +47,8 @@ public class MainMenu : UIMenuBase
             professionID.Add(item.Key);
         }
         professions = UIManager.Instance.professions;
+        tipsMenu = UIManager.Instance.GetMenu(MenuType.TipsMenu) as TipsMenu;
+        UIManager.Instance.AddOverlayMenu(tipsMenu);
     }
 
     public override void Init()
@@ -85,10 +88,7 @@ public class MainMenu : UIMenuBase
             EquipedWeapon.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", CheckWeaponsIndex(professionData.Weapon) + ".png");
             Player.Instance.SetWeapon(int.Parse(CheckWeaponsIndex(professionData.Weapon)));
         }
-        else
-        {
-            EquipedWeapon.sprite = null;
-        }
+        EquipedWeapon.gameObject.SetActive(haveProfessions);
         startGameBtn.SetActive(haveProfessions);
         attributeLevelBtn.SetActive(haveProfessions);
         if (PlayerPrefs.HasKey("Professions"))
@@ -146,13 +146,17 @@ public class MainMenu : UIMenuBase
     public void OnClickToBuyProfession()
     {
         int gold = int.Parse(playerGold.text);
-        if (gold > 5000)
+        if (gold >= 5000)
         {
             DataManager.Instance.SavePlayerProfessionsData(professionData.Name);
             DataManager.Instance.SavePlayerWeaponsData(professionData.Weapon);
             gold -= 5000;
             DataManager.Instance.SavePlayerGoldData(gold);
             playerGold.text = DataManager.Instance.ReadPlayerGoldData().ToString();
+        }
+        else
+        {
+            tipsMenu.SetTips("½ð±Ò²»×ã",0.5f);
         }
         CheckPlayerProfessions();
     }
@@ -301,7 +305,7 @@ public class MainMenu : UIMenuBase
         UIResponse_Close();
         if (scene.Length > 0)
         {
-            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+            SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
         foreach (var item in professions)
         {
