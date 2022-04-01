@@ -12,6 +12,7 @@ public class UIMenuBase : MonoBehaviour
         WeaponMenu=3,
         AttributeMenu=4,
         TicketMenu=5,
+        TipsMenu=6,
     }
 
     public MenuType MenuID;

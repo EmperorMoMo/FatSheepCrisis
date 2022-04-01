@@ -63,7 +63,11 @@ public class UIManager : Singleton<UIManager>
         {
             UIMenuBase.MenuType.TicketMenu,
             "TicketMenu"
-        },       
+        },        
+        {
+            UIMenuBase.MenuType.TipsMenu,
+            "TipsMenu"
+        },
     };
 
     private void Start()
