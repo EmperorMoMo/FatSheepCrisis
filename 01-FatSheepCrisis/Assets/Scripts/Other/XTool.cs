@@ -24,4 +24,19 @@ public static class XTool
         }
         return ret;
     }
+
+    public static float CalculateDamage(float aggressivity)
+    {
+        float _Aggressivity;
+        if (UnityEngine.Random.value < TotalAttribute.CritChance)
+        {
+            _Aggressivity = aggressivity * (1 + TotalAttribute.CritDamage);
+            Player.Instance.isCrit = true;
+        }
+        else
+        {
+            _Aggressivity = aggressivity;
+        }
+        return _Aggressivity * (1 + TotalAttribute.FinalDamage) + TotalAttribute.AdditionalDamage;
+    }
 }

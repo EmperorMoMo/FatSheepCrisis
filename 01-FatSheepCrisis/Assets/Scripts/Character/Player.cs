@@ -111,10 +111,11 @@ public class Player : CharacterBaseAttribute
     public bool isCrit = false;
     [HideInInspector]
     public Transform Model;
+    [HideInInspector]
+    public Weapon weapon;
 
     private Animator anim;
     private Rigidbody2D rigid;
-    private Weapon weapon;
     private Damageable damageable;
 
     private Vector2 input;
@@ -132,7 +133,6 @@ public class Player : CharacterBaseAttribute
         anim = Model.GetComponentInChildren<Animator>();
 
         damageable = GetComponent<Damageable>();
-        damageable.invinciableTime = 0.5f;
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onHurtEnd.AddListener(OnHurtEnd);
         damageable.onDeath.AddListener(OnDeath);
@@ -237,16 +237,22 @@ public class Player : CharacterBaseAttribute
 
     private void AutoRecoverHp()
     {
+        timer_02 += Time.deltaTime;
+        if (timer_02 >= 1)
+        {
+            timer_02 = 0;
+            RecoverHp(TotalAttribute.Re_Hp);
+        }
+    }
+
+    public void RecoverHp(float Re_Hp)
+    {
         if (Cur_Hp != TotalAttribute.Max_Hp)
         {
-            timer_02 += Time.deltaTime;
-            if (timer_02 >= 1)
-            {
-                timer_02 = 0;
-                Cur_Hp += TotalAttribute.Re_Hp;
-                ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 1.5f, TotalAttribute.Re_Hp, 2);
-            }
+            Cur_Hp += Re_Hp;
+            ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 1.5f, Re_Hp, 2);
         }
+        Cur_Hp = Mathf.Clamp(Cur_Hp, 0, TotalAttribute.Max_Hp);
     }
 
     private void OnHurtStart(Damageable damageable,DamageMessage data)

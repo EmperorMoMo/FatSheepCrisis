@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Damageable))]
+[RequireComponent(typeof(BuffRun))]
 public abstract class EnemyBaseAttribute : MonoBehaviour
 {
     protected internal float Aggressivity { get; set; }

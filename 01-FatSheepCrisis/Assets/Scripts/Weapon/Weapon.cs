@@ -102,7 +102,7 @@ public class Weapon : WeaponBaseAttribute
             if (attackList.Contains(collision.gameObject)) return;
             DamageMessage data = new DamageMessage()
             {
-                damage = CalculateDamage(),
+                damage = XTool.CalculateDamage(TotalAttribute.Aggressivity),
                 direction = (collision.transform.position - Player.Instance.transform.position).normalized * RepelNum
             };
             damageable.OnDamage(data);
@@ -112,20 +112,20 @@ public class Weapon : WeaponBaseAttribute
         }
     }
 
-    private float CalculateDamage()
-    {
-        Player.Instance.isCrit = false;
-        if (UnityEngine.Random.value < (CritChance + TotalAttribute.CritChance))
-        {
-            _Aggressivity = Aggressivity * (1 + CritDamage + TotalAttribute.CritDamage);
-            Player.Instance.isCrit = true;
-        }
-        else
-        {
-            _Aggressivity = Aggressivity;
-        }
-        return _Aggressivity * (1 + TotalAttribute.FinalDamage) + TotalAttribute.AdditionalDamage;
-    }
+    //private float CalculateDamage()
+    //{
+    //    Player.Instance.isCrit = false;
+    //    if (UnityEngine.Random.value < (CritChance + TotalAttribute.CritChance))
+    //    {
+    //        _Aggressivity = Aggressivity * (1 + CritDamage + TotalAttribute.CritDamage);
+    //        Player.Instance.isCrit = true;
+    //    }
+    //    else
+    //    {
+    //        _Aggressivity = Aggressivity;
+    //    }
+    //    return _Aggressivity * (1 + TotalAttribute.FinalDamage) + TotalAttribute.AdditionalDamage;
+    //}
 
 
     #region ¶¯»­ÊÂ¼þ

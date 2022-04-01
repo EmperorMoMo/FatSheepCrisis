@@ -64,16 +64,34 @@ public class ProfessionData
     public string Weapon;
 }
 
+[System.Serializable]
+public class SkillData
+{
+    public string Id;
+    public string Name;
+    public string AttackRatio;
+    public string CoolTime;
+    public string Range;
+    public string Distance;
+    public string MoveSpeed;
+    public string DurationTime;
+    public string BuffDurationTime;
+    public string RepelNum;
+    public string Description;
+}
+
 public class PackageItem : ScriptableObject
 {
     public List<WeaponData> weapons;
     public List<EnemyData> enemyes;
     public List<TicketData> tickets;
     public List<ProfessionData> professions;
+    public List<SkillData> skills;
     public Dictionary<string, WeaponData> dicItem1 = new Dictionary<string, WeaponData>();
     public Dictionary<string, EnemyData> dicItem2 = new Dictionary<string, EnemyData>();
     public Dictionary<string, TicketData> dicItem3 = new Dictionary<string, TicketData>();
     public Dictionary<string, ProfessionData> dicItem4 = new Dictionary<string, ProfessionData>();
+    public Dictionary<string, SkillData> dicItem5 = new Dictionary<string, SkillData>();
     public Dictionary<string,WeaponData> GetWeaponsData()
     {
         dicItem1.Clear();
@@ -109,5 +127,14 @@ public class PackageItem : ScriptableObject
             dicItem4.Add(professions[i].Id, professions[i]);
         }
         return dicItem4;
+    }
+    public Dictionary<string, SkillData> GetSkillData()
+    {
+        dicItem5.Clear();
+        for (int i = 0; i < skills.Count; i++)
+        {
+            dicItem5.Add(skills[i].Id, skills[i]);
+        }
+        return dicItem5;
     }
 }

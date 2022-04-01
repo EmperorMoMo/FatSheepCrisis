@@ -26,9 +26,7 @@ public class Damageable : MonoBehaviour
     [HideInInspector]
     public Type type;
 
-    [HideInInspector]
-    public float invinciableTime = 0;
-    private float invinciableTimer = 0;
+    private float hurtColorShowTimer = 0;
     private bool isInvinciable = false;
 
     private Player player;
@@ -57,11 +55,11 @@ public class Damageable : MonoBehaviour
     {
         if (isInvinciable)
         {
-            invinciableTimer += Time.unscaledDeltaTime;
-            if (invinciableTimer >= invinciableTime)
+            hurtColorShowTimer += Time.deltaTime;
+            if (hurtColorShowTimer >= 0.2)
             {
                 isInvinciable = false;
-                invinciableTimer = 0f;
+                hurtColorShowTimer = 0f;
                 onHurtEnd?.Invoke();
             }
         }
@@ -70,7 +68,7 @@ public class Damageable : MonoBehaviour
     public void OnDamage(DamageMessage data)
     {
 
-        if (isInvinciable) return;
+        //if (isInvinciable) return;
 
         switch (type)
         {

@@ -21,6 +21,7 @@ public class Tool
         holder.enemyes = Tool._02SelectMenuLevel("EnemyConfig");
         holder.tickets = Tool._03SelectMenuLevel("TicketConfig");
         holder.professions = Tool._04SelectMenuLevel("ProfessionConfig");
+        holder.skills = Tool._05SelectMenuLevel("SkillConfig");
         //生成文件路径
         string path = "Assets/Resources/" + Excel + ".asset";
 
@@ -134,6 +135,34 @@ public class Tool
                 WeaponType = collect[i][16].ToString(),
                 Introduce = collect[i][17].ToString(),
                 Weapon = collect[i][18].ToString()
+            };
+            menuArray.Add(level);
+        }
+        return menuArray;
+    }
+    public static List<SkillData> _05SelectMenuLevel(string excel)
+    {
+        string excelName = excel + ".xlsx";
+        DataRowCollection collect = Tool.ReadExcel(excelName, 0);
+
+        List<SkillData> menuArray = new List<SkillData>();
+        for (int i = 1; i < collect.Count; i++)
+        {
+            if (collect[i][1].ToString() == "") continue;
+
+            SkillData level = new SkillData
+            {
+                Id = collect[i][0].ToString(),
+                Name = collect[i][1].ToString(),
+                AttackRatio = collect[i][2].ToString(),
+                CoolTime = collect[i][3].ToString(),
+                Range = collect[i][4].ToString(),
+                Distance = collect[i][5].ToString(),
+                MoveSpeed = collect[i][6].ToString(),
+                DurationTime = collect[i][7].ToString(),
+                BuffDurationTime = collect[i][8].ToString(),
+                RepelNum = collect[i][9].ToString(),
+                Description = collect[i][10].ToString()
             };
             menuArray.Add(level);
         }

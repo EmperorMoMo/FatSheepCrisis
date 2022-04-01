@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     public List<GameObject> enemyes;
     bool startGame;
     float _timer;
+
+    [HideInInspector]
+    public List<Transform> enemyList = new List<Transform>();
 
     private void Start()
     {
@@ -34,6 +37,7 @@ public class EnemyManager : MonoBehaviour
 
     private void RandomInstantiate()
     {
-        Instantiate(enemyes[Random.Range(0, 5)], XTool.RangeInsideCirclePosition(Player.Instance.transform.position, 9, 12), Quaternion.identity);
+        GameObject obj = Instantiate(enemyes[Random.Range(0, 5)], XTool.RangeInsideCirclePosition(Player.Instance.transform.position, 9, 12), Quaternion.identity);
+        enemyList.Add(obj.transform);
     }
 }

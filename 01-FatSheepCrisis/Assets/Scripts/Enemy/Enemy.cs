@@ -15,13 +15,18 @@ public enum EnemyType
 public class Enemy : EnemyBaseAttribute
 {
     public EnemyType Type;
+    [HideInInspector]
+    public Rigidbody2D rigid;
+    [HideInInspector]
+    public bool isThunderBuff, isWaterBuff;
 
     private Transform target;
     private Damageable damageable;
     private SpriteRenderer sprite;
-    private Rigidbody2D rigid;
 
     private bool onHurt;
+    private bool canAttack = true;
+    private float _timer;
 
     private void Awake()
     {
@@ -31,7 +36,6 @@ public class Enemy : EnemyBaseAttribute
         rigid = GetComponent<Rigidbody2D>();
 
         damageable = GetComponent<Damageable>();
-        damageable.invinciableTime = 0.2f;
 
         damageable.onHurtStart.AddListener(OnHurtStart);
         damageable.onDeath.AddListener(OnDeath);
@@ -40,12 +44,21 @@ public class Enemy : EnemyBaseAttribute
     private void Update()
     {
         Flip();
+        if (!canAttack)
+        {
+            _timer += Time.deltaTime;
+            if (_timer >= 0.5)
+            {
+                canAttack = true;
+                _timer = 0f;
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         if (target == null || onHurt) return;
-        rigid.velocity = (target.position - transform.position).normalized * MoveSpeed * 0.5f;
+        rigid.velocity = (target.position - transform.position).normalized * MoveSpeed * 0.75f * (isThunderBuff ? 0 : 1) * (isWaterBuff ? 0.5f : 1);
     }
 
     public void Flip()
@@ -82,9 +95,11 @@ public class Enemy : EnemyBaseAttribute
     public void OnHurtStart(Damageable damageable,DamageMessage data)
     {
         sprite.color = Color.red;
-        //transform.position = new Vector2(transform.position.x + data.direction.x, transform.position.y + data.direction.y);
-        onHurt = true;
-        rigid.velocity = (data.direction * 7) / DefenseRepelNum;
+        if (data.direction != Vector3.zero)
+        {
+            onHurt = true;
+            rigid.velocity = (data.direction * 7) / DefenseRepelNum;
+        }
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit ? 1 : 0);
     }
 
@@ -97,6 +112,7 @@ public class Enemy : EnemyBaseAttribute
     public void OnDeath(Damageable damageable, DamageMessage data)
     {
         Destroy(this.gameObject);
+        EnemyManager.Instance.enemyList.Remove(this.transform);
         CalculateFallProbability();
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.DestoryFX, transform.position);
         ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit ? 1 : 0);
@@ -131,7 +147,11 @@ public class Enemy : EnemyBaseAttribute
             {
                 damage = Aggressivity,
             };
-            damageable.OnDamage(data);
+            if (canAttack)
+            {
+                damageable.OnDamage(data);
+                canAttack = false;
+            }
         }
     }
 }

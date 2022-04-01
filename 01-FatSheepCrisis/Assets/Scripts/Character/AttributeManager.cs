@@ -4,20 +4,21 @@ using UnityEngine;
 
 public static class TotalAttribute
 {
-    public static int ProjectlesNum => Player.Instance.ProjectilesNum + GreenAttribute.ProjectilesNum;
+    public static int ProjectlesNum => Player.Instance.ProjectilesNum + GreenAttribute.ProjectilesNum + Player.Instance.weapon.ProjectilesNum;
     public static float Max_Hp => Player.Instance.Max_Hp + GreenAttribute.Max_Hp;
     public static float Re_Hp => Player.Instance.Re_Hp + GreenAttribute.Re_Hp;
     public static float Armor => Player.Instance.Armor + GreenAttribute.Armor;
     public static float MoveSpeed => Player.Instance.MoveSpeed + GreenAttribute.MoveSpeed;
     public static float AttackSpeed => Player.Instance.AttackSpeed + GreenAttribute.AttackSpeed;
-    public static float CritChance => Mathf.Clamp(Player.Instance.CritChance + GreenAttribute.CritChance, 0, 0.9f);
-    public static float CritDamage => Mathf.Clamp(Player.Instance.CritDamage + GreenAttribute.CritDamage, 0, 3f);
+    public static float CritChance => Mathf.Clamp(Player.Instance.CritChance + GreenAttribute.CritChance + Player.Instance.weapon.CritChance, 0, 0.9f);
+    public static float CritDamage => Mathf.Clamp(Player.Instance.CritDamage + GreenAttribute.CritDamage + Player.Instance.weapon.CritDamage, 0, 3f);
     public static float PickUpRange => Player.Instance.PickUpRange + GreenAttribute.PickUpRange;
     public static float Exp_GainRate => Player.Instance.Exp_GainRate + GreenAttribute.Exp_GainRate;
     public static float Gold_GainRate => Player.Instance.Gold_GainRate + GreenAttribute.Gold_GainRate;
     public static float FinalDamage => Player.Instance.FinalDamage + GreenAttribute.FinalDamage;
     public static float ExtraDamage => Player.Instance.ExtraDamage + GreenAttribute.ExtraDamage;
     public static float AdditionalDamage => Player.Instance.AdditionalDamage + GreenAttribute.AdditionalDamage;
+    public static float Aggressivity => Player.Instance.weapon.Aggressivity;
 }
 
 public static class GreenAttribute

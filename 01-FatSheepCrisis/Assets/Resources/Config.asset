@@ -188,3 +188,70 @@ MonoBehaviour:
     WeaponType: "\u9524"
     Introduce: "\u4E00\u4E2A\u6BC1\u706D\u8005"
     Weapon: "\u94C1\u9524"
+  skills:
+  - Id: 4001
+    Name: "\u706B\u5143\u7D20\u73AF"
+    AttackRatio: 0.5
+    CoolTime: 2
+    Range: 1
+    Distance: 0
+    MoveSpeed: 0
+    DurationTime: 0
+    BuffDurationTime: 3
+    RepelNum: 0
+    Description: 
+  - Id: 4002
+    Name: "\u6C34\u5143\u7D20\u73AF"
+    AttackRatio: 0
+    CoolTime: 2
+    Range: 1
+    Distance: 0
+    MoveSpeed: 0
+    DurationTime: 0
+    BuffDurationTime: 3
+    RepelNum: 0
+    Description: 
+  - Id: 4003
+    Name: "\u571F\u5143\u7D20\u73AF"
+    AttackRatio: 0
+    CoolTime: 2.5
+    Range: 1
+    Distance: 0
+    MoveSpeed: 0
+    DurationTime: 0
+    BuffDurationTime: 0
+    RepelNum: 1
+    Description: 
+  - Id: 4004
+    Name: "\u96F7\u5143\u7D20\u73AF"
+    AttackRatio: 0.5
+    CoolTime: 2
+    Range: 1
+    Distance: 0
+    MoveSpeed: 0
+    DurationTime: 0
+    BuffDurationTime: 3
+    RepelNum: 0
+    Description: 
+  - Id: 4005
+    Name: "\u6728\u5143\u7D20\u73AF"
+    AttackRatio: 0.2
+    CoolTime: 3
+    Range: 1
+    Distance: 0
+    MoveSpeed: 0
+    DurationTime: 0
+    BuffDurationTime: 0
+    RepelNum: 0
+    Description: 
+  - Id: 4006
+    Name: "\u8303\u56F4\u70B8\u5F39"
+    AttackRatio: 1.5
+    CoolTime: 5
+    Range: 1
+    Distance: 0
+    MoveSpeed: 0
+    DurationTime: 0
+    BuffDurationTime: 0
+    RepelNum: 1
+    Description: 
