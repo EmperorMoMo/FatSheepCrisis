@@ -46,11 +46,8 @@ public class RingSkill : MonoBehaviour
         if (collision.TryGetComponent<Damageable>(out Damageable damageable))
         {
             if (attackList.Contains(collision.gameObject)) return;
-            DamageMessage data = new DamageMessage()
-            {
-                damage = XTool.CalculateDamage(TotalAttribute.Aggressivity * skill.attackRatio),
-                direction = (collision.transform.position - Player.Instance.transform.position).normalized * skill.repelNum
-            };
+            DamageMessage data = new DamageMessage();
+
             switch (ringType)
             {
                 case RingType.火元素环:
@@ -62,12 +59,13 @@ public class RingSkill : MonoBehaviour
                 case RingType.雷元素环:
                     data.damage = XTool.CalculateDamage(TotalAttribute.Aggressivity * (skill.attackRatio + SkillManager.Instance.GetLevel(skill.id) * 0.1f));
                     collision.GetComponent<BuffRun>().Run(BuffType.感电, skill.buffDurationTime);
+                    damageable.OnDamage(data);
                     break;
                 case RingType.土元素环:
                     data.direction = (collision.transform.position - Player.Instance.transform.position).normalized * (skill.repelNum + SkillManager.Instance.GetLevel(skill.id) * 0.1f);
+                    damageable.OnDamage(data);
                     break;
             }
-            damageable.OnDamage(data);
             attackList.Add(collision.gameObject);
         }
     }

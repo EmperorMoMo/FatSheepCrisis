@@ -84,7 +84,11 @@ public class Weapon : WeaponBaseAttribute
     public void Attack(float speed = 1f)
     {
         if (anim == null) return;
-        AC.layers[0].stateMachine.states[0].state.speed = speed;
+        foreach (var item in AC.layers[0].stateMachine.states)
+        {
+            item.state.speed = speed;
+        }
+        //AC.layers[0].stateMachine.states[0].state.speed = speed;
         if(Player.Instance.Model.eulerAngles.y == 180)
         {
             anim.SetTrigger("attack_positive");

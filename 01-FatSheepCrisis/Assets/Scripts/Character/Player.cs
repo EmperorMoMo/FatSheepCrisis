@@ -163,6 +163,16 @@ public class Player : CharacterBaseAttribute
         AnimatorControl();
         AutoAttack();
         AutoRecoverHp();
+
+        //°´¼ü¼àÌý¹¦ÄÜ
+        //if (Input.anyKeyDown)
+        //{
+        //    foreach (KeyCode item in System.Enum.GetValues(typeof(KeyCode)))
+        //    {
+        //        if(Input.GetKeyDown(item))
+        //            Debug.Log(item.ToString());
+        //    }
+        //}
     }
 
     private void FixedUpdate()

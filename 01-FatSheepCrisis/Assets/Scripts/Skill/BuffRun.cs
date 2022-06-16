@@ -28,11 +28,13 @@ public class BuffRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.G))
+            fireBuffDurationTime = 5;
     }
 
     public void Run(BuffType buffType, float durationTime, float aggressivity = 0f)
     {
+        EventCenter.Broadcast(EventType.StatusBarHideOrShow, gameObject.GetInstanceID(), buffType, true);
         switch (buffType)
         {
             case BuffType.×ÆÉÕ:
@@ -53,7 +55,7 @@ public class BuffRun : MonoBehaviour
     IEnumerator FireBuff(float aggressivity)
     {
         fireBuffEnd = false;
-        while (fireBuffDurationTime != 0)
+        while (fireBuffDurationTime >= 0)
         {
             yield return new WaitForSeconds(1);
             fireBuffDurationTime -= 1;
@@ -64,6 +66,7 @@ public class BuffRun : MonoBehaviour
             damageable.OnDamage(data);
         }
         fireBuffEnd = true;
+        EventCenter.Broadcast(EventType.StatusBarHideOrShow, gameObject.GetInstanceID(), BuffType.×ÆÉÕ, false);
     }
     IEnumerator ThunderBuff()
     {
@@ -77,17 +80,19 @@ public class BuffRun : MonoBehaviour
             thunderBuffDurationTime -= 1;
         }
         thunderBuffEnd = true;
+        EventCenter.Broadcast(EventType.StatusBarHideOrShow, gameObject.GetInstanceID(), BuffType.¸Ðµç, false);
     }
     IEnumerator WaterBuff()
     {
         waterBuffEnd = false;
         enemy.isWaterBuff = true;
-        while (waterBuffDurationTime != 0)
+        while (waterBuffDurationTime >= 0)
         {
             yield return new WaitForSeconds(1f);
             waterBuffDurationTime -= 1;
         }
         enemy.isWaterBuff = false;
         waterBuffEnd = true;
+        EventCenter.Broadcast(EventType.StatusBarHideOrShow, gameObject.GetInstanceID(), BuffType.¼õËÙ, false);
     }
 }
