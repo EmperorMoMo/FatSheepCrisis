@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2555262744666836188
 RectTransform:
   m_ObjectHideFlags: 0
@@ -155,8 +155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 83.556, y: -65}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.00094604, y: -65}
+  m_SizeDelta: {x: 327.11, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2555262744933850009
 CanvasRenderer:
@@ -187,8 +187,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 60a24121815cffd43a3e8a48fc12875f, type: 3}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: fd7d2d90f8d5b854b9591bbc9289e229, type: 3}
+    m_FontSize: 20
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 60a24121815cffd43a3e8a48fc12875f, type: 3}
+    m_Font: {fileID: 12800000, guid: fd7d2d90f8d5b854b9591bbc9289e229, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 60a24121815cffd43a3e8a48fc12875f, type: 3}
+    m_Font: {fileID: 12800000, guid: fd7d2d90f8d5b854b9591bbc9289e229, type: 3}
     m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
@@ -396,7 +396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -218.07}
+  m_AnchoredPosition: {x: 0, y: -130.84}
   m_SizeDelta: {x: 173.18, y: 87.2285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2555262745376141697
@@ -601,7 +601,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2555262745781735351}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2124266388}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+        m_MethodName: EnterGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2555262745552854419
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuID: 1
   startPosZ: 0
+  StartBtn: {fileID: 0}
 --- !u!1 &2555262745781735349
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +775,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 60a24121815cffd43a3e8a48fc12875f, type: 3}
+    m_Font: {fileID: 12800000, guid: fd7d2d90f8d5b854b9591bbc9289e229, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -916,7 +929,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 60a24121815cffd43a3e8a48fc12875f, type: 3}
+    m_Font: {fileID: 12800000, guid: fd7d2d90f8d5b854b9591bbc9289e229, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0

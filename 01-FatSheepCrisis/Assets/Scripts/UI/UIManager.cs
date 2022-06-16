@@ -77,6 +77,11 @@ public class UIManager : Singleton<UIManager>
         {
             SetupAllMenus();
         }
+        UIMenuBase menu = GetMenu(initialMenu);
+        if (menu != null)
+        {
+            PushMenu(menu);
+        }
         //showcaseOverlay.SetActive(value: false);
     }
 
