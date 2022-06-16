@@ -303,9 +303,10 @@ public class MainMenu : UIMenuBase
     public void LoadNextScene(string scene)
     {
         UIResponse_Close();
+        PlayerPrefs.SetString("DefaultProfession", professionData.Id);
         if (scene.Length > 0)
         {
-            SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
         }
         foreach (var item in professions)
         {

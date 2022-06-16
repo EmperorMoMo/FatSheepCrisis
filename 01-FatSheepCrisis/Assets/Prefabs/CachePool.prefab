@@ -109,7 +109,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5797175360009884756}
   - component: {fileID: 1078433557987896423}
-  - component: {fileID: 1639412579}
   m_Layer: 0
   m_Name: CachePool
   m_TagString: Untagged
@@ -149,15 +148,3 @@ MonoBehaviour:
     prefab: {fileID: 7464512596482340485, guid: d98352f0177d991498665d01425eeb93, type: 3}
   - prefabType: 0
     prefab: {fileID: 6656922804036904600, guid: 1d2b2fd161800b24495247b68db41b08, type: 3}
---- !u!114 &1639412579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3056498337800110816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6cecd98b1c0244d8f2d5a0006b7f89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
