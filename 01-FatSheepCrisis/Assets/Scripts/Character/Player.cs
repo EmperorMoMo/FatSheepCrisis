@@ -151,7 +151,7 @@ public class Player : CharacterBaseAttribute
         transform.position = new Vector3(0, 0, 0);
         StartCoroutine(StartGame());
         SetWeapon(_Id);
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
