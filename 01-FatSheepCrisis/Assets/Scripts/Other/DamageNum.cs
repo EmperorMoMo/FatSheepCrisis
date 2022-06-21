@@ -42,7 +42,6 @@ public class DamageNum : MonoBehaviour
     public void SetTextAndAnimator(float _f,int numType)
     {
         Player.Instance.isCrit = false;
-        if (_f == 0) return;
         anim.SetBool("crit", numType == 1 ? true : false);
         anim.SetBool("rehp", numType == 2 ? true : false);
         text.text = _f.ToString();

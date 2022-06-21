@@ -13,8 +13,8 @@ TagManager:
   - UI
   - Enemy
   - Ground
-  - 
-  - 
+  - Wall
+  - Skill
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 796943751
+    locked: 0
+  - name: Player
+    uniqueID: 3724982995
+    locked: 0
+  - name: Enemy
+    uniqueID: 1020372073
+    locked: 0
+  - name: Skill
+    uniqueID: 1507302383
+    locked: 0
+  - name: Wall
+    uniqueID: 1492957337
+    locked: 0
+  - name: UI
+    uniqueID: 2288253987
     locked: 0

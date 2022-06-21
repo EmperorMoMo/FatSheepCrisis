@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6338919828078471886}
   - component: {fileID: -4840193761974549282}
   - component: {fileID: 2707822948187290171}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EarthRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1507302383
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -5099292496197868168, guid: 32b77520b4fc58a4495d2827c9a2abb0, type: 3}
   m_Color: {r: 1, g: 0.76640606, b: 0, a: 1}
@@ -129,9 +129,6 @@ MonoBehaviour:
     durationTime: 0
     buffDurationTime: 0
     repelNum: 0
-    level: 1
-    coolRemain: 0
-    skillPrefabs: {fileID: 0}
 --- !u!58 &2707822948187290171
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -100,7 +100,8 @@ public class Enemy : EnemyBaseAttribute
             onHurt = true;
             rigid.velocity = (data.direction * 7) / DefenseRepelNum;
         }
-        ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit ? 1 : 0);
+        if(data.damage!=0)
+            ObjectPool.Instance.RequestCacheGameObject(PrefabType.NumberText, transform.position + Vector3.up * 0.5f, data.damage, Player.Instance.isCrit ? 1 : 0);
     }
 
     public void OnHurtEnd()

@@ -30,7 +30,7 @@ public class SkillManager : Singleton<SkillManager>
         if (Input.GetKeyDown(KeyCode.C)) InstantiateFX(4003, Player.Instance.transform.position);
         if (Input.GetKeyDown(KeyCode.V)) InstantiateFX(4004, Player.Instance.transform.position);
         if (Input.GetKeyDown(KeyCode.B)) InstantiateFX(4005, Player.Instance.transform.position);
-        //if (Input.GetKeyDown(KeyCode.Z)) InstantiateFX(4006, Player.Instance.transform.position);
+        if (Input.GetKeyDown(KeyCode.N)) InstantiateFX(4006, Player.Instance.transform.position);
     }
 
     public SkillInfo ReadSkillConfig(string name)
