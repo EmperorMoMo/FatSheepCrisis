@@ -25,6 +25,7 @@ public class TicketMenu : UIMenuBase
     }
     public void OnClickToClose()
     {
+        AudioManager.Instance.PlayCloseUIAudio();
         StartCoroutine(CloseIconSetting());
 
     }
@@ -75,6 +76,7 @@ public class TicketMenu : UIMenuBase
 
     public void OneTicket()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         string name = GetPowerUp().Name;
         if (name == "Ëæ»ú½ð±Ò")
         {
@@ -91,6 +93,7 @@ public class TicketMenu : UIMenuBase
     }
     public void TenTicket()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         for (int i = 0; i < 10; i++)
         {
             string name = GetPowerUp().Name;

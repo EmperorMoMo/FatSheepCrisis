@@ -9,8 +9,13 @@ public class StartMenu : UIMenuBase
     public Button StartBtn;
     private bool firstClick=true;
 
+    private void Awake()
+    {
+        AudioManager.Instance.PlayBackGroundAudio();
+    }
     public void EnterGame()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         if (firstClick)
         {
             firstClick = false;

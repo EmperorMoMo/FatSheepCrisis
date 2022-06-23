@@ -152,6 +152,7 @@ public class WeaponMenu : UIMenuBase
 
     public void EquipWeapons()
     {
+        AudioManager.Instance.PlayEquipWeaponAudio();
         mainMenu.professionData.Weapon = Data[currentWeapon].Name;
         DataManager.Instance.SavePlayerData(mainMenu.currentProfession, mainMenu.professionData);
         mainMenu.EquipedWeapon.sprite= XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
@@ -161,6 +162,7 @@ public class WeaponMenu : UIMenuBase
 
     public void OnClickToSelect(string weapon)
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         string str = "";
         if (weapon == "none")
         {
@@ -198,6 +200,7 @@ public class WeaponMenu : UIMenuBase
             if(content.GetChild(i).name.Substring(0, 4) == str)
             {
                 content.GetChild(i).transform.DOScale(1.2f, 0.25f).SetEase(Ease.OutBack);
+                //content.GetChild(i).transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             }
             else
             {
@@ -208,6 +211,7 @@ public class WeaponMenu : UIMenuBase
     }
     public void OnClickToClose()
     {
+        AudioManager.Instance.PlayCloseUIAudio();
         StartCoroutine(CloseIconSetting());
     }
     IEnumerator CloseIconSetting()

@@ -145,6 +145,7 @@ public class MainMenu : UIMenuBase
 
     public void OnClickToBuyProfession()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = int.Parse(playerGold.text);
         if (gold >= 5000)
         {
@@ -163,6 +164,7 @@ public class MainMenu : UIMenuBase
 
     public void OnClickToChioseProfession()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         DataManager.Instance.SavePlayerProfessionsData(professionData.Name);
         DataManager.Instance.SavePlayerWeaponsData(professionData.Weapon);
         PlayerPrefs.SetString("DefaultProfession", professionData.Id);
@@ -172,6 +174,7 @@ public class MainMenu : UIMenuBase
 
     public void OnClickToNextProfession()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int i = int.Parse(currentProfession);
         if (i < int.Parse(professionID[professionID.Count - 1]))
         {
@@ -190,6 +193,7 @@ public class MainMenu : UIMenuBase
 
     public void OnClickToLastProfession()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int i = int.Parse(currentProfession);
         if (i > int.Parse(professionID[0]))
         {
@@ -229,6 +233,7 @@ public class MainMenu : UIMenuBase
     }
     public void OnClickToClose()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         StartCoroutine(CloseIconSetting());
         SetProfessionsActive(currentProfession, false);
     }
@@ -275,6 +280,7 @@ public class MainMenu : UIMenuBase
     }
     public void ShowWeaponMenu()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         WeaponMenu weaponMenu = UIManager.Instance.GetMenu(MenuType.WeaponMenu) as WeaponMenu;
         weaponMenu.weaponMenuType = WeaponMenu.WeaponMenuType.AllWeapon;
         UIManager.Instance.AddOverlayMenu(weaponMenu);
@@ -282,6 +288,7 @@ public class MainMenu : UIMenuBase
     }
     public void ShowProfessionWeaponMenu()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         WeaponMenu weaponMenu = UIManager.Instance.GetMenu(MenuType.WeaponMenu) as WeaponMenu;
         weaponMenu.weaponMenuType = WeaponMenu.WeaponMenuType.ProfessionWeapon;
         UIManager.Instance.AddOverlayMenu(weaponMenu);
@@ -289,12 +296,14 @@ public class MainMenu : UIMenuBase
     }
     public void ShowAttributeMenu()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         AttributeMenu attributeMenu = UIManager.Instance.GetMenu(MenuType.AttributeMenu) as AttributeMenu;
         UIManager.Instance.AddOverlayMenu(attributeMenu);
         SetProfessionsActive(currentProfession, false);
     }
     public void ShowTicketMenu()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         TicketMenu ticketMenu = UIManager.Instance.GetMenu(MenuType.TicketMenu) as TicketMenu;
         UIManager.Instance.AddOverlayMenu(ticketMenu);
         SetProfessionsActive(currentProfession, false);
@@ -302,11 +311,12 @@ public class MainMenu : UIMenuBase
 
     public void LoadNextScene(string scene)
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         UIResponse_Close();
         PlayerPrefs.SetString("DefaultProfession", professionData.Id);
         if (scene.Length > 0)
         {
-            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+            SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
         foreach (var item in professions)
         {
@@ -316,5 +326,6 @@ public class MainMenu : UIMenuBase
             }
         }
         SetProfessionsActive(currentProfession, false);
+        AudioManager.Instance.PlayFightAudio();
     }
 }
