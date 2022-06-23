@@ -328,6 +328,7 @@ public class AttributeMenu : UIMenuBase
 
     public void PromoteHP()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= HP_Cost)
         {
@@ -353,6 +354,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteHPRecovery()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= HPRecovery_Cost)
         {
@@ -378,6 +380,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteArmor()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= Armor_Cost)
         {
@@ -403,6 +406,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteMoveSpeed()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= MoveSpeed_Cost)
         {
@@ -428,6 +432,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteAttackSpeed()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= AttackSpeed_Cost)
         {
@@ -453,6 +458,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteCrit()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= Crit_Cost)
         {
@@ -478,6 +484,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteCritDamage()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= CritDamage_Cost)
         {
@@ -503,6 +510,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromotePickUpRange()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= PickUpRange_Cost)
         {
@@ -528,6 +536,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteExtraExperience()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= ExtraExperience_Cost)
         {
@@ -553,6 +562,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteExtraGoldCoin()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= ExtraGoldCoin_Cost)
         {
@@ -578,6 +588,7 @@ public class AttributeMenu : UIMenuBase
     }
     public void PromoteProjectileNumber()
     {
+        AudioManager.Instance.PlayClickBtnAudio();
         int gold = DataManager.Instance.ReadPlayerGoldData();
         if (gold >= ProjectileNumber_Cost)
         {
@@ -604,6 +615,7 @@ public class AttributeMenu : UIMenuBase
 
     public void OnClickToClose()
     {
+        AudioManager.Instance.PlayCloseUIAudio();
         mainMenu.ReadProfessionData(mainMenu.currentProfession);
         promoteCountDic.Clear();
         StartCoroutine(CloseIconSetting());
