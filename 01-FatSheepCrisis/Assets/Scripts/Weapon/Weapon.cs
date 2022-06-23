@@ -150,11 +150,13 @@ public class Weapon : WeaponBaseAttribute
                         item._FX.SetActive(true);
                         break;
                     case WeaponName.Ìú¸«:
-                        Debug.Log("Ìú¸«");
                         item._FX.SetActive(true);
                         break;
                     case WeaponName.ÁÒÑæÉñ¸«:
                         item._FX.GetComponent<SpriteRenderer>().flipX = (i == 0 ? false : true);
+                        item._FX.SetActive(true);
+                        break;
+                    case WeaponName.À×öªÖ®´¸:
                         item._FX.SetActive(true);
                         break;
                 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    public List<GameObject> enemyes;
+    public List<GameObject> enemyPrefabs;
     bool startGame;
     float _timer;
 
@@ -37,7 +37,46 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void RandomInstantiate()
     {
-        GameObject obj = Instantiate(enemyes[Random.Range(0, 5)], XTool.RangeInsideCirclePosition(Player.Instance.transform.position, 9, 12), Quaternion.identity);
+        GameObject obj = Instantiate(enemyPrefabs[Random.Range(0, 5)], XTool.RangeInsideCirclePosition(Player.Instance.transform.position, 9, 12), Quaternion.identity);
         enemyList.Add(obj.transform);
+    }
+
+    public Vector2 ChooseEnemy(float distance, bool isNearst = false, bool isRandom = false)
+    {
+        List<Vector2> temp = new List<Vector2>();
+        foreach (var item in enemyList)
+        {
+            if (Vector2.Distance(Player.Instance.transform.position, item.position) <= distance)
+            {
+                temp.Add(item.position);
+            }
+        }
+        if (temp.Count != 0)
+        {
+            if (isRandom)
+            {
+                return temp[Random.Range(0, temp.Count)];
+            }
+            if (isNearst)
+            {
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    for (int j = 0; j < temp.Count - 1 - i; j++)
+                    {
+                        if (Vector2.Distance(Player.Instance.transform.position, temp[j]) > Vector2.Distance(Player.Instance.transform.position, temp[j + 1]))
+                        {
+                            Vector2 _temp = temp[j];
+                            temp[j] = temp[j + 1];
+                            temp[j + 1] = _temp;
+                        }
+                    }
+                }
+            }
+            return temp[0];
+        }
+        else
+        {
+            return Vector2.zero;
+        }
     }
 }

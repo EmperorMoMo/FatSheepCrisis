@@ -7,7 +7,6 @@ public class RangeBomb : MonoBehaviour
     public SkillInfo skill;
 
     private float _timer;
-    private List<Transform> chooseEnemy = new List<Transform>();
     private Animator anim;
     private List<GameObject> attackList = new List<GameObject>();
 
@@ -45,21 +44,14 @@ public class RangeBomb : MonoBehaviour
 
     private void Bomb()
     {
-        foreach (var item in EnemyManager.Instance.enemyList)
-        {
-            if (Vector3.Distance(item.position, Player.Instance.transform.position) < 6)
-            {
-                chooseEnemy.Add(item);
-            }
-        }
         transform.parent = null;
-        if (chooseEnemy.Count != 0)
+        if (EnemyManager.Instance.ChooseEnemy(6, false, true).Equals(Vector2.zero))
         {
-            transform.position = chooseEnemy[Random.Range(0, chooseEnemy.Count)].position;
+            transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(1, 6), Player.Instance.transform.position.y + Random.Range(1, 6), 0);
         }
         else
         {
-            transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(1, 6), Player.Instance.transform.position.y + Random.Range(1, 6), 0);
+            transform.position = EnemyManager.Instance.ChooseEnemy(6, false, true);
         }
         anim.enabled = true;
     }
@@ -69,6 +61,5 @@ public class RangeBomb : MonoBehaviour
         transform.parent = Player.Instance.transform;
         anim.enabled = false;
         attackList.Clear();
-        chooseEnemy.Clear();
     }
 }
