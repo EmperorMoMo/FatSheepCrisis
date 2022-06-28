@@ -117,11 +117,13 @@ public class AttributeMenu : UIMenuBase
             case "HP":
                 for (int i = 0; i < HP.Length; i++)
                 {
-                    HP[i].GetComponent<Image>().color = Color.white;
+                    //HP[i].GetComponent<Image>().color = Color.white;
+                    HP[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    HP[i].GetComponent<Image>().color = Color.yellow;
+                    //HP[i].GetComponent<Image>().color = Color.yellow;
+                    HP[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     HP_Cost = (count + 1) * 200;
@@ -136,11 +138,13 @@ public class AttributeMenu : UIMenuBase
             case "HPRecovery":
                 for (int i = 0; i < HPRecovery.Length; i++)
                 {
-                    HPRecovery[i].GetComponent<Image>().color = Color.white;
+                    //HPRecovery[i].GetComponent<Image>().color = Color.white;
+                    HPRecovery[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    HPRecovery[i].GetComponent<Image>().color = Color.yellow;
+                    //HPRecovery[i].GetComponent<Image>().color = Color.yellow;
+                    HPRecovery[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     HPRecovery_Cost = (count + 1) * 200;
@@ -155,11 +159,13 @@ public class AttributeMenu : UIMenuBase
             case "Armor":
                 for (int i = 0; i < Armor.Length; i++)
                 {
-                    Armor[i].GetComponent<Image>().color = Color.white;
+                    //Armor[i].GetComponent<Image>().color = Color.white;
+                    Armor[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    Armor[i].GetComponent<Image>().color = Color.yellow;
+                    //Armor[i].GetComponent<Image>().color = Color.yellow;
+                    Armor[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     Armor_Cost = (count + 1) * 200;
@@ -174,11 +180,13 @@ public class AttributeMenu : UIMenuBase
             case "MoveSpeed":
                 for (int i = 0; i < MoveSpeed.Length; i++)
                 {
-                    MoveSpeed[i].GetComponent<Image>().color = Color.white;
+                    //MoveSpeed[i].GetComponent<Image>().color = Color.white;
+                    MoveSpeed[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    MoveSpeed[i].GetComponent<Image>().color = Color.yellow;
+                    //MoveSpeed[i].GetComponent<Image>().color = Color.yellow;
+                    MoveSpeed[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     MoveSpeed_Cost = (count + 1) * 200;
@@ -193,11 +201,13 @@ public class AttributeMenu : UIMenuBase
             case "AttackSpeed":
                 for (int i = 0; i < AttackSpeed.Length; i++)
                 {
-                    AttackSpeed[i].GetComponent<Image>().color = Color.white;
+                    //AttackSpeed[i].GetComponent<Image>().color = Color.white;
+                    AttackSpeed[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    AttackSpeed[i].GetComponent<Image>().color = Color.yellow;
+                    //AttackSpeed[i].GetComponent<Image>().color = Color.yellow;
+                    AttackSpeed[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     AttackSpeed_Cost = (count + 1) * 200;
@@ -212,11 +222,13 @@ public class AttributeMenu : UIMenuBase
             case "Crit":
                 for (int i = 0; i < Crit.Length; i++)
                 {
-                    Crit[i].GetComponent<Image>().color = Color.white;
+                    //Crit[i].GetComponent<Image>().color = Color.white;
+                    Crit[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    Crit[i].GetComponent<Image>().color = Color.yellow;
+                    //Crit[i].GetComponent<Image>().color = Color.yellow;
+                    Crit[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     Crit_Cost = (count + 1) * 200;
@@ -231,11 +243,13 @@ public class AttributeMenu : UIMenuBase
             case "CritDamage":
                 for (int i = 0; i < CritDamage.Length; i++)
                 {
-                    CritDamage[i].GetComponent<Image>().color = Color.white;
+                    //CritDamage[i].GetComponent<Image>().color = Color.white;
+                    CritDamage[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    CritDamage[i].GetComponent<Image>().color = Color.yellow;
+                    //CritDamage[i].GetComponent<Image>().color = Color.yellow;
+                    CritDamage[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     CritDamage_Cost = (count + 1) * 200;
@@ -250,11 +264,13 @@ public class AttributeMenu : UIMenuBase
             case "PickUpRange":
                 for (int i = 0; i < PickUpRange.Length; i++)
                 {
-                    PickUpRange[i].GetComponent<Image>().color = Color.white;
+                    //PickUpRange[i].GetComponent<Image>().color = Color.white;
+                    PickUpRange[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    PickUpRange[i].GetComponent<Image>().color = Color.yellow;
+                    //PickUpRange[i].GetComponent<Image>().color = Color.yellow;
+                    PickUpRange[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     PickUpRange_Cost = (count + 1) * 200;
@@ -269,11 +285,13 @@ public class AttributeMenu : UIMenuBase
             case "ExtraExperience":
                 for (int i = 0; i < ExtraExperience.Length; i++)
                 {
-                    ExtraExperience[i].GetComponent<Image>().color = Color.white;
+                    //ExtraExperience[i].GetComponent<Image>().color = Color.white;
+                    ExtraExperience[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    ExtraExperience[i].GetComponent<Image>().color = Color.yellow;
+                    //ExtraExperience[i].GetComponent<Image>().color = Color.yellow;
+                    ExtraExperience[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     ExtraExperience_Cost = (count + 1) * 200;
@@ -288,11 +306,13 @@ public class AttributeMenu : UIMenuBase
             case "ExtraGoldCoin":
                 for (int i = 0; i < ExtraGoldCoin.Length; i++)
                 {
-                    ExtraGoldCoin[i].GetComponent<Image>().color = Color.white;
+                    //ExtraGoldCoin[i].GetComponent<Image>().color = Color.white;
+                    ExtraGoldCoin[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    ExtraGoldCoin[i].GetComponent<Image>().color = Color.yellow;
+                    //ExtraGoldCoin[i].GetComponent<Image>().color = Color.yellow;
+                    ExtraGoldCoin[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     ExtraGoldCoin_Cost = (count + 1) * 200;
@@ -307,11 +327,13 @@ public class AttributeMenu : UIMenuBase
             case "ProjectileNumber":
                 for (int i = 0; i < ProjectileNumber.Length; i++)
                 {
-                    ProjectileNumber[i].GetComponent<Image>().color = Color.white;
+                    //ProjectileNumber[i].GetComponent<Image>().color = Color.white;
+                    ProjectileNumber[i].transform.GetChild(0).gameObject.SetActive(false);
                 }
                 for (int i = 0; i < count; i++)
                 {
-                    ProjectileNumber[i].GetComponent<Image>().color = Color.yellow;
+                    //ProjectileNumber[i].GetComponent<Image>().color = Color.yellow;
+                    ProjectileNumber[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (count > 0)
                     ProjectileNumber_Cost = (count + 1) * 200;
@@ -341,6 +363,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("HP", i);
                 promoteCountDic["HP"] = i;
+                tipsMenu.SetTips("生命值+"+ HP_promoteValue, 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "HP_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.Max_Hp) + HP_promoteValue;
                 mainMenu.professionData.Max_Hp = f.ToString();
@@ -349,7 +372,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f,Color.red);
         }
     }
     public void PromoteHPRecovery()
@@ -367,6 +390,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("HPRecovery", i);
                 promoteCountDic["HPRecovery"] = i;
+                tipsMenu.SetTips("生命恢复+" + HPRecovery_promoteValue, 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "HPRecovery_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.Re_Hp) + HPRecovery_promoteValue;
                 mainMenu.professionData.Re_Hp = f.ToString();
@@ -375,7 +399,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f,Color.red);
         }
     }
     public void PromoteArmor()
@@ -393,6 +417,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("Armor", i);
                 promoteCountDic["Armor"] = i;
+                tipsMenu.SetTips("护甲值+" + Armor_promoteValue, 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "Armor_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.Armor) + Armor_promoteValue;
                 mainMenu.professionData.Armor = f.ToString();
@@ -401,7 +426,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromoteMoveSpeed()
@@ -419,6 +444,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("MoveSpeed", i);
                 promoteCountDic["MoveSpeed"] = i;
+                tipsMenu.SetTips("移动速度+" + MoveSpeed_promoteValue, 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "MoveSpeed_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.MoveSpeed) + MoveSpeed_promoteValue;
                 mainMenu.professionData.MoveSpeed = f.ToString();
@@ -427,7 +453,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromoteAttackSpeed()
@@ -445,6 +471,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("AttackSpeed", i);
                 promoteCountDic["AttackSpeed"] = i;
+                tipsMenu.SetTips("攻击速度+" + AttackSpeed_promoteValue*100+"%", 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "AttackSpeed_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.AttackSpeed) + AttackSpeed_promoteValue;
                 mainMenu.professionData.AttackSpeed = f.ToString();
@@ -453,7 +480,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromoteCrit()
@@ -471,6 +498,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("Crit", i);
                 promoteCountDic["Crit"] = i;
+                tipsMenu.SetTips("暴击率+" + Crit_promoteValue * 100 + "%", 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "Crit_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.CritChance) + Crit_promoteValue;
                 mainMenu.professionData.CritChance = f.ToString();
@@ -479,7 +507,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromoteCritDamage()
@@ -497,6 +525,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("CritDamage", i);
                 promoteCountDic["CritDamage"] = i;
+                tipsMenu.SetTips("暴击伤害+" + CritDamage_promoteValue * 100 + "%", 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "CritDamage_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.CritDamage) + CritDamage_promoteValue;
                 mainMenu.professionData.CritDamage = f.ToString();
@@ -505,7 +534,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromotePickUpRange()
@@ -523,6 +552,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("PickUpRange", i);
                 promoteCountDic["PickUpRange"] = i;
+                tipsMenu.SetTips("拾取范围+" + PickUpRange_promoteValue, 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "PickUpRange_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.PickUpRange) + PickUpRange_promoteValue;
                 mainMenu.professionData.PickUpRange = f.ToString();
@@ -531,7 +561,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromoteExtraExperience()
@@ -549,6 +579,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("ExtraExperience", i);
                 promoteCountDic["ExtraExperience"] = i;
+                tipsMenu.SetTips("额外经验+" + ExtraExperience_promoteValue * 100 + "%", 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "ExtraExperience_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.Exp_GainRate) + ExtraExperience_promoteValue;
                 mainMenu.professionData.Exp_GainRate = f.ToString();
@@ -557,7 +588,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromoteExtraGoldCoin()
@@ -575,6 +606,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("ExtraGoldCoin", i);
                 promoteCountDic["ExtraGoldCoin"] = i;
+                tipsMenu.SetTips("额外金币+" + ExtraGoldCoin_promoteValue * 100 + "%", 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "ExtraGoldCoin_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.Gold_GainRate) + ExtraGoldCoin_promoteValue;
                 mainMenu.professionData.Gold_GainRate = f.ToString();
@@ -583,7 +615,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
     public void PromoteProjectileNumber()
@@ -601,6 +633,7 @@ public class AttributeMenu : UIMenuBase
                 i++;
                 InitAttributeMenu("ProjectileNumber", i);
                 promoteCountDic["ProjectileNumber"] = i;
+                tipsMenu.SetTips("投射物数量+" + ProjectileNumber_promoteValue, 0.5f, Color.green);
                 PlayerPrefs.SetInt(mainMenu.currentProfession + "_" + "ProjectileNumber_Promote_Count", i);
                 float f = float.Parse(mainMenu.professionData.ProjectilesNum) + ProjectileNumber_promoteValue;
                 mainMenu.professionData.ProjectilesNum = f.ToString();
@@ -609,7 +642,7 @@ public class AttributeMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足", 0.5f);
+            tipsMenu.SetTips("金币不足", 0.5f, Color.red);
         }
     }
 

@@ -7,18 +7,24 @@ using UnityEngine.UI;
 public class TipsMenu : UIMenuBase
 {
     public GameObject tips;
+    public Text tipText;
+    public Image image;
 
-    public void SetTips(string tip,float time)
+    public void SetTips(string tip,float time,Color color)
     {
         GameObject obj;
+        //Text tipText = obj.GetComponent<Text>();
+        tipText.text = tip;
+        tipText.color = color;
+        image.color = color;
         obj = Instantiate(tips);
         obj.SetActive(true);
-        Text tipText = obj.GetComponent<Text>();
-        tipText.text = tip;
         RectTransform rt = obj.GetComponent<RectTransform>();
         rt.SetParent(transform);
-        rt.localScale = Vector3.zero;
-        rt.DOScale(1.0f, 0.25f).SetEase(Ease.OutBack);
+        rt.position = tips.GetComponent<RectTransform>().position;
+        //rt.localScale = Vector3.zero;
+        rt.localScale = new Vector3(1, 0, 1);
+        rt.DOScaleY(1.0f, 0.25f).SetEase(Ease.OutBack);
         StartCoroutine(DestroyTips(obj, time));
     }
 
@@ -26,6 +32,6 @@ public class TipsMenu : UIMenuBase
     {
         yield return new WaitForSecondsRealtime(time);
         RectTransform rt = obj.GetComponent<RectTransform>();
-        rt.DOScale(0f, 0.25f).SetEase(Ease.InBack).OnComplete(()=>{ Destroy(obj); });
+        rt.DOScaleY(0f, 0.25f).SetEase(Ease.InBack).OnComplete(()=>{ Destroy(obj); });
     }
 }

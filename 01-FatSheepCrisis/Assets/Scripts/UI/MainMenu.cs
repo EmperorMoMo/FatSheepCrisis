@@ -157,7 +157,7 @@ public class MainMenu : UIMenuBase
         }
         else
         {
-            tipsMenu.SetTips("金币不足",0.5f);
+            tipsMenu.SetTips("金币不足",0.5f, Color.red);
         }
         CheckPlayerProfessions();
     }

@@ -157,7 +157,7 @@ public class WeaponMenu : UIMenuBase
         DataManager.Instance.SavePlayerData(mainMenu.currentProfession, mainMenu.professionData);
         mainMenu.EquipedWeapon.sprite= XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
         Player.Instance.SetWeapon(int.Parse(currentWeapon));
-        tipsMenu.SetTips("装备成功", 0.5f);
+        tipsMenu.SetTips("装备成功", 0.5f, Color.green);
     }
 
     public void OnClickToSelect(string weapon)
