@@ -26,18 +26,19 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         if (startGame)
         {
-            _timer += Time.deltaTime;
-            if (_timer > 1f)
-            {
-                _timer = 0f;
-                RandomInstantiate();
-            }
+            //_timer += Time.deltaTime;
+            //if (_timer > 1f)
+            //{
+            //    _timer = 0f;
+            //    RandomInstantiate();
+            //}
+            if(Input.GetMouseButton(2)) RandomInstantiate();
         }
     }
 
     private void RandomInstantiate()
     {
-        GameObject obj = Instantiate(enemyPrefabs[Random.Range(0, 5)], XTool.RangeInsideCirclePosition(Player.Instance.transform.position, 9, 12), Quaternion.identity);
+        GameObject obj = Instantiate(enemyPrefabs[Random.Range(0, 5)], XTool.RangeInsideCirclePosition(Player.Instance.transform.position, 9, 13), Quaternion.identity);
         enemyList.Add(obj.transform);
     }
 
@@ -76,7 +77,7 @@ public class EnemyManager : Singleton<EnemyManager>
         }
         else
         {
-            return Vector2.zero;
+            return Vector2.one * 1000f;
         }
     }
 }

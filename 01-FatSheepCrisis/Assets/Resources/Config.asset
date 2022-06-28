@@ -255,3 +255,14 @@ MonoBehaviour:
     BuffDurationTime: 0
     RepelNum: 1
     Description: 
+  - Id: 4007
+    Name: "\u96F7\u9E1F"
+    AttackRatio: 1
+    CoolTime: 3
+    Range: 1
+    Distance: 0
+    MoveSpeed: 0
+    DurationTime: 0
+    BuffDurationTime: 0
+    RepelNum: 0
+    Description: 

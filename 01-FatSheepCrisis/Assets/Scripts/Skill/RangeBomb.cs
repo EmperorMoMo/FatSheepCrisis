@@ -45,7 +45,7 @@ public class RangeBomb : MonoBehaviour
     private void Bomb()
     {
         transform.parent = null;
-        if (EnemyManager.Instance.ChooseEnemy(6, false, true).Equals(Vector2.zero))
+        if (EnemyManager.Instance.ChooseEnemy(6, false, true).Equals(Vector2.one * 1000f))
         {
             transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(1, 6), Player.Instance.transform.position.y + Random.Range(1, 6), 0);
         }
