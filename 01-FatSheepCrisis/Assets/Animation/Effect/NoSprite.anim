@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ThunderHit
+  m_Name: NoSprite
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,18 +22,14 @@ AnimationClip:
     - time: 0
       value: {fileID: 0}
     - time: 0.083333336
-      value: {fileID: -3263653343902223344, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - time: 0.16666667
-      value: {fileID: 8219282339543974511, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - time: 0.25
-      value: {fileID: 5554414204076018764, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - time: 0.33333334
-      value: {fileID: -6384987531560189125, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - time: 0.41666666
-      value: {fileID: 1670040759625267941, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - time: 0.5
       value: {fileID: 0}
-    - time: 0.5833333
+    - time: 0.16666667
+      value: {fileID: 0}
+    - time: 0.25
+      value: {fileID: 0}
+    - time: 0.33333334
+      value: {fileID: 0}
+    - time: 0.41666666
       value: {fileID: 0}
     attribute: m_Sprite
     path: 
@@ -55,11 +51,9 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 0}
-    - {fileID: -3263653343902223344, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - {fileID: 8219282339543974511, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - {fileID: 5554414204076018764, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - {fileID: -6384987531560189125, guid: f296852d044050047bad0f998abb9486, type: 3}
-    - {fileID: 1670040759625267941, guid: f296852d044050047bad0f998abb9486, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
   m_AnimationClipSettings:
@@ -67,7 +61,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666666
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,18 +80,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: HitStart
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5
-    functionName: HitFinish
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

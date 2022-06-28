@@ -9,6 +9,7 @@ public enum PrefabType
     BlueDiamond,
     OrangeDiamond,
     Gold,
+    ThunderBirdFX,
 }
 
 public class ObjectPool : Singleton<ObjectPool>
