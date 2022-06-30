@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class AutoDestory : MonoBehaviour
 {
-    [SerializeField]
-    private float delayTime = 1f;
+    public float delayTime = 1f;
     private float timer;
 
     public PrefabType type;
