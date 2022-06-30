@@ -12,6 +12,7 @@ public class MainMenu : UIMenuBase
     private Dictionary<string, WeaponData> weaponData;
     public ProfessionData professionData;
     public Text Name;
+    public Text Introduce;
     public Text Max_Hp;
     public Text Re_Hp;
     public Text Armor;
@@ -35,6 +36,8 @@ public class MainMenu : UIMenuBase
     private List<string> professionID = new List<string>();
     private List<GameObject> professions = new List<GameObject>();
     private TipsMenu tipsMenu;
+    public Image professionIcon;
+    public Sprite[] icons;
 
     public override void Setup()
     {
@@ -99,7 +102,9 @@ public class MainMenu : UIMenuBase
     public void ReadProfessionData(string key)
     {
         professionData = DataManager.Instance.ReadPlayerData(key);
+        professionIcon.sprite = icons[int.Parse(professionData.Id.Substring(3))];
         Name.text = professionData.Name;
+        Introduce.text = professionData.Introduce;
         Max_Hp.text = professionData.Max_Hp;
         Re_Hp.text = professionData.Re_Hp;
         Armor.text = professionData.Armor;
