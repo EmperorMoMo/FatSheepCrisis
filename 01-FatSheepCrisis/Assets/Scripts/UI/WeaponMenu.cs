@@ -32,6 +32,9 @@ public class WeaponMenu : UIMenuBase
     public string currentWeapon;
     private bool isProfession;
     private TipsMenu tipsMenu;
+    public Sprite[] sprites;
+    public Color[] weaponColors;
+    public Color[] nameColors;
 
     public override void Setup()
     {
@@ -79,10 +82,13 @@ public class WeaponMenu : UIMenuBase
                 rt.SetParent(content);
                 rt.localScale = Vector3.one;
                 rt.localPosition = Vector3.zero;
-                Image image = obj.transform.GetChild(0).GetComponent<Image>();
+                obj.GetComponent<Image>().color = weaponColors[int.Parse(item.Value.Quality)];
+                Image image1 = obj.transform.GetChild(0).GetComponent<Image>();
+                image1.sprite = sprites[int.Parse(item.Value.Quality)];
+                Image image = obj.transform.GetChild(1).GetComponent<Image>();
                 image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
                 obj.SetActive(true);
-                obj.transform.GetChild(1).gameObject.SetActive(!CheckPlayerWeapons(item.Value.Name));
+                obj.transform.GetChild(2).gameObject.SetActive(!CheckPlayerWeapons(item.Value.Name));
                 gameObjects.Add(obj);
             }
         }
@@ -99,7 +105,10 @@ public class WeaponMenu : UIMenuBase
                     rt.SetParent(content);
                     rt.localScale = Vector3.one;
                     rt.localPosition = Vector3.zero;
-                    Image image = obj.transform.GetChild(0).GetComponent<Image>();
+                    obj.GetComponent<Image>().color = weaponColors[int.Parse(item.Value.Quality)];
+                    Image image1 = obj.transform.GetChild(0).GetComponent<Image>();
+                    image1.sprite = sprites[int.Parse(item.Value.Quality)];
+                    Image image = obj.transform.GetChild(1).GetComponent<Image>();
                     image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
                     obj.SetActive(true);
                     gameObjects.Add(obj);
@@ -180,6 +189,7 @@ public class WeaponMenu : UIMenuBase
             }
         }
         weaponsName.text = Data[str].Name;
+        weaponsName.color = nameColors[int.Parse(Data[str].Quality)];
         aggressivity.text = Data[str].Aggressivity;
         attackInterval.text = Data[str].AttackInterval;
         critChance.text = Data[str].CritChance;
@@ -199,11 +209,13 @@ public class WeaponMenu : UIMenuBase
         {
             if(content.GetChild(i).name.Substring(0, 4) == str)
             {
+                content.GetChild(i).GetChild(3).gameObject.SetActive(true);
                 content.GetChild(i).transform.DOScale(1.2f, 0.25f).SetEase(Ease.OutBack);
                 //content.GetChild(i).transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             }
             else
             {
+                content.GetChild(i).GetChild(3).gameObject.SetActive(false);
                 content.GetChild(i).transform.localScale = Vector3.one;
             }
         }
