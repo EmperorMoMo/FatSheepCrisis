@@ -42,6 +42,9 @@ public class UIManager : Singleton<UIManager>
 
     private bool skipIdleFrame;
 
+    string path = "AB/ui.bundle";
+    private AssetBundle ab;
+
     private Dictionary<UIMenuBase.MenuType, string> editorMenusName = new Dictionary<UIMenuBase.MenuType, string>
     {
         {
@@ -72,6 +75,7 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
+        ab = AssetBundle.LoadFromFile(path);
         eventSystem = EventSystem.current;
         if (menus.Count == 0)
         {
@@ -140,12 +144,12 @@ public class UIManager : Singleton<UIManager>
             return menus[menuID];
         }
         GameObject obj = null;
-#if UNITY_EDITOR && !FORCE_USE_AB
+#if UNITY_EDITOR
         //obj = AssetBundleManager.Instance.LoadAssetAtPath<GameObject>("Assets/RawResources/Prefabs/", editorMenusName[menuID] + ".prefab");
         obj = XTool.LoadAssetAtPath<GameObject>("Assets/RawResources/Prefabs/", editorMenusName[menuID] + ".prefab");
 #else
-        string path = "AB/ui.bundle";
-        AssetBundle ab = AssetBundle.LoadFromFile(path);
+        //string path = "AB/ui.bundle";
+        //AssetBundle ab = AssetBundle.LoadFromFile(path);
         if (ab != null)
             obj = ab.LoadAsset<GameObject>(editorMenusName[menuID] + ".prefab");
 #endif
