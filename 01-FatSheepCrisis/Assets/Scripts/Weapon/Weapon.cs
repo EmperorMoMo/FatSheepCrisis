@@ -52,7 +52,7 @@ public class Weapon : WeaponBaseAttribute
 
     public override void SetAttribute(int id)
     {
-#if UNITY_EDITOR && !FORCE_USE_AB
+#if UNITY_EDITOR
         weaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
 #else
         string path = "AB/texture.bundle";

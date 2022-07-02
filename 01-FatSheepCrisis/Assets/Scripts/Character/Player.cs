@@ -183,7 +183,7 @@ public class Player : CharacterBaseAttribute
     ///TODO!!!
     public void SetWeapon(int id)
     {
-#if UNITY_EDITOR && !FORCE_USE_AB
+#if UNITY_EDITOR
         armWeaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
 #else
         string path = "AB/texture.bundle";

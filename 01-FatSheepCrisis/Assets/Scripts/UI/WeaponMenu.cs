@@ -86,7 +86,7 @@ public class WeaponMenu : UIMenuBase
                 Image image1 = obj.transform.GetChild(0).GetComponent<Image>();
                 image1.sprite = sprites[int.Parse(item.Value.Quality)];
                 Image image = obj.transform.GetChild(1).GetComponent<Image>();
-#if UNITY_EDITOR && !FORCE_USE_AB
+#if UNITY_EDITOR
                 image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
 #else
         string path = "AB/texture.bundle";
@@ -116,7 +116,7 @@ public class WeaponMenu : UIMenuBase
                     Image image1 = obj.transform.GetChild(0).GetComponent<Image>();
                     image1.sprite = sprites[int.Parse(item.Value.Quality)];
                     Image image = obj.transform.GetChild(1).GetComponent<Image>();
-#if UNITY_EDITOR && !FORCE_USE_AB
+#if UNITY_EDITOR
                     image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
 #else
         string path = "AB/texture.bundle";
@@ -178,7 +178,7 @@ public class WeaponMenu : UIMenuBase
         AudioManager.Instance.PlayEquipWeaponAudio();
         mainMenu.professionData.Weapon = Data[currentWeapon].Name;
         DataManager.Instance.SavePlayerData(mainMenu.currentProfession, mainMenu.professionData);
-#if UNITY_EDITOR && !FORCE_USE_AB
+#if UNITY_EDITOR
         mainMenu.EquipedWeapon.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
 #else
         string path = "AB/texture.bundle";
