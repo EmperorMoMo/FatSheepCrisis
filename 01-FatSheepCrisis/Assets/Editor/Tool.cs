@@ -189,6 +189,45 @@ public class Tool
         // return result.Tables[3].Rows;
         return result.Tables[sheetName].Rows;
     }
+
+    [MenuItem("Tool/CreatAssetBundle for Android")]
+    static void CreatAssetBundle()
+    {
+
+        string path = "Assets/StreamingAssets";
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        BuildPipeline.BuildAssetBundles(path, BuildAssetBundleOptions.UncompressedAssetBundle, BuildTarget.Android);
+        UnityEngine.Debug.Log("Android Finish!");
+    }
+
+    [MenuItem("Tool/CreatAssetBundle for IOS")]
+    static void BuildAllAssetBundlesForIOS()
+    {
+        string dirName = "AssetBundles/IOS";
+        if (!Directory.Exists(dirName))
+        {
+            Directory.CreateDirectory(dirName);
+        }
+        BuildPipeline.BuildAssetBundles(dirName, BuildAssetBundleOptions.CollectDependencies, BuildTarget.iOS);
+        UnityEngine.Debug.Log("IOS Finish!");
+
+    }
+
+
+    [MenuItem("Tool/CreatAssetBundle for Win")]
+    static void CreatPCAssetBundleForwINDOWS()
+    {
+        string path = "AB";
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        BuildPipeline.BuildAssetBundles(path, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
+        UnityEngine.Debug.Log("Windows Finish!");
+    }
 }
 
 

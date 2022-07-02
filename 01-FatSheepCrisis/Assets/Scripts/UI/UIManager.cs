@@ -144,11 +144,10 @@ public class UIManager : Singleton<UIManager>
         //obj = AssetBundleManager.Instance.LoadAssetAtPath<GameObject>("Assets/RawResources/Prefabs/", editorMenusName[menuID] + ".prefab");
         obj = XTool.LoadAssetAtPath<GameObject>("Assets/RawResources/Prefabs/", editorMenusName[menuID] + ".prefab");
 #else
-		AssetBundle ab = AssetBundleManager.Instance.GetAssetBundleFromName("ui.bundle");
-		if (ab != null)
-		{
-			obj = ab.LoadAsset<GameObject>(editorMenusName[menuID] + ".prefab");
-		}
+        string path = "AB/ui.bundle";
+        AssetBundle ab = AssetBundle.LoadFromFile(path);
+        if (ab != null)
+            obj = ab.LoadAsset<GameObject>(editorMenusName[menuID] + ".prefab");
 #endif
         if (obj != null)
         {

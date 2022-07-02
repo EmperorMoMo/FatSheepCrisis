@@ -86,7 +86,14 @@ public class WeaponMenu : UIMenuBase
                 Image image1 = obj.transform.GetChild(0).GetComponent<Image>();
                 image1.sprite = sprites[int.Parse(item.Value.Quality)];
                 Image image = obj.transform.GetChild(1).GetComponent<Image>();
+#if UNITY_EDITOR && !FORCE_USE_AB
                 image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
+#else
+        string path = "AB/texture.bundle";
+        AssetBundle ab = AssetBundle.LoadFromFile(path);
+        if (ab != null)
+            image.sprite = ab.LoadAsset<Sprite>(item.Value.Id+ ".png");
+#endif
                 obj.SetActive(true);
                 obj.transform.GetChild(2).gameObject.SetActive(!CheckPlayerWeapons(item.Value.Name));
                 gameObjects.Add(obj);
@@ -109,7 +116,14 @@ public class WeaponMenu : UIMenuBase
                     Image image1 = obj.transform.GetChild(0).GetComponent<Image>();
                     image1.sprite = sprites[int.Parse(item.Value.Quality)];
                     Image image = obj.transform.GetChild(1).GetComponent<Image>();
+#if UNITY_EDITOR && !FORCE_USE_AB
                     image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
+#else
+        string path = "AB/texture.bundle";
+        AssetBundle ab = AssetBundle.LoadFromFile(path);
+        if (ab != null)
+            image.sprite = ab.LoadAsset<Sprite>(item.Value.Id+ ".png");
+#endif
                     obj.SetActive(true);
                     gameObjects.Add(obj);
                 }
@@ -164,7 +178,14 @@ public class WeaponMenu : UIMenuBase
         AudioManager.Instance.PlayEquipWeaponAudio();
         mainMenu.professionData.Weapon = Data[currentWeapon].Name;
         DataManager.Instance.SavePlayerData(mainMenu.currentProfession, mainMenu.professionData);
-        mainMenu.EquipedWeapon.sprite= XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
+#if UNITY_EDITOR && !FORCE_USE_AB
+        mainMenu.EquipedWeapon.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
+#else
+        string path = "AB/texture.bundle";
+        AssetBundle ab = AssetBundle.LoadFromFile(path);
+        if (ab != null)
+            mainMenu.EquipedWeapon.sprite = ab.LoadAsset<Sprite>(currentWeapon+ ".png");
+#endif
         Player.Instance.SetWeapon(int.Parse(currentWeapon));
         tipsMenu.SetTips("装备成功", 0.5f, Color.green);
     }

@@ -1,0 +1,100 @@
+ManifestFileVersion: 0
+CRC: 861726806
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 72dbb69a0f914d3d2e4d0cdbcd2a9ca6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9f3e1e2a45016523ffde59324cf5c005
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 86466058e16e8db4c9e9f12b9096dd87, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7865ee57390e8dc44bae7dc06de36f64, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 588f43c1c4698f744aa18a9e8f833998, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 91e695b467d7aff4d815992ad2b2284f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 85889b6332c52644b8b757e9517bd6d5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 498076573f63a914eb5a9bcf148b13c8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: ProfessionData
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Scrollbar/ScrollEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/RawResources/Prefabs/TipsMenu.prefab
+- Assets/RawResources/Prefabs/AttributeMenu.prefab
+- Assets/RawResources/Prefabs/MainMenu.prefab
+- Assets/RawResources/Prefabs/StartMenu.prefab
+- Assets/RawResources/Prefabs/TicketMenu.prefab
+- Assets/RawResources/Prefabs/WeaponMenu.prefab
+Dependencies: []

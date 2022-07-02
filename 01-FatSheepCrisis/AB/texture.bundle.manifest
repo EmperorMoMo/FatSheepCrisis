@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 3827337169
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8bd5e1a7579a5104fafde65effb13ade
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 12da798fbf3a6c0c342cc56cb1a6efdf
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RawResources/Weapons/1004.png
+- Assets/RawResources/Weapons/1002.png
+- Assets/RawResources/Weapons/1001.png
+- Assets/RawResources/Weapons/1003.png
+- Assets/RawResources/Weapons/1005.png
+Dependencies: []

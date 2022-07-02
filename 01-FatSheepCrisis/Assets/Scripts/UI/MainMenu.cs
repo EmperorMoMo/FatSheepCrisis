@@ -88,7 +88,14 @@ public class MainMenu : UIMenuBase
         }
         if (haveProfessions)
         {
+#if UNITY_EDITOR && !FORCE_USE_AB
             EquipedWeapon.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", CheckWeaponsIndex(professionData.Weapon) + ".png");
+#else
+        string path = "AB/texture.bundle";
+        AssetBundle ab = AssetBundle.LoadFromFile(path);
+        if (ab != null)
+            EquipedWeapon.sprite = ab.LoadAsset<Sprite>(CheckWeaponsIndex(professionData.Weapon) + ".png");
+#endif
             Player.Instance.SetWeapon(int.Parse(CheckWeaponsIndex(professionData.Weapon)));
         }
         EquipedWeapon.gameObject.SetActive(haveProfessions);

@@ -15,6 +15,7 @@ public class XTool
     }
     public static T LoadAssetAtPath<T>(string path, string _asset_name) where T : UnityEngine.Object
     {
+#if UNITY_EDITOR && !FORCE_USE_AB
         string asset = path + _asset_name;
         var ret = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(asset);
         if (ret == null)
@@ -23,6 +24,8 @@ public class XTool
             return null;
         }
         return ret;
+#endif
+        return null;
     }
 
     public static float CalculateDamage(float aggressivity)
