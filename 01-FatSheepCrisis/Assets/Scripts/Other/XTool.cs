@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class XTool
+public class XTool
 {
     public static Vector3 RangeInsideCirclePosition(Vector3 _pos, float minR, float maxR)
     {

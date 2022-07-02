@@ -198,5 +198,10 @@ public class SkillManager : Singleton<SkillManager>
         }
     }
 
+    private void WaterBlastLauncher()
+    {
+
+    }
+
     #endregion
 }

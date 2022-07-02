@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
@@ -8,11 +7,13 @@ public class DataManager : Singleton<DataManager>
     private Dictionary<string, ProfessionData> Data;
     private PackageItem Profession;
 
-    [MenuItem("Tool/Delete Player Info")]
+#if UNITY__EDITOR
+    [UnityEditor.MenuItem("Tool/Delete Player Info")]
     public static void DeletePlayerInfo()
     {
         PlayerPrefs.DeleteAll();
     }
+#endif
 
     private void Awake()
     {
