@@ -89,10 +89,7 @@ public class WeaponMenu : UIMenuBase
 #if UNITY_EDITOR
                 image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
 #else
-        string path = "AB/texture.bundle";
-        AssetBundle ab = AssetBundle.LoadFromFile(path);
-        if (ab != null)
-            image.sprite = ab.LoadAsset<Sprite>(item.Value.Id+ ".png");
+                image.sprite = XTool.LoadTextureAssestBundle(item.Value.Id + ".png");
 #endif
                 obj.SetActive(true);
                 obj.transform.GetChild(2).gameObject.SetActive(!CheckPlayerWeapons(item.Value.Name));
@@ -119,10 +116,7 @@ public class WeaponMenu : UIMenuBase
 #if UNITY_EDITOR
                     image.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", item.Value.Id + ".png");
 #else
-        string path = "AB/texture.bundle";
-        AssetBundle ab = AssetBundle.LoadFromFile(path);
-        if (ab != null)
-            image.sprite = ab.LoadAsset<Sprite>(item.Value.Id+ ".png");
+                    image.sprite = XTool.LoadTextureAssestBundle(item.Value.Id + ".png");
 #endif
                     obj.SetActive(true);
                     gameObjects.Add(obj);
@@ -181,10 +175,7 @@ public class WeaponMenu : UIMenuBase
 #if UNITY_EDITOR
         mainMenu.EquipedWeapon.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", currentWeapon + ".png");
 #else
-        string path = "AB/texture.bundle";
-        AssetBundle ab = AssetBundle.LoadFromFile(path);
-        if (ab != null)
-            mainMenu.EquipedWeapon.sprite = ab.LoadAsset<Sprite>(currentWeapon+ ".png");
+        mainMenu.EquipedWeapon.sprite = XTool.LoadTextureAssestBundle(currentWeapon + ".png");
 #endif
         Player.Instance.SetWeapon(int.Parse(currentWeapon));
         tipsMenu.SetTips("装备成功", 0.5f, Color.green);

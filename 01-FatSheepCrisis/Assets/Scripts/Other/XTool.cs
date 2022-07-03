@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class XTool
 {
+    private static AssetBundle uiAB;
+    private static AssetBundle textureAB;
     public static Vector3 RangeInsideCirclePosition(Vector3 _pos, float minR, float maxR)
     {
         Vector3 pos = _pos;
@@ -41,5 +43,31 @@ public class XTool
             _Aggressivity = aggressivity;
         }
         return _Aggressivity * (1 + TotalAttribute.FinalDamage) + TotalAttribute.AdditionalDamage;
+    }
+
+    public static GameObject LoadUIAssestBundle(string name)
+    {
+        if (uiAB == null)
+        {
+            uiAB = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/ui.bundle");
+            return uiAB.LoadAsset<GameObject>(name);
+        }
+        else
+        {
+            return uiAB.LoadAsset<GameObject>(name);
+        }
+    }
+
+    public static Sprite LoadTextureAssestBundle(string name)
+    {
+        if (textureAB == null)
+        {
+            textureAB = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/texture.bundle");
+            return textureAB.LoadAsset<Sprite>(name);
+        }
+        else
+        {
+            return textureAB.LoadAsset<Sprite>(name);
+        }
     }
 }

@@ -186,10 +186,7 @@ public class Player : CharacterBaseAttribute
 #if UNITY_EDITOR
         armWeaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
 #else
-        string path = "AB/texture.bundle";
-        AssetBundle ab = AssetBundle.LoadFromFile(path);
-        if (ab != null)
-            armWeaponSprite.sprite = ab.LoadAsset<Sprite>(id + ".png");
+        armWeaponSprite.sprite = XTool.LoadTextureAssestBundle(id + ".png");
 #endif
         armWeaponSprite.material.SetColor("_001Color", new Color(255 * 0.025f, 255 * 0.025f, 255 * 0.025f));
 

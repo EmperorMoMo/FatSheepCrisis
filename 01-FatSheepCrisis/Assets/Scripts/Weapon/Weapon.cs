@@ -55,10 +55,7 @@ public class Weapon : WeaponBaseAttribute
 #if UNITY_EDITOR
         weaponSprite.sprite = XTool.LoadAssetAtPath<Sprite>("Assets/RawResources/Weapons/", id + ".png");
 #else
-        string path = "AB/texture.bundle";
-        AssetBundle ab = AssetBundle.LoadFromFile(path);
-        if (ab != null)
-            weaponSprite.sprite = ab.LoadAsset<Sprite>(id+ ".png");
+        weaponSprite.sprite = XTool.LoadTextureAssestBundle(id + ".png");
 #endif
         Name = (WeaponName)Enum.Parse(typeof(WeaponName), id.ToString(), false);
         PackageItem weapons = Resources.Load<PackageItem>("Config");
