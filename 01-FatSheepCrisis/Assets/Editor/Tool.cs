@@ -220,13 +220,14 @@ public class Tool
     [MenuItem("Tool/CreatAssetBundle for Win")]
     static void CreatPCAssetBundleForwINDOWS()
     {
-        string path = "AB";
+        string path = Application.streamingAssetsPath;
         if (!Directory.Exists(path))
         {
             Directory.CreateDirectory(path);
         }
         BuildPipeline.BuildAssetBundles(path, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
         UnityEngine.Debug.Log("Windows Finish!");
+        AssetDatabase.Refresh();
     }
 }
 

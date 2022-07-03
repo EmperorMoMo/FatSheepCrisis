@@ -42,7 +42,7 @@ public class UIManager : Singleton<UIManager>
 
     private bool skipIdleFrame;
 
-    string path = "AB/ui.bundle";
+    string path = Application.streamingAssetsPath + "/ui.bundle";
     private AssetBundle ab;
 
     private Dictionary<UIMenuBase.MenuType, string> editorMenusName = new Dictionary<UIMenuBase.MenuType, string>
